@@ -4,10 +4,16 @@
  */
 package gameengine;
 
+import java.util.Vector;
+
 /**
  *
  * @author angelo
  */
-public abstract class Sprite {
-    //some form of picture
+public class CharSprite extends Sprite{
+
+    /**
+     *
+     */
+    public char charRepresentation;
 }

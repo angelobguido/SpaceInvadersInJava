@@ -11,8 +11,8 @@ import gameengine.*;
  * @author angelo
  */
 
-enum Prefab{Alien, Player, Obstacle}
 public class GameObjectBuilder {
+    enum Prefab{Alien, Player, Obstacle}
     
     public static GameObject create(Prefab prefab){
         

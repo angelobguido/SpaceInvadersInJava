@@ -4,6 +4,9 @@
  */
 package spaceinvaders;
 
+import gameengine.Graphics;
+import gameengine.GraphicsId;
+import gamemath.Vector2D;
 /**
  *
  * @author angelo
@@ -14,7 +17,8 @@ public class SpaceInvaders {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Graphics.setGraphics(GraphicsId.Terminal);
+        Graphics.draw(null, Vector2D.up);
     }
     
 }
