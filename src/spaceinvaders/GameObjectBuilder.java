@@ -46,7 +46,19 @@ public class GameObjectBuilder {
             
             case Player:
                 
-                gameObject.addComponent(new SpriteRenderer(gameObject, null));
+                Vector<Vector2D> playerStructure = new Vector<>();
+                
+                playerStructure.add(Vector2D.zero);
+                playerStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 1));
+                playerStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 2));
+                playerStructure.add(Vector2D.multiplyByScalar(Vector2D.right, 1));
+                playerStructure.add(Vector2D.addVectors(Vector2D.up, Vector2D.right));
+                
+
+                Sprite player = new Sprite('0', playerStructure);
+                
+                
+                gameObject.addComponent(new SpriteRenderer(gameObject, player));
                 gameObject.addComponent(new Physics(gameObject));
                 
                 break;

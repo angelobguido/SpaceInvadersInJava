@@ -9,8 +9,6 @@ package gameengine;
  * @author angelo
  */
 
-enum ComponentId{Physics, SpriteRenderer}
-
 public abstract class Component {
     
     protected final GameObject gameObject;

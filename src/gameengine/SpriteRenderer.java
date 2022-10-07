@@ -23,6 +23,7 @@ public class SpriteRenderer extends Component{
         this.sprite = sprite;
     }
     
+    @Override
     public void update(){
         Graphics.draw(sprite, gameObject.position());
     }

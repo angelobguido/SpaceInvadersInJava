@@ -7,13 +7,13 @@
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/VisualInterface.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Graphics.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/SpriteRenderer.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Sprite.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/TerminalInterface.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gamemath/Vector2D.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Sprite.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/GameObjectBuilder.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GraphicsId.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Physics.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/SpaceInvaders.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Component.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/CharSprite.java</file>
         </group>
     </open-files>
 </project-private>

@@ -36,4 +36,13 @@ public class GameObject {
         components.forEach(component -> {component.update();});
     }
     
+    public Component getComponent(ComponentId id){
+        for(int i = 0; i<components.size(); i++){
+            if(components.elementAt(i).id == id){
+                return components.elementAt(i);
+            }
+        }
+        return null;
+    }
+    
 }

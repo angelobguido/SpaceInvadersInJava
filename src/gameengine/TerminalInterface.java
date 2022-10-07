@@ -39,7 +39,6 @@ public class TerminalInterface extends VisualInterface {
 
         }
 
-        update();
     }
     
     private boolean isOutOfBounds(Vector2D position){
