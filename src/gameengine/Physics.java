@@ -12,25 +12,18 @@ import gamemath.Vector2D;
  */
 public class Physics extends Component{
     
-    private Vector2D velocity = Vector2D.zero;
+    public Vector2D velocity = Vector2D.zero;
     
     public Physics(GameObject gameObject){
         super(gameObject, ComponentId.Physics);
     }
     
-    public void move(Vector2D newPosition){
-        gameObject.setPosition(newPosition);
-    }
     
-    public Vector2D velocity(){
-        return velocity;
-    }
-    
-    public void setVelocity(Vector2D newVelocity){
-        velocity = newVelocity;
-    }
-    
+    @Override
     public void update(){
-        move(Vector2D.addVectors(velocity, gameObject.position()));
+        gameObject.position = (Vector2D.addVectors(velocity, gameObject.position));
+        for(int i = 0; i<gameObject.childCount(); i++){
+            gameObject.getChild(i).position = Vector2D.addVectors(velocity, gameObject.getChild(i).position);
+        }
     }
 }

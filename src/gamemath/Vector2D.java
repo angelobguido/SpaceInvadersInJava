@@ -18,9 +18,14 @@ public class Vector2D {
     public static final Vector2D right = new Vector2D(1,0);
     public static final Vector2D left = new Vector2D(-1,0);
     
-    Vector2D(float x, float y){
+    public Vector2D(float x, float y){
         this.x = x;
         this.y = y;
+    }
+    
+    public Vector2D(Vector2D copy){
+        this.x = copy.x;
+        this.y = copy.y;
     }
     
     public float x(){

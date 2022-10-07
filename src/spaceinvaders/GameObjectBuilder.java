@@ -37,10 +37,7 @@ public class GameObjectBuilder {
                 Sprite alien = new Sprite('$', alienStructure);
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, alien));
-                
-                Physics alienPhysics = new Physics(gameObject);
-                alienPhysics.setVelocity(Vector2D.right);
-                gameObject.addComponent(alienPhysics);
+                gameObject.addComponent(new Physics(gameObject));
                 
                 break;
             

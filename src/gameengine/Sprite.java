@@ -20,11 +20,16 @@ public class Sprite {
         this.spriteStructure = spriteStructure;
     }
     
+    public Sprite(Sprite copy){
+        this.charRepresentation = copy.charRepresentation;
+        this.spriteStructure = copy.spriteStructure();
+    }
+    
     public char charRepresentation(){
         return charRepresentation;
     }
     
     public Vector<Vector2D> spriteStructure(){
-        return spriteStructure;
+        return new Vector<Vector2D>(spriteStructure);
     }
 }

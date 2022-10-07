@@ -4,6 +4,7 @@
  */
 package gameengine;
 
+import gameengine.GameExceptions.SameGameObjectException;
 import gamemath.Vector2D;
 import java.util.Vector;
 
@@ -12,24 +13,50 @@ import java.util.Vector;
  * @author angelo
  */
 public class GameObject {
-    private Vector2D position;
+    public Vector2D position;
     private Vector<Component> components;
+    private Vector<GameObject> children;
+    private GameObject parent;
     
     public GameObject(){
         position = Vector2D.zero;
         components = new Vector<>();
+        children = new Vector<>();
     }
     
-    public Vector2D position(){
-        return position;
+    public GameObject(GameObject copy){
+        position = new Vector2D(copy.position);
+        components = new Vector<>(components);
+        children = new Vector<>(children);
+    }
+    
+    public void addChild(GameObject newChild) throws SameGameObjectException{
+        if(newChild == this){
+            throw new SameGameObjectException();
+        }
+        newChild.setParent(this);
+        newChild.position = Vector2D.addVectors(position, newChild.position);
+        children.add(newChild);
+    }
+    
+    public void setParent(GameObject parent){
+        this.parent = parent;
+    }
+    
+    public GameObject parent(){
+        return new GameObject(parent);
+    }
+    
+    public GameObject getChild(int index){
+        return children.elementAt(index);
+    }
+    
+    public int childCount(){
+        return children.size();
     }
     
     public void addComponent(Component newComponent){
         components.add(newComponent);
-    }
-    
-    public void setPosition(Vector2D newPosition){
-        position = newPosition;
     }
     
     public void update(){
