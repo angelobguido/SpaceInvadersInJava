@@ -9,5 +9,5 @@ package gameengine;
  * @author angelo
  */
 public abstract class Sprite {
-    //some form of picture
+    
 }

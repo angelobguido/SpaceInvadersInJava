@@ -4,6 +4,7 @@
  */
 package gameengine;
 
+import gamemath.Vector2D;
 import java.util.Vector;
 
 /**
@@ -12,8 +13,12 @@ import java.util.Vector;
  */
 public class CharSprite extends Sprite{
 
-    /**
-     *
-     */
-    public char charRepresentation;
+    public final char charRepresentation;
+    public final Vector<Vector2D> spriteStructure; //o vetor zero pode ser considerado o centro do sprite
+    
+    public CharSprite(char charRepresentation, Vector<Vector2D> spriteStructure){
+        this.charRepresentation = charRepresentation;
+        this.spriteStructure = spriteStructure;
+    }
+    
 }

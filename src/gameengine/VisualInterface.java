@@ -19,6 +19,7 @@ public abstract class VisualInterface {
     
     public abstract void draw(Sprite sprite, Vector2D position);
     public abstract void clean();
+    public abstract void update();
     
     protected abstract void setWidth(int width);
     protected abstract void setHeigth(int heigth);

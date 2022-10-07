@@ -5,6 +5,7 @@
 package gameengine;
 
 import gamemath.Vector2D;
+import java.util.Vector;
 /**
  *
  * @author angelo
@@ -22,8 +23,30 @@ public class TerminalInterface extends VisualInterface {
     }
     
     public void draw(Sprite sprite, Vector2D position){
-        canvas[Math.round(position.y())][Math.round(position.x())] = '#';
+        
+        Vector<Vector2D> spriteStructure = ((CharSprite)sprite).spriteStructure;
+        char charRepresentation = ((CharSprite)sprite).charRepresentation;
+        Vector2D currentPosition;
+        
+
+        for(int i = 0; i<spriteStructure.size(); i++){
+
+            currentPosition = Vector2D.addVectors(spriteStructure.elementAt(i), position);
+
+            if(isOutOfBounds(currentPosition)==false){
+                canvas[heigth - 1 - Math.round(currentPosition.y())][Math.round(currentPosition.x())] = charRepresentation;
+            }
+
+        }
+
         update();
+    }
+    
+    private boolean isOutOfBounds(Vector2D position){
+        int row = heigth - 1 - Math.round(position.y());
+        int column = Math.round(position.x());
+        
+        return row>=heigth || row<0 || column>=width || column<0;
     }
     
     public void clean(){
@@ -35,6 +58,7 @@ public class TerminalInterface extends VisualInterface {
     }
     
     public void update(){
+        
         for(int i = 0; i<heigth; i++){
             for(int j = 0; j<width; j++){
                 System.out.print(canvas[i][j]+" ");

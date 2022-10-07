@@ -17,12 +17,18 @@ public class Graphics {
     public static void setGraphics(GraphicsId id){
         
         switch(id){
-            case Terminal: visualInterface = new TerminalInterface(30, 30); break;
+            case Terminal: visualInterface = new TerminalInterface(35, 35); break;
             case GraphicInterface: break;
         }
     }
     
     public static void draw(Sprite sprite, Vector2D position){
         visualInterface.draw(sprite, position);
+    }
+    public static void clean(){
+        visualInterface.clean();
+    }
+    public static void update(){
+        visualInterface.update();
     }
 }
