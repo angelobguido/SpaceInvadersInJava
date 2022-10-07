@@ -24,8 +24,8 @@ public class TerminalInterface extends VisualInterface {
     
     public void draw(Sprite sprite, Vector2D position){
         
-        Vector<Vector2D> spriteStructure = ((CharSprite)sprite).spriteStructure;
-        char charRepresentation = ((CharSprite)sprite).charRepresentation;
+        Vector<Vector2D> spriteStructure = sprite.spriteStructure();
+        char charRepresentation = sprite.charRepresentation();
         Vector2D currentPosition;
         
 

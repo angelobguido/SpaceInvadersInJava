@@ -4,7 +4,8 @@
  */
 package spaceinvaders;
 
-import gameengine.CharSprite;
+import gameengine.GameObject;
+import gameengine.Sprite;
 import gameengine.Graphics;
 import gameengine.GraphicsId;
 import gamemath.Vector2D;
@@ -18,42 +19,17 @@ public class SpaceInvaders {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Graphics.setGraphics(GraphicsId.Terminal);
         
-        Vector<Vector2D> basicStructure = new Vector<>();
-        basicStructure.add(Vector2D.zero);
+        GameObject alien = GameObjectBuilder.create(Prefab.Alien);
         
-        CharSprite basic = new CharSprite('#', basicStructure);
-        
-        Graphics.draw(basic, Vector2D.up);
-        
-        Graphics.clean();
-        
-        
-        for(int i = 0; i<35; i++){
-            Graphics.draw(basic, Vector2D.multiplyByScalar(Vector2D.addVectors(Vector2D.up, Vector2D.right), i));
-        }
-        for(int i = 0; i<35; i++){
-            Graphics.draw(basic, Vector2D.multiplyByScalar(Vector2D.addVectors(Vector2D.up, Vector2D.zero), i));
-        }
-        for(int i = 0; i<35; i++){
-            Graphics.draw(basic, Vector2D.multiplyByScalar(Vector2D.addVectors(Vector2D.right, Vector2D.zero), i));
+        while(true){
+            Graphics.clean();
+            alien.update();
+            Thread.sleep(500);
         }
         
-        
-        Vector<Vector2D> complexStructure = new Vector<>();
-        complexStructure.add(Vector2D.zero);
-        complexStructure.add(Vector2D.up);
-        complexStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 1));
-        complexStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 2));
-        complexStructure.add(Vector2D.multiplyByScalar(Vector2D.right, 1));
-        complexStructure.add(Vector2D.multiplyByScalar(Vector2D.right, 2));
-        
-        CharSprite complex = new CharSprite('$', complexStructure);
-        
-        Graphics.draw(complex, Vector2D.multiplyByScalar(Vector2D.addVectors(Vector2D.multiplyByScalar(Vector2D.right, 10), Vector2D.up), 5));
-        Graphics.draw(complex, Vector2D.multiplyByScalar(Vector2D.addVectors(Vector2D.multiplyByScalar(Vector2D.right, 3), Vector2D.up), 5));
         
     }
     

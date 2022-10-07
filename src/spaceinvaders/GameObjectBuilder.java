@@ -5,14 +5,18 @@
 package spaceinvaders;
 
 import gameengine.*;
+import gamemath.Vector2D;
+import java.util.Vector;
 
 /**
  *
  * @author angelo
  */
 
+enum Prefab{Alien, Player, Obstacle}
+
 public class GameObjectBuilder {
-    enum Prefab{Alien, Player, Obstacle}
+    
     
     public static GameObject create(Prefab prefab){
         
@@ -21,8 +25,22 @@ public class GameObjectBuilder {
         switch(prefab){
             case Alien: 
                 
-                gameObject.addComponent(new SpriteRenderer(gameObject, null));
-                gameObject.addComponent(new Physics(gameObject));
+                Vector<Vector2D> alienStructure = new Vector<>();
+                
+                alienStructure.add(Vector2D.zero);
+                alienStructure.add(Vector2D.up);
+                alienStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 1));
+                alienStructure.add(Vector2D.multiplyByScalar(Vector2D.up, 2));
+                alienStructure.add(Vector2D.multiplyByScalar(Vector2D.right, 1));
+                alienStructure.add(Vector2D.multiplyByScalar(Vector2D.right, 2));
+
+                Sprite alien = new Sprite('$', alienStructure);
+                
+                gameObject.addComponent(new SpriteRenderer(gameObject, alien));
+                
+                Physics alienPhysics = new Physics(gameObject);
+                alienPhysics.setVelocity(Vector2D.right);
+                gameObject.addComponent(alienPhysics);
                 
                 break;
             
