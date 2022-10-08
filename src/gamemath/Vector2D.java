@@ -9,8 +9,8 @@ package gamemath;
  * @author angelo
  */
 public class Vector2D {
-    private float x;
-    private float y;
+    public float x;
+    public float y;
     
     public static final Vector2D zero = new Vector2D(0,0); 
     public static final Vector2D up = new Vector2D(0,1);

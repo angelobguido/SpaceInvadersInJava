@@ -19,44 +19,26 @@ public class SpaceInvaders {
     public static void main(String[] args) throws InterruptedException {
         Graphics.setGraphics(GraphicsId.Terminal);
         
-        GameObject alien = GameObjectBuilder.create(Prefab.Alien);
-        GameObject alien2 = GameObjectBuilder.create(Prefab.Alien);
-        Physics alien2Physics = (Physics)alien2.getComponent(ComponentId.Physics);
-        alien2Physics.velocity = (Vector2D.addVectors(Vector2D.multiplyByScalar(Vector2D.up, 3), Vector2D.right));
+        GameObject aliens = GameObjectBuilder.create(Prefab.AliensMatrix);
+        Physics aliensPhysics = (Physics)aliens.getComponent(ComponentId.Physics);
+        aliensPhysics.velocity = new Vector2D(1,0);
+        aliens.setPosition(Vector2D.up);
         
-        GameObject player = GameObjectBuilder.create(Prefab.Player);
-        Physics playerPhysics = (Physics)player.getComponent(ComponentId.Physics);
-        playerPhysics.velocity = (Vector2D.right);
         
-        Physics alienPhysics = (Physics)alien.getComponent(ComponentId.Physics);
-        alienPhysics.velocity = (Vector2D.addVectors(Vector2D.multiplyByScalar(Vector2D.up, 3), Vector2D.right));
-        alien.position = new Vector2D(8.0f, 3.0f);
-        
-        SpriteRenderer playerSpriteRenderer = (SpriteRenderer)player.getComponent(ComponentId.SpriteRenderer);
-        SpriteRenderer alienSpriteRenderer = (SpriteRenderer)alien.getComponent(ComponentId.SpriteRenderer);
-        
-        Sprite playerSpriteCopy = ((SpriteRenderer)player.getComponent(ComponentId.SpriteRenderer)).sprite();
-        Sprite alienSpriteCopy = ((SpriteRenderer)alien.getComponent(ComponentId.SpriteRenderer)).sprite();
+        aliens.setPosition(new Vector2D(5,30));
         
         int i = 0;
         
         while(true){
             i++;
             Graphics.clean();
-            alien.update();
-            alien2.update();
-            if(i%7 == 0){
-                playerPhysics.velocity = (Vector2D.multiplyByScalar(playerPhysics.velocity, -1));
-                playerSpriteRenderer.setSprite(alienSpriteCopy);
+            
+            if(i%8 == 0){
+                aliensPhysics.velocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, -1);
+                aliens.setPosition(Vector2D.addVectors(aliens.position(), Vector2D.down));
             }
-            if(i%5 == 0){
-                alienPhysics.velocity = (Vector2D.multiplyByScalar(alienPhysics.velocity, -1));
-                playerSpriteRenderer.setSprite(playerSpriteCopy);
-            }
-            if(i%3 == 0){
-                alien2Physics.velocity = (Vector2D.multiplyByScalar(alien2Physics.velocity, -1));
-            }
-            player.update();
+            aliens.update();
+            
             Graphics.update();
             Thread.sleep(500);
         }

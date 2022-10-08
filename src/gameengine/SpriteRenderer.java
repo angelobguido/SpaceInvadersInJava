@@ -29,6 +29,6 @@ public class SpriteRenderer extends Component{
     
     @Override
     public void update(){
-        Graphics.draw(sprite, gameObject.position);
+        Graphics.putInRenderBuffer(new Drawable(sprite, gameObject.getPositionReference()));
     }
 }

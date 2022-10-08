@@ -10,6 +10,6 @@ package gameengine.GameExceptions;
  */
 public class SameGameObjectException extends RuntimeException {
     public SameGameObjectException(){
-        super("Trying to assign game object parent to itself");
+        super("Trying to assign game object parent or child to itself");
     }
 }

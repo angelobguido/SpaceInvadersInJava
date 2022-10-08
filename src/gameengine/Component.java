@@ -19,5 +19,13 @@ public abstract class Component {
         this.id = id;
     }
     
+    public Component createCopy(GameObject gameObject){
+        switch(id){
+            case SpriteRenderer: return new SpriteRenderer(gameObject, ((SpriteRenderer)this).sprite());
+            case Physics: return new Physics(gameObject);
+        }
+        return null;
+    }
+    
     public abstract void update();
 }

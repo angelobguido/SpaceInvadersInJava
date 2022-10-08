@@ -5,6 +5,7 @@
 package gameengine;
 
 import gamemath.Vector2D;
+import java.util.Stack;
 
 /**
  *
@@ -13,22 +14,26 @@ import gamemath.Vector2D;
 public class Graphics {
     
     private static VisualInterface visualInterface;
+    private static Stack<Drawable> buffer = new Stack<>();
    
     public static void setGraphics(GraphicsId id){
-        
         switch(id){
             case Terminal: visualInterface = new TerminalInterface(35, 35); break;
             case GraphicInterface: break;
         }
     }
-    
-    public static void draw(Sprite sprite, Vector2D position){
-        visualInterface.draw(sprite, position);
+    public static void putInRenderBuffer(Drawable object){
+        buffer.push(object);
     }
+    
     public static void clean(){
         visualInterface.clean();
     }
+    
     public static void update(){
+        while(buffer.empty()==false){
+            visualInterface.draw(buffer.pop());
+        }
         visualInterface.update();
     }
 }

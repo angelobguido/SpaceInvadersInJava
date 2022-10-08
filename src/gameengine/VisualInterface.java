@@ -17,7 +17,7 @@ public abstract class VisualInterface {
         setHeigth(heigth);
     }
     
-    public abstract void draw(Sprite sprite, Vector2D position);
+    public abstract void draw(Drawable object);
     public abstract void clean();
     public abstract void update();
     
