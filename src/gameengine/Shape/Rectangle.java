@@ -30,7 +30,7 @@ public class Rectangle {
     }
     
     public Rectangle(Vector2D position){
-        center = new Vector2D(position);
+        center = position;
         this.width = 1;
         this.height = 1;
     }
