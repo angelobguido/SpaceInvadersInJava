@@ -30,6 +30,14 @@ public class SpaceInvaders {
         GameObject bullet = GameObjectBuilder.create(Prefab.Bullet);
         bullet.setPosition(new Vector2D(10,0));
         
+        Vector<Component> aliensColliders = aliens.getComponents(ComponentId.Collider);
+        
+        Collider bulletCollider = (Collider)bullet.getComponent(ComponentId.Collider);
+        
+        for(int j = 0; j < aliensColliders.size(); j++){
+            bulletCollider.addCollider((Collider)aliensColliders.elementAt(j));
+        }
+        
         int i = 0;
         
         while(true){

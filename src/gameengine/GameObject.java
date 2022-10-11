@@ -79,13 +79,53 @@ public class GameObject {
         children.forEach(child -> {child.update();});
     }
     
+    //Get the first component with chosen component id, don't search in children
     public Component getComponent(ComponentId id){
+        
         for(int i = 0; i<components.size(); i++){
+            
             if(components.elementAt(i).id == id){
                 return components.elementAt(i);
             }
         }
         return null;
+    }
+    
+    //Get all components with the chosen component id, search in children
+    public Vector<Component> getComponents(ComponentId id){
+        
+        Vector<Component> componentsFound = new Vector<>();
+        
+        for(int i = 0; i < components.size(); i++){
+            
+            Component currentComponent = components.elementAt(i);
+            
+            if(currentComponent.id == id){
+                componentsFound.add(currentComponent);
+            }
+        }
+        
+        _getComponents(id, componentsFound);
+        
+        return componentsFound;
+    }
+    
+    private void _getComponents(ComponentId id, Vector<Component> componentsFound){
+        
+        for(int i = 0; i < components.size(); i++){
+            
+            Component currentComponent = components.elementAt(i);
+            
+            if(currentComponent.id == id){
+                componentsFound.add(currentComponent);
+            }
+        }
+        
+        for(int i = 0; i < children.size(); i++){
+            children.elementAt(i)._getComponents(id, componentsFound);
+        }
+        
+        
     }
     
     public void setPosition(Vector2D newPosition){
