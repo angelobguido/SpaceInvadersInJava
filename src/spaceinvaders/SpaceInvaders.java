@@ -40,6 +40,9 @@ public class SpaceInvaders {
         
         int i = 0;
         
+        aliens.start();
+        bullet.start();
+        
         while(true){
             i++;
             Graphics.clean();

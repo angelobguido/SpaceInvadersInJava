@@ -123,9 +123,11 @@ public class GameObjectBuilder {
                 
                 Physics bulletPhysics = new Physics(gameObject);
                 bulletPhysics.velocity = new Vector2D(0,1);
+                
                 gameObject.addComponent(bulletPhysics);
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
+                gameObject.addComponent(new Hit(gameObject));
                 
                 bullet = new GameObject(gameObject);
                 

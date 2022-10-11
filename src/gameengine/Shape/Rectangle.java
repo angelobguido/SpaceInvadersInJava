@@ -42,10 +42,10 @@ public class Rectangle {
     
     public boolean isInContact(Rectangle otherRectangle){
       
-        float thisMaxX = otherRectangle.center.x + otherRectangle.width/2;
-        float thisMinX = otherRectangle.center.x - otherRectangle.width/2;
-        float thisMaxY = otherRectangle.center.y + otherRectangle.height/2;
-        float thisMinY = otherRectangle.center.y - otherRectangle.height/2;
+        float thisMaxX = center.x + width/2;
+        float thisMinX = center.x - width/2;
+        float thisMaxY = center.y + height/2;
+        float thisMinY = center.y - height/2;
         
         float otherMaxX = otherRectangle.center.x + otherRectangle.width/2;
         float otherMinX = otherRectangle.center.x - otherRectangle.width/2;

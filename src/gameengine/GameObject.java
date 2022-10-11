@@ -79,6 +79,11 @@ public class GameObject {
         children.forEach(child -> {child.update();});
     }
     
+    public void start(){
+        components.forEach(component -> {component.start();});
+        children.forEach(child -> {child.start();});
+    }
+    
     //Get the first component with chosen component id, don't search in children
     public Component getComponent(ComponentId id){
         

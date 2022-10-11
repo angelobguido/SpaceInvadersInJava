@@ -47,7 +47,7 @@ public class Collider extends Component {
     @Override
     public void update(){
         checkCollisions();
-        if(isColliding){
+        if(isColliding == true){
             CollisionHandler.putInCollisionBuffer(this);
         }
     }
