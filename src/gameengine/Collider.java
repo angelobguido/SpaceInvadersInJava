@@ -6,6 +6,7 @@ package gameengine;
 
 import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;
+import gameengine.Shape.Rectangle;
 import java.util.Vector;
 
 /**
@@ -14,13 +15,20 @@ import java.util.Vector;
  */
 public class Collider extends Component {
     
-    private Publisher publisher; 
-    private boolean hasCollided;
+    private Publisher publisher;
+    private Rectangle colliderBox;
+    private boolean isColliding;
     private Vector<Collider> colliders; //colliders that will collide with this collider
     
     public Collider(GameObject gameObject){
         super(gameObject, ComponentId.Collider);
         publisher = new Publisher();
+        colliderBox = new Rectangle(gameObject.getPositionReference());
+        isColliding = false;
+    }
+    
+    public Rectangle getColliderBox(){
+        return new Rectangle(colliderBox);
     }
     
     public void subscribe(Subscriber s){
@@ -31,15 +39,25 @@ public class Collider extends Component {
         colliders.add(c);
     }
     
+    public void notifyCollision(){
+        publisher.notifySubscribers();
+    }
+    
     @Override
     public void update(){
         checkCollisions();
-        if(hasCollided){
-            //Collision Handler -> will notify all subscribers for this collider in update
+        if(isColliding){
+            CollisionHandler.putInCollisionBuffer(this);
         }
     }
     
     private void checkCollisions(){
-        hasCollided = true;
+        for(int i = 0; i < colliders.size(); i++){
+            if(colliderBox.isInContact(colliders.elementAt(i).getColliderBox()) == true){
+                isColliding = true;
+                return;
+            }
+        }
+        isColliding = false;
     }
 }

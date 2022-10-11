@@ -18,14 +18,21 @@ public class Rectangle {
     private float height;
     
     public Rectangle(float width, float height, Vector2D position){
-        center = new Vector2D(position);
+        center = position;
         this.width = width;
         this.height = height;
     }
     
-    public void setCenter(Vector2D position){
-        center.x = position.x;
-        center.y = position.y;
+    public Rectangle(Rectangle r){
+        center = new Vector2D(r.center);
+        this.width = r.width;
+        this.height = r.height;
+    }
+    
+    public Rectangle(Vector2D position){
+        center = new Vector2D(position);
+        this.width = 1;
+        this.height = 1;
     }
     
     public void setDimensions(float width, float height){
@@ -34,20 +41,28 @@ public class Rectangle {
     }
     
     public boolean isInContact(Rectangle otherRectangle){
-        
-        int resolution = 50;
-        
+      
         float thisMaxX = otherRectangle.center.x + otherRectangle.width/2;
-        float thisMimX = otherRectangle.center.x - otherRectangle.width/2;
+        float thisMinX = otherRectangle.center.x - otherRectangle.width/2;
         float thisMaxY = otherRectangle.center.y + otherRectangle.height/2;
         float thisMinY = otherRectangle.center.y - otherRectangle.height/2;
         
         float otherMaxX = otherRectangle.center.x + otherRectangle.width/2;
-        float otherMimX = otherRectangle.center.x - otherRectangle.width/2;
+        float otherMinX = otherRectangle.center.x - otherRectangle.width/2;
         float otherMaxY = otherRectangle.center.y + otherRectangle.height/2;
         float otherMinY = otherRectangle.center.y - otherRectangle.height/2;
         
-        if(thisMaxX<50)
+        if(
+            thisMaxX>otherMinX &&
+            thisMinX<otherMaxX &&
+            thisMaxY>otherMinY &&
+            thisMinY<otherMaxY
+          )
+        {
+            return true;
+        }
+        
+        return false;
     }
     
 }
