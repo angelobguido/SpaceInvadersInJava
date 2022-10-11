@@ -23,4 +23,9 @@ public class Physics extends Component{
     public void update(){
         gameObject.setPosition(Vector2D.addVectors(velocity, gameObject.position()));
     }
+    
+    @Override
+    public void start(){
+        
+    }
 }

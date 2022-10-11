@@ -52,6 +52,11 @@ public class Collider extends Component {
         }
     }
     
+    @Override
+    public void start(){
+        
+    }
+    
     private void checkCollisions(){
         for(int i = 0; i < colliders.size(); i++){
             if(colliderBox.isInContact(colliders.elementAt(i).getColliderBox()) == true){
