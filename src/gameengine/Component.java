@@ -23,6 +23,7 @@ public abstract class Component {
         switch(id){
             case SpriteRenderer: return new SpriteRenderer(gameObject, ((SpriteRenderer)this).sprite());
             case Physics: return new Physics(gameObject);
+            case Collider: return new Collider(gameObject);
         }
         return null;
     }

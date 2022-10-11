@@ -24,6 +24,7 @@ public class Collider extends Component {
         super(gameObject, ComponentId.Collider);
         publisher = new Publisher();
         colliderBox = new Rectangle(gameObject.getPositionReference());
+        colliders = new Vector<>();
         isColliding = false;
     }
     

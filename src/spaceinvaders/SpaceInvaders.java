@@ -27,6 +27,9 @@ public class SpaceInvaders {
         
         aliens.setPosition(new Vector2D(5,30));
         
+        GameObject bullet = GameObjectBuilder.create(Prefab.Bullet);
+        bullet.setPosition(new Vector2D(10,0));
+        
         int i = 0;
         
         while(true){
@@ -38,8 +41,10 @@ public class SpaceInvaders {
                 aliens.setPosition(Vector2D.addVectors(aliens.position(), Vector2D.down));
             }
             aliens.update();
+            bullet.update();
             
             Graphics.update();
+            CollisionHandler.update();
             Thread.sleep(500);
         }
         

@@ -13,7 +13,7 @@ import java.util.Vector;
  * @author angelo
  */
 
-enum Prefab{Alien, Player, Obstacle, AliensLine, AliensMatrix}
+enum Prefab{Alien, Player, Obstacle, AliensLine, AliensMatrix, Bullet}
 
 public class GameObjectBuilder {
     
@@ -22,6 +22,7 @@ public class GameObjectBuilder {
     private static GameObject obstacle;
     private static GameObject aliensLine;
     private static GameObject aliensMatrix;
+    private static GameObject bullet;
 
     
     public static GameObject create(Prefab prefab){
@@ -33,14 +34,16 @@ public class GameObjectBuilder {
                 
                 if(alien != null) return new GameObject(alien);
                 
+                
                 Vector<Vector2D> alienStructure = new Vector<>();
                 
                 alienStructure.add(Vector2D.zero);
-
+                
                 Sprite alienSprite = new Sprite('$', alienStructure);
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new Collider(gameObject));
                 
                 alien = new GameObject(gameObject);
                 
@@ -105,6 +108,26 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Physics(gameObject));
                 
                 aliensMatrix = new GameObject(gameObject);
+                
+                break;
+                
+            case Bullet:
+                
+                if(bullet != null) return new GameObject(bullet);
+                
+                Vector<Vector2D> bulletStructure = new Vector<>();
+                
+                bulletStructure.add(Vector2D.zero);
+
+                Sprite bulletSprite = new Sprite('O', bulletStructure);
+                
+                Physics bulletPhysics = new Physics(gameObject);
+                bulletPhysics.velocity = new Vector2D(0,1);
+                gameObject.addComponent(bulletPhysics);
+                gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
+                
+                bullet = new GameObject(gameObject);
                 
                 break;
             
