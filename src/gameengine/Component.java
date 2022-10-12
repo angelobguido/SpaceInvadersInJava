@@ -4,6 +4,11 @@
  */
 package gameengine;
 
+import gameengine.Components.Hit;
+import gameengine.Components.SpriteRenderer;
+import gameengine.Components.Physics;
+import gameengine.Components.Collider;
+
 /**
  *
  * @author angelo
@@ -11,7 +16,7 @@ package gameengine;
 
 public abstract class Component {
     
-    protected final GameObject gameObject;
+    protected GameObject gameObject;
     protected ComponentId id;
     protected boolean isEnabled;
     
@@ -19,16 +24,6 @@ public abstract class Component {
         this.gameObject = gameObject;
         this.id = id;
         isEnabled = true;
-    }
-    
-    public Component createCopy(GameObject gameObject){
-        switch(id){
-            case SpriteRenderer: return new SpriteRenderer(gameObject, ((SpriteRenderer)this).sprite());
-            case Physics: return new Physics(gameObject);
-            case Collider: return new Collider(gameObject);
-            case Hit: return new Hit(gameObject);
-        }
-        return null;
     }
     
     public void disable(){
@@ -39,6 +34,8 @@ public abstract class Component {
         isEnabled = true;
     }
     
+    public abstract Component createCopy(GameObject gameObject);
     public abstract void update();
     public abstract void start();
+    public abstract void destroy();
 }

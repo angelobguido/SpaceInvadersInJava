@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package gameengine.Components;
 
+import gameengine.Component;
+import gameengine.ComponentId;
+import gameengine.GameObject;
 import gamemath.Vector2D;
 
 /**
@@ -18,6 +21,14 @@ public class Physics extends Component{
         super(gameObject, ComponentId.Physics);
     }
     
+    @Override
+    public Component createCopy(GameObject gameObject){
+        
+        Physics newPhysics = new Physics(gameObject);
+        newPhysics.velocity = new Vector2D(velocity);
+        
+        return newPhysics;
+    }
     
     @Override
     public void update(){
@@ -27,5 +38,11 @@ public class Physics extends Component{
     @Override
     public void start(){
         
+    }
+    
+    @Override
+    public void destroy(){
+        gameObject.removeComponent(this);
+        gameObject=null;
     }
 }

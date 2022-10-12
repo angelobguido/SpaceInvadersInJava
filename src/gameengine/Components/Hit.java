@@ -2,8 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package gameengine.Components;
 
+import gameengine.Component;
+import gameengine.ComponentId;
+import gameengine.Components.Collider;
+import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
 
 /**
@@ -12,12 +17,18 @@ import gameengine.Observer.Subscriber;
  */
 public class Hit extends Component implements Subscriber{
     
-    Collider col;
+    private Collider col;
     
     public Hit(GameObject gameObject){
         super(gameObject, ComponentId.Hit);
     }
     
+    @Override
+    public Component createCopy(GameObject gameObject){
+        Hit newHit = new Hit(gameObject);
+        
+        return newHit;
+    }
     
     @Override
     public void update(){
@@ -31,7 +42,15 @@ public class Hit extends Component implements Subscriber{
     }
     
     @Override
+    public void destroy(){
+        col.unsubscribe(this);
+        col = null;
+        gameObject.removeComponent(this);
+        gameObject = null;
+    }
+    
+    @Override
     public void onNotified(){
-        System.out.println("colidiu");
+        EntityHandler.removeEntity(gameObject);
     }
 }

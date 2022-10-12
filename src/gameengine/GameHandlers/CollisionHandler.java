@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package gameengine.GameHandlers;
 
+import gameengine.Components.Collider;
 import java.util.Stack;
+import java.util.Vector;
 
 /**
  *
@@ -12,10 +14,13 @@ import java.util.Stack;
  */
 public class CollisionHandler {
     
-    private static Stack<Collider> buffer = new Stack<>();
+    private static Stack<Collider> buffer = new Stack<>(); //will store all the colliders that collided for update
    
     public static void putInCollisionBuffer(Collider c){
-        buffer.push(c);
+        if(buffer.contains(c) == false){
+            buffer.push(c);
+        }
+        
     }
     
     public static void update(){
