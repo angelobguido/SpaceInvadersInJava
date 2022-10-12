@@ -28,8 +28,6 @@ public class EntityHandler {
     
     public static void update(){
         
-        entities.forEach(entity -> {entity.update();});
-        
         while(newEntities.empty()==false){
             GameObject newEntity = newEntities.pop();
             newEntity.start();
@@ -42,6 +40,6 @@ public class EntityHandler {
             entities.remove(removedEntity);
         }
         
-        
+        entities.forEach(entity -> {entity.update();});
     } 
 }

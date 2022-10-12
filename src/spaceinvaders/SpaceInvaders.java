@@ -35,7 +35,7 @@ public class SpaceInvaders {
         GameObject bullet = GameObjectBuilder.create(Prefab.Bullet);
         bullet.setPosition(new Vector2D(10,0));
         
-        Vector<Component> aliensColliders = aliens.getComponents(ComponentId.Collider);
+        Vector<Component> aliensColliders;
         
         
         
@@ -71,8 +71,8 @@ public class SpaceInvaders {
             }
             
             Graphics.update();
-            EntityHandler.update();
             CollisionHandler.update();
+            EntityHandler.update();
             Thread.sleep(50);
         }
         

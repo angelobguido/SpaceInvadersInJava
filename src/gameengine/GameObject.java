@@ -64,6 +64,11 @@ public class GameObject {
     }
     
     public void destroy(){
+        
+        if(parent!=null){
+            parent.children.remove(this);
+        }
+        
         components.forEach(component -> {component.destroy();});
         children.forEach(child -> {child.destroy();});
     }
@@ -120,15 +125,6 @@ public class GameObject {
     public Vector<Component> getComponents(ComponentId id){
         
         Vector<Component> componentsFound = new Vector<>();
-        
-        for(int i = 0; i < components.size(); i++){
-            
-            Component currentComponent = components.elementAt(i);
-            
-            if(currentComponent.id == id){
-                componentsFound.add(currentComponent);
-            }
-        }
         
         _getComponents(id, componentsFound);
         

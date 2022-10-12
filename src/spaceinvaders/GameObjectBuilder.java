@@ -48,7 +48,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new Collider(gameObject));
-                gameObject.addComponent(new Hit(gameObject));
+                gameObject.addComponent(new Hit(gameObject, 2));
                 
                 alien = new GameObject(gameObject);
                 
