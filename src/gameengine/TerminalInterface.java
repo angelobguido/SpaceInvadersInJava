@@ -58,9 +58,14 @@ public class TerminalInterface extends VisualInterface {
     
     public void update(){
         
-        for(int i = 0; i<heigth; i++){
-            for(int j = 0; j<width; j++){
-                System.out.print(canvas[i][j]+" ");
+        for(int i = -1; i<heigth+1; i++){
+            for(int j = -1; j<width+1; j++){
+                if(i==-1||j==-1||i==heigth||j==width){
+                    System.out.print("#"+" ");
+                }else{
+                    System.out.print(canvas[i][j]+" ");
+                }
+                
             }
             System.out.println();
         }

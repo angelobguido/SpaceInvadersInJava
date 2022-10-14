@@ -2,8 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package gameengine.Components;
 
+import gameengine.Component;
+import gameengine.ComponentId;
+import gameengine.Drawable;
+import gameengine.GameHandlers.Graphics;
+import gameengine.GameObject;
+import gameengine.Sprite;
 import gamemath.Vector2D;
 
 /**
@@ -28,6 +34,14 @@ public class SpriteRenderer extends Component{
     }
     
     @Override
+    public Component createCopy(GameObject gameObject){
+        
+        SpriteRenderer newSpriteRenderer = new SpriteRenderer(gameObject, sprite);
+        
+        return newSpriteRenderer;
+    }
+    
+    @Override
     public void update(){
         Graphics.putInRenderBuffer(new Drawable(sprite, gameObject.getPositionReference()));
     }
@@ -35,5 +49,12 @@ public class SpriteRenderer extends Component{
     @Override
     public void start(){
         
+    }
+    
+    @Override
+    public void destroy(){
+        sprite = null;
+        gameObject.removeComponent(this);
+        gameObject = null;
     }
 }

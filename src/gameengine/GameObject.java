@@ -5,7 +5,9 @@
 package gameengine;
 
 import gameengine.GameExceptions.SameGameObjectException;
+import gameengine.GameHandlers.EntityHandler;
 import gamemath.Vector2D;
+import java.util.Stack;
 import java.util.Vector;
 
 /**
@@ -15,6 +17,7 @@ import java.util.Vector;
 public class GameObject {
     private Vector2D position;
     private Vector<Component> components;
+    private Stack<Component> removedComponentsBuffer; //buffer that will store all components that will be removed
     private Vector<GameObject> children;
     private GameObject parent;
     
@@ -22,6 +25,7 @@ public class GameObject {
         position = new Vector2D(0,0);
         components = new Vector<>();
         children = new Vector<>();
+        removedComponentsBuffer = new Stack<>();
     }
     
     public GameObject(GameObject copy){
@@ -40,6 +44,33 @@ public class GameObject {
             children.add(new GameObject(copy.children.elementAt(i)));
         }
         
+        removedComponentsBuffer = new Stack<>();
+        
+    }
+    
+    public void update(){
+        
+        while(removedComponentsBuffer.isEmpty() == false){
+            components.remove(removedComponentsBuffer.pop());
+        }
+        
+        components.forEach(component -> {component.update();});
+        children.forEach(child -> {child.update();});
+    }
+    
+    public void start(){
+        components.forEach(component -> {component.start();});
+        children.forEach(child -> {child.start();});
+    }
+    
+    public void destroy(){
+        
+        if(parent!=null){
+            parent.children.remove(this);
+        }
+        
+        components.forEach(component -> {component.destroy();});
+        children.forEach(child -> {child.destroy();});
     }
     
     public void addChild(GameObject newChild) throws SameGameObjectException{
@@ -74,14 +105,8 @@ public class GameObject {
         components.add(newComponent);
     }
     
-    public void update(){
-        components.forEach(component -> {component.update();});
-        children.forEach(child -> {child.update();});
-    }
-    
-    public void start(){
-        components.forEach(component -> {component.start();});
-        children.forEach(child -> {child.start();});
+    public void removeComponent(Component c){
+        removedComponentsBuffer.push(c);
     }
     
     //Get the first component with chosen component id, don't search in children
@@ -100,15 +125,6 @@ public class GameObject {
     public Vector<Component> getComponents(ComponentId id){
         
         Vector<Component> componentsFound = new Vector<>();
-        
-        for(int i = 0; i < components.size(); i++){
-            
-            Component currentComponent = components.elementAt(i);
-            
-            if(currentComponent.id == id){
-                componentsFound.add(currentComponent);
-            }
-        }
         
         _getComponents(id, componentsFound);
         

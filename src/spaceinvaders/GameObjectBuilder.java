@@ -4,6 +4,10 @@
  */
 package spaceinvaders;
 
+import gameengine.Components.Hit;
+import gameengine.Components.SpriteRenderer;
+import gameengine.Components.Physics;
+import gameengine.Components.Collider;
 import gameengine.*;
 import gamemath.Vector2D;
 import java.util.Vector;
@@ -44,6 +48,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new Hit(gameObject, 2));
                 
                 alien = new GameObject(gameObject);
                 
@@ -122,12 +127,14 @@ public class GameObjectBuilder {
                 Sprite bulletSprite = new Sprite('O', bulletStructure);
                 
                 Physics bulletPhysics = new Physics(gameObject);
-                bulletPhysics.velocity = new Vector2D(0,1);
+                bulletPhysics.velocity = new Vector2D(0,0.1f);
                 
                 gameObject.addComponent(bulletPhysics);
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
                 gameObject.addComponent(new Hit(gameObject));
+                
+                gameObject.setPosition(new Vector2D(6,0));
                 
                 bullet = new GameObject(gameObject);
                 

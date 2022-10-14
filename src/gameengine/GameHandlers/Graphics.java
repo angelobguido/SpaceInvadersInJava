@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package gameengine.GameHandlers;
 
+import gameengine.Drawable;
+import gameengine.GraphicsId;
+import gameengine.TerminalInterface;
+import gameengine.VisualInterface;
 import gamemath.Vector2D;
 import java.util.Stack;
 
@@ -18,7 +22,7 @@ public class Graphics {
    
     public static void setGraphics(GraphicsId id){
         switch(id){
-            case Terminal: visualInterface = new TerminalInterface(35, 35); break;
+            case Terminal: visualInterface = new TerminalInterface(40, 40); break;
             case GraphicInterface: break;
         }
     }
