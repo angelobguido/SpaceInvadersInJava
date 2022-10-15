@@ -18,6 +18,23 @@ public class EntityHandler {
     private static Stack<GameObject> newEntities = new Stack<>(); //buffer that will store recent added entities
     private static Stack<GameObject> removeBuffer = new Stack<>(); //buffer that will store entities that need to be removed in update
     
+    public static Vector<GameObject> findWithTag(String tag){ //will find all entities with this tag, and return the collection of them
+        
+        Vector<GameObject> taggedEntities = new Vector<>();
+        
+        for(int i = 0; i < entities.size(); i++){
+            
+            GameObject currentEntity = entities.elementAt(i);
+            
+            if(currentEntity.tagIsEqual(tag)){
+                taggedEntities.add(currentEntity);
+            }
+        }
+        
+        return taggedEntities;
+    
+    }
+    
     public static void addEntity(GameObject gameObject){
         newEntities.push(gameObject);
     }

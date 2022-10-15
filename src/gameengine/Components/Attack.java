@@ -18,7 +18,7 @@ public abstract class Attack extends Component {
     protected GameObject bulletPrefab;
     
     public Attack(GameObject gameObject, GameObject bulletPrefab){
-        super(gameObject, ComponentId.Hit);
+        super(gameObject, ComponentId.Attack);
         this.bulletPrefab = bulletPrefab;
     }
     

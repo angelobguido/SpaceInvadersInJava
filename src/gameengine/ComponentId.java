@@ -8,4 +8,4 @@ package gameengine;
  *
  * @author angelo
  */
-public enum ComponentId{Physics, SpriteRenderer, Collider, Hit, Attack}
+public enum ComponentId{Physics, SpriteRenderer, Collider, Hit, Attack, BulletLife}

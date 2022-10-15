@@ -6,7 +6,10 @@ package gameengine.Components;
 
 import gameengine.Component;
 import gameengine.ComponentId;
+import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
+import gamemath.Vector2D;
+import java.util.Vector;
 
 /**
  *
@@ -29,11 +32,18 @@ public class AlienAttack extends Attack{
     @Override
     protected void setBulletVelocity(GameObject bullet){
         Physics physics = (Physics)bullet.getComponent(ComponentId.Physics);
-        physics.velocity = new Vector2D(0,-1);
+        physics.velocity = new Vector2D(0,-0.2f);
     }
     
     @Override
     protected void setBulletCollisions(GameObject bullet){
+        Collider collider = (Collider)bullet.getComponent(ComponentId.Collider);
+        Vector<GameObject> playerTagged = EntityHandler.findWithTag("Player");
+        
+        for(int i = 0; i < playerTagged.size(); i++){
+            Collider playerCollider = (Collider)playerTagged.elementAt(i).getComponent(ComponentId.Collider);
+            collider.addTwoWayCollider(playerCollider);
+        }
         
     }
 }

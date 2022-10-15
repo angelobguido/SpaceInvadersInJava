@@ -111,6 +111,12 @@ public class Collider extends Component {
         colliders.add(c);
         c.otherColliders.add(this);
     }
+    
+    public void addTwoWayCollider(Collider c){
+        addCollider(c);
+        c.addCollider(this);
+    }
+    
     public void removeCollider(Collider c){
         removedCollidersBuffer.push(c);
     }
