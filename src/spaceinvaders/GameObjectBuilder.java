@@ -67,8 +67,12 @@ public class GameObjectBuilder {
                 Vector<Vector2D> playerStructure = new Vector<>();
                 
                 playerStructure.add(Vector2D.zero);
+                playerStructure.add(new Vector2D(0,-1));
+                playerStructure.add(new Vector2D(1,-1));
+                playerStructure.add(new Vector2D(-1,-1));
                 
-                Sprite playerSprite = new Sprite('7', playerStructure);
+                
+                Sprite playerSprite = new Sprite('%', playerStructure);
                 
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
