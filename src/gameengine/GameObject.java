@@ -15,6 +15,7 @@ import java.util.Vector;
  * @author angelo
  */
 public class GameObject {
+    private String tag = "";
     private Vector2D position;
     private Vector<Component> components;
     private Stack<Component> removedComponentsBuffer; //buffer that will store all components that will be removed
@@ -29,6 +30,8 @@ public class GameObject {
     }
     
     public GameObject(GameObject copy){
+        
+        tag = copy.tag;
         
         position = new Vector2D(copy.position);
         
@@ -155,6 +158,14 @@ public class GameObject {
         position.x = newPosition.x;
         position.y = newPosition.y;
         children.forEach(child -> {child.setPosition(Vector2D.addVectors(child.position, deslocation));});
+    }
+    
+    public boolean tagIsEqual(String compare){
+        return compare.equals(tag);
+    }
+            
+    public void setTag(String newTag){
+        this.tag = new String(newTag);
     }
     
     public Vector2D position(){

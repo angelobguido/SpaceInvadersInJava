@@ -9,8 +9,12 @@ import gameengine.Components.SpriteRenderer;
 import gameengine.Components.Physics;
 import gameengine.Components.Collider;
 import gameengine.*;
+import gameengine.Components.AlienAttack;
+import gameengine.Components.BulletLife;
+import gameengine.Components.PlayerAttack;
 import gamemath.Vector2D;
 import java.util.Vector;
+import static spaceinvaders.Prefab.Bullet;
 
 /**
  *
@@ -38,7 +42,6 @@ public class GameObjectBuilder {
                 
                 if(alien != null) return new GameObject(alien);
                 
-                
                 Vector<Vector2D> alienStructure = new Vector<>();
                 
                 alienStructure.add(Vector2D.zero);
@@ -49,6 +52,9 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new Hit(gameObject, 2));
+                gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+                
+                gameObject.setTag("Alien");
                 
                 alien = new GameObject(gameObject);
                 
@@ -61,11 +67,17 @@ public class GameObjectBuilder {
                 Vector<Vector2D> playerStructure = new Vector<>();
                 
                 playerStructure.add(Vector2D.zero);
+                playerStructure.add(new Vector2D(0,-1));
+                playerStructure.add(new Vector2D(1,-1));
+                playerStructure.add(new Vector2D(-1,-1));
                 
-                Sprite playerSprite = new Sprite('0', playerStructure);
                 
+                Sprite playerSprite = new Sprite('%', playerStructure);
+                
+                gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
                 gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new PlayerAttack(gameObject, GameObjectBuilder.create(Bullet)));
                 
                 player = new GameObject(gameObject);
                 
@@ -77,6 +89,8 @@ public class GameObjectBuilder {
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, null));
                 gameObject.addComponent(new Physics(gameObject));
+                
+                gameObject.setTag("Obstacle");
                 
                 obstacle = new GameObject(gameObject);
                 
@@ -93,6 +107,8 @@ public class GameObjectBuilder {
                     alienCopy.setPosition(new Vector2D(2*i, 0));
                     gameObject.addChild(alienCopy);
                 }
+                
+                gameObject.setTag("AliensLine");
                 
                 aliensLine = new GameObject(gameObject);
                 
@@ -111,6 +127,8 @@ public class GameObjectBuilder {
                 }
                 
                 gameObject.addComponent(new Physics(gameObject));
+                
+                gameObject.setTag("AliensMatrix");
                 
                 aliensMatrix = new GameObject(gameObject);
                 
@@ -133,8 +151,9 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
                 gameObject.addComponent(new Hit(gameObject));
+                gameObject.addComponent(new BulletLife(gameObject));
                 
-                gameObject.setPosition(new Vector2D(6,0));
+                gameObject.setTag("Bullet");
                 
                 bullet = new GameObject(gameObject);
                 
