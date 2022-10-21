@@ -45,13 +45,24 @@ public class SpaceInvaders {
         playerPhysics.velocity = new Vector2D(1,0);
         player.setPosition(new Vector2D(0,2));
         
+        GameObject obstacle1 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle2 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
         
+        obstacle1.setPosition(new Vector2D(5,4));
+        obstacle2.setPosition(new Vector2D(15,4));
+        obstacle3.setPosition(new Vector2D(25,4));
+        obstacle4.setPosition(new Vector2D(35,4));
         
         int i = 0;
         
-        //EntityHandler.addEntity(bullet);
         EntityHandler.addEntity(aliens);
         EntityHandler.addEntity(player);
+        EntityHandler.addEntity(obstacle1);
+        EntityHandler.addEntity(obstacle2);
+        EntityHandler.addEntity(obstacle3);
+        EntityHandler.addEntity(obstacle4);
         
         bullet.setPosition(new Vector2D(8, 3));
         

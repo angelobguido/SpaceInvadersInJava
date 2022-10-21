@@ -99,6 +99,10 @@ public class Collider extends Component {
         return new Rectangle(colliderBox);
     }
     
+    public void changeColliderBoxDimensions(float newWidth, float newHeight){
+        colliderBox.setDimensions(newWidth, newHeight);
+    }
+    
     public void subscribe(Subscriber s){
         publisher.subscribe(s);
     }

@@ -21,13 +21,14 @@ import static spaceinvaders.Prefab.Bullet;
  * @author angelo
  */
 
-enum Prefab{Alien, Player, Obstacle, AliensLine, AliensMatrix, Bullet}
+enum Prefab{Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
 
 public class GameObjectBuilder {
     
     private static GameObject alien;
     private static GameObject player;
     private static GameObject obstacle;
+    private static GameObject bigObstacle;
     private static GameObject aliensLine;
     private static GameObject aliensMatrix;
     private static GameObject bullet;
@@ -71,13 +72,23 @@ public class GameObjectBuilder {
                 playerStructure.add(new Vector2D(1,-1));
                 playerStructure.add(new Vector2D(-1,-1));
                 
+                Vector<Vector2D> playerBulletStructure = new Vector<>();
+                
+                playerBulletStructure.add(Vector2D.zero);
+                playerBulletStructure.add(Vector2D.down);
+
+                Sprite playerBulletSprite = new Sprite('1', playerBulletStructure);
+                
+                GameObject playerBullet = GameObjectBuilder.create(Bullet);
+                ((SpriteRenderer)playerBullet.getComponent(ComponentId.SpriteRenderer)).setSprite(playerBulletSprite);
                 
                 Sprite playerSprite = new Sprite('%', playerStructure);
-                
-                gameObject.addComponent(new Collider(gameObject));
+                Collider playerCollider = new Collider(gameObject);
+                playerCollider.changeColliderBoxDimensions(3, 3);
+                gameObject.addComponent(playerCollider);
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
                 gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new PlayerAttack(gameObject, GameObjectBuilder.create(Bullet)));
+                gameObject.addComponent(new PlayerAttack(gameObject, playerBullet));
                 
                 player = new GameObject(gameObject);
                 
@@ -85,10 +96,20 @@ public class GameObjectBuilder {
             
             case Obstacle:
                 
+                
                 if(obstacle != null) return new GameObject(obstacle);
                 
-                gameObject.addComponent(new SpriteRenderer(gameObject, null));
+                Vector<Vector2D> obstacleStructure = new Vector<>();
+                
+                obstacleStructure.add(Vector2D.zero);
+                
+                
+                Sprite obstacleSprite = new Sprite('@', obstacleStructure);
+                
+                gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
                 gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new Hit(gameObject));
                 
                 gameObject.setTag("Obstacle");
                 
@@ -96,6 +117,44 @@ public class GameObjectBuilder {
                 
                 break;
             
+            case BigObstacle:
+                
+                if(bigObstacle != null) return new GameObject(bigObstacle);
+                
+                GameObject obstacleCopy;
+                
+                for(int i = -2; i < 3; i++){
+                    obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
+                    obstacleCopy.setPosition(new Vector2D(i, 0));
+                    gameObject.addChild(obstacleCopy);
+                }
+                
+                for(int i = -2; i < 3; i++){
+                    obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
+                    obstacleCopy.setPosition(new Vector2D(i, 1));
+                    gameObject.addChild(obstacleCopy);
+                }
+                
+                for(int i = -2; i < 3; i++){
+                    obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
+                    obstacleCopy.setPosition(new Vector2D(i, 2));
+                    gameObject.addChild(obstacleCopy);
+                }
+                
+                for(int i = -1; i < 2; i++){
+                    obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
+                    obstacleCopy.setPosition(new Vector2D(i, 3));
+                    gameObject.addChild(obstacleCopy);
+                }
+                
+                gameObject.setTag("BigObstacle");
+                
+                
+                bigObstacle = new GameObject(gameObject);
+                
+                
+                break;
+                
             case AliensLine:
                 
                 if(aliensLine != null) return new GameObject(aliensLine);
