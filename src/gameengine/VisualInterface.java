@@ -7,7 +7,8 @@ package gameengine;
 import gamemath.Vector2D;
 
 /**
- *
+ * Represents the base of all visual interfaces.
+ * 
  * @author angelo
  */
 public abstract class VisualInterface {
@@ -17,11 +18,35 @@ public abstract class VisualInterface {
         setHeigth(heigth);
     }
     
+    /**
+     * Function used to draw the drawable object in the viusal interface.
+     * 
+     * @param object 
+     */
     public abstract void draw(Drawable object);
+    
+    /**
+     * Will clear the screen of the visual interface.
+     */
     public abstract void clean();
+    
+    /**
+     * Will update the screen of the viusal interface.
+     */
     public abstract void update();
     
+    /**
+     * Will set the width of the visual interface screen.
+     * 
+     * @param width 
+     */
     protected abstract void setWidth(int width);
+    
+    /**
+     * Will set the heigth of the viusal interface screen.
+     * 
+     * @param heigth 
+     */
     protected abstract void setHeigth(int heigth);
     
     

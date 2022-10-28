@@ -9,11 +9,12 @@ import gameengine.Components.SpriteRenderer;
 import gameengine.Components.Physics;
 import gameengine.Components.Collider;
 
+
 /**
- *
+ * This class is responsible to define the basic recipe for game components.
+ * 
  * @author angelo
  */
-
 public abstract class Component {
     
     protected GameObject gameObject;
@@ -26,16 +27,38 @@ public abstract class Component {
         isEnabled = true;
     }
     
+    /**
+     * Disable this component.
+     */
     public void disable(){
         isEnabled = false;
     }
     
+    /**
+     * Enable this component.
+     */
     public void enable(){
         isEnabled = true;
     }
     
+    /**
+     * Create a copy of this component
+     */
     public abstract Component createCopy(GameObject gameObject);
+    
+    /**
+     * Update the state of this component.
+     */
     public abstract void update();
+    
+    /**
+     * Initialise the state of this component.
+     * Will be called first, in the first frame.
+     */
     public abstract void start();
+    
+    /**
+     * Will be called on the last frame of this component.
+     */
     public abstract void destroy();
 }

@@ -7,7 +7,7 @@ package gameengine;
 import gamemath.Vector2D;
 
 /**
- *
+ * This represents all the drawable objects.
  * @author angelo
  */
 public class Drawable {

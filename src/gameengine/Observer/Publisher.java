@@ -7,7 +7,8 @@ package gameengine.Observer;
 import java.util.Vector;
 
 /**
- *
+ * Represents the object that store subscribers and notify them. 
+ * 
  * @author angelo
  */
 public class Publisher {

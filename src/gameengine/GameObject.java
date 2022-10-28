@@ -11,16 +11,18 @@ import java.util.Stack;
 import java.util.Vector;
 
 /**
- *
+ * Represents the base object of the game engine.
+ * The game object will store all the needed components to represent something in the game.
+ * 
  * @author angelo
  */
 public class GameObject {
-    private String tag = "";
-    private Vector2D position;
-    private Vector<Component> components;
+    private String tag = ""; //tag used to find this game object
+    private Vector2D position; //position in the game world
+    private Vector<Component> components; //list of all components used in this game object.
     private Stack<Component> removedComponentsBuffer; //buffer that will store all components that will be removed
-    private Vector<GameObject> children;
-    private GameObject parent;
+    private Vector<GameObject> children; //list of all children of this game object
+    private GameObject parent; //this game object parent.
     
     public GameObject(){
         position = new Vector2D(0,0);
@@ -51,6 +53,9 @@ public class GameObject {
         
     }
     
+    /**
+     * Update the state of the 
+     */
     public void update(){
         
         while(removedComponentsBuffer.isEmpty() == false){

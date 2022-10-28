@@ -9,13 +9,19 @@ import java.util.Stack;
 import java.util.Vector;
 
 /**
- *
+ * Will handle all collisions of the game.
+ * 
  * @author angelo
  */
 public class CollisionHandler {
     
     private static Stack<Collider> buffer = new Stack<>(); //will store all the colliders that collided for update
    
+    /**
+     * This function will put the chosen collider to the collision buffer.
+     * 
+     * @param c is the collider that collided to something. 
+     */
     public static void putInCollisionBuffer(Collider c){
         if(buffer.contains(c) == false){
             buffer.push(c);
@@ -23,6 +29,9 @@ public class CollisionHandler {
         
     }
     
+    /**
+     * Will notify the collision of all colliders stored in the buffer.
+     */
     public static void update(){
         while(buffer.empty()==false){
             (buffer.pop()).notifyCollision();

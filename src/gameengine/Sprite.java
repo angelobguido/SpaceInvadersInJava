@@ -8,12 +8,13 @@ import gamemath.Vector2D;
 import java.util.Vector;
 
 /**
- *
+ * Represents the visual representation of objects.
+ * 
  * @author angelo
  */
 public class Sprite {
-    private char charRepresentation;
-    private Vector<Vector2D> spriteStructure; //o vetor zero pode ser considerado o centro do sprite
+    private char charRepresentation; //the char that will be printed in the terminal interface.
+    private Vector<Vector2D> spriteStructure; //the first vector2D of this vector is the considered the center of this sprite.
     
     public Sprite(char charRepresentation, Vector<Vector2D> spriteStructure){
         this.charRepresentation = charRepresentation;
@@ -25,10 +26,20 @@ public class Sprite {
         this.spriteStructure = copy.spriteStructure();
     }
     
+    /**
+     * This function will get the charRepresentation member.
+     * 
+     * @return The char representation of the sprite. 
+     */
     public char charRepresentation(){
         return charRepresentation;
     }
     
+    /**
+     * This function will get a copy of the spriteStructure member.
+     * 
+     * @return The sprite structure that represents the positions of the pixels in the terminal interface. 
+     */
     public Vector<Vector2D> spriteStructure(){
         return new Vector<Vector2D>(spriteStructure);
     }

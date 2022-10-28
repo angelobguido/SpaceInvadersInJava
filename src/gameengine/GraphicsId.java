@@ -5,7 +5,8 @@
 package gameengine;
 
 /**
- *
+ * Id representation of the selected interface.
+ * 
  * @author angelo
  */
 public enum GraphicsId{Terminal, GraphicInterface}

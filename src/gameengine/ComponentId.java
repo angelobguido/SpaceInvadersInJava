@@ -5,7 +5,8 @@
 package gameengine;
 
 /**
- *
+ * Id that represents the component.
+ * 
  * @author angelo
  */
 public enum ComponentId{Physics, SpriteRenderer, Collider, Hit, Attack, BulletLife}

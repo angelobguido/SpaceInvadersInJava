@@ -5,7 +5,8 @@
 package gameengine.GameExceptions;
 
 /**
- *
+ * Represents the exception of assing the same object to itself.
+ * 
  * @author angelo
  */
 public class SameGameObjectException extends RuntimeException {

@@ -6,8 +6,10 @@ package gameengine;
 
 import gamemath.Vector2D;
 import java.util.Vector;
+
 /**
- *
+ * Represents the terminal interface.
+ * 
  * @author angelo
  */
 public class TerminalInterface extends VisualInterface {

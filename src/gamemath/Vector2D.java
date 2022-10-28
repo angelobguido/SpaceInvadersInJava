@@ -5,7 +5,8 @@
 package gamemath;
 
 /**
- *
+ * Represents the math two-dimensional vector, that stores positions.
+ * 
  * @author angelo
  */
 public class Vector2D {
@@ -35,14 +36,37 @@ public class Vector2D {
         return y;
     }
     
+    /**
+     * Static function that will add two vectors.
+     * a + b
+     * 
+     * @param a 
+     * @param b
+     * @return the vector2d that is the sum of the two vectors.
+     */
     public static Vector2D addVectors(Vector2D a, Vector2D b){
         return new Vector2D(a.x+b.x, a.y+b.y);
     }
     
+    /**
+     * Static function that will subtract two vectors.
+     * a - b
+     * 
+     * @param a
+     * @param b
+     * @return the vector that is the subtraction of the two vectors. 
+     */
     public static Vector2D subtractVectors(Vector2D a, Vector2D b){
         return new Vector2D(a.x-b.x, a.y-b.y);
     }
     
+    /**
+     * Static function that will multiply a vector by a scalar.
+     * 
+     * @param vector
+     * @param scalar
+     * @return the vector tha is the scaled one.
+     */
     public static Vector2D multiplyByScalar(Vector2D vector, float scalar){
         return new Vector2D(vector.x*scalar, vector.y*scalar);
     }

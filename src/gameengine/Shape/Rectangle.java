@@ -7,15 +7,13 @@ package gameengine.Shape;
 import gamemath.Vector2D;
 
 /**
- *
+ * Represents a rectangle shape.
  * @author angelo
  */
-
-
 public class Rectangle {
-    private Vector2D center;
-    private float width;
-    private float height;
+    private Vector2D center; //the center of the rectangle
+    private float width; //the width
+    private float height; //the height
     
     public Rectangle(float width, float height, Vector2D position){
         center = position;
@@ -35,11 +33,24 @@ public class Rectangle {
         this.height = 1;
     }
     
+    /**
+     * This function will set the dimensions of the rectangle.
+     * 
+     * @param width
+     * @param height 
+     */
     public void setDimensions(float width, float height){
         this.width = width;
         this.height = height;
     }
     
+    /**
+     * This function will tell if this rectangle is in contact with the other one.
+     * It uses the gab between the rectangles sides.
+     * 
+     * @param otherRectangle is the rectangle that you want to test the contac with this.
+     * @return a boolean that says if this rectangle is in contact or not with the other one.
+     */
     public boolean isInContact(Rectangle otherRectangle){
       
         float thisMaxX = center.x + width/2;

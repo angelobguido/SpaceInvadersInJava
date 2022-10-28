@@ -5,7 +5,8 @@
 package gameengine.Observer;
 
 /**
- *
+ * Represents the interface of objects that can be notified.
+ * 
  * @author angelo
  */
 public interface Subscriber {

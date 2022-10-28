@@ -17,7 +17,7 @@ import java.util.Vector;
 import static spaceinvaders.Prefab.Bullet;
 
 /**
- *
+ * Builder used to build the space invaders game objects.
  * @author angelo
  */
 
@@ -34,6 +34,11 @@ public class GameObjectBuilder {
     private static GameObject bullet;
 
     
+    /**
+     * Static function that builds the desired game object.
+     * @param prefab is the id of the game object you want to build.
+     * @return the game object builded.
+     */
     public static GameObject create(Prefab prefab){
         
         GameObject gameObject = new GameObject();
