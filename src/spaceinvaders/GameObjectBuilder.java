@@ -4,14 +4,8 @@
  */
 package spaceinvaders;
 
-import gameengine.Components.Hit;
-import gameengine.Components.SpriteRenderer;
-import gameengine.Components.Physics;
-import gameengine.Components.Collider;
+import gameengine.Components.*;
 import gameengine.*;
-import gameengine.Components.AlienAttack;
-import gameengine.Components.BulletLife;
-import gameengine.Components.PlayerAttack;
 import gamemath.Vector2D;
 import java.util.Vector;
 import static spaceinvaders.Prefab.Bullet;

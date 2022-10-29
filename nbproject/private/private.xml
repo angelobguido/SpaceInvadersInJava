@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/VisualInterface.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/CollisionHandler.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpriteRenderer.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Sprite.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/TerminalInterface.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gamemath/Vector2D.java</file>
@@ -18,8 +19,11 @@
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/ComponentId.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/Graphics.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/EntityHandler.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/AlienAttack.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Observer/Publisher.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/Collider.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/SpaceInvaders.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/PlayerAttack.java</file>
         </group>
     </open-files>
 </project-private>
