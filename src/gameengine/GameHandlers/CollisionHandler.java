@@ -6,7 +6,6 @@ package gameengine.GameHandlers;
 
 import gameengine.Components.Collider;
 import java.util.Stack;
-import java.util.Vector;
 
 /**
  * Will handle all collisions of the game.
