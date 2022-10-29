@@ -5,9 +5,9 @@
 package gameengine.GameHandlers;
 
 import gameengine.Drawable;
-import gameengine.GraphicsId;
-import gameengine.TerminalInterface;
-import gameengine.VisualInterface;
+import graphics.GraphicsId;
+import graphics.TerminalInterface;
+import graphics.VisualInterface;
 import gamemath.Vector2D;
 import java.util.Stack;
 

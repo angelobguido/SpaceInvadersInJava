@@ -4,6 +4,7 @@
  */
 package spaceinvaders;
 
+import graphics.GraphicsId;
 import gameengine.Components.Physics;
 import gameengine.Components.Collider;
 import gameengine.GameHandlers.CollisionHandler;
