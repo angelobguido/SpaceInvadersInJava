@@ -9,7 +9,7 @@ import gameengine.ComponentId;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,11 +38,11 @@ public class PlayerAttack extends Attack{
     @Override
     protected void setBulletCollisions(GameObject bullet){
         Collider collider = (Collider)bullet.getComponent(ComponentId.Collider);
-        Vector<GameObject> aliensMatrixTagged = EntityHandler.findWithTag("AliensMatrix");
-        Vector<Component> aliensColliders = aliensMatrixTagged.elementAt(0).getComponents(ComponentId.Collider);
+        ArrayList<GameObject> aliensMatrixTagged = EntityHandler.findWithTag("AliensMatrix");
+        ArrayList<Component> aliensColliders = aliensMatrixTagged.get(0).getComponents(ComponentId.Collider);
         
         for(int i = 0; i < aliensColliders.size(); i++){
-            collider.addTwoWayCollider(((Collider)aliensColliders.elementAt(i)));
+            collider.addTwoWayCollider(((Collider)aliensColliders.get(i)));
         }
         
     }

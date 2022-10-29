@@ -4,7 +4,7 @@
  */
 package gameengine.Observer;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Represents the object that store subscribers and notify them. 
@@ -12,10 +12,10 @@ import java.util.Vector;
  * @author angelo
  */
 public class Publisher {
-    private Vector<Subscriber> subscribers;
+    private ArrayList<Subscriber> subscribers;
     
     public Publisher(){
-        subscribers = new Vector<>();
+        subscribers = new ArrayList<>();
     }
     
     public void subscribe(Subscriber s){
@@ -28,7 +28,7 @@ public class Publisher {
     
     public void notifySubscribers(){
         for(int i = 0; i<subscribers.size(); i++){
-            subscribers.elementAt(i).onNotified();
+            subscribers.get(i).onNotified();
         }
     }
     

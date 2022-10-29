@@ -7,7 +7,7 @@ package spaceinvaders;
 import gameengine.Components.*;
 import gameengine.*;
 import gamemath.Vector2D;
-import java.util.Vector;
+import java.util.ArrayList;
 import static spaceinvaders.Prefab.Bullet;
 
 /**
@@ -42,7 +42,7 @@ public class GameObjectBuilder {
                 
                 if(alien != null) return new GameObject(alien);
                 
-                Vector<Vector2D> alienStructure = new Vector<>();
+                ArrayList<Vector2D> alienStructure = new ArrayList<>();
                 
                 alienStructure.add(Vector2D.zero);
                 
@@ -64,14 +64,14 @@ public class GameObjectBuilder {
                 
                 if(player != null) return new GameObject(player);
                 
-                Vector<Vector2D> playerStructure = new Vector<>();
+                ArrayList<Vector2D> playerStructure = new ArrayList<>();
                 
                 playerStructure.add(Vector2D.zero);
                 playerStructure.add(new Vector2D(0,-1));
                 playerStructure.add(new Vector2D(1,-1));
                 playerStructure.add(new Vector2D(-1,-1));
                 
-                Vector<Vector2D> playerBulletStructure = new Vector<>();
+                ArrayList<Vector2D> playerBulletStructure = new ArrayList<>();
                 
                 playerBulletStructure.add(Vector2D.zero);
                 playerBulletStructure.add(Vector2D.down);
@@ -98,7 +98,7 @@ public class GameObjectBuilder {
                 
                 if(obstacle != null) return new GameObject(obstacle);
                 
-                Vector<Vector2D> obstacleStructure = new Vector<>();
+                ArrayList<Vector2D> obstacleStructure = new ArrayList<>();
                 
                 obstacleStructure.add(Vector2D.zero);
                 
@@ -196,7 +196,7 @@ public class GameObjectBuilder {
                 
                 if(bullet != null) return new GameObject(bullet);
                 
-                Vector<Vector2D> bulletStructure = new Vector<>();
+                ArrayList<Vector2D> bulletStructure = new ArrayList<>();
                 
                 bulletStructure.add(Vector2D.zero);
 

@@ -5,7 +5,7 @@
 package gameengine;
 
 import gamemath.Vector2D;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Represents the visual representation of objects.
@@ -14,9 +14,9 @@ import java.util.Vector;
  */
 public class Sprite {
     private char charRepresentation; //the char that will be printed in the terminal interface.
-    private Vector<Vector2D> spriteStructure; //the first vector2D of this vector is the considered the center of this sprite.
+    private ArrayList<Vector2D> spriteStructure; //the first vector2D of this vector is the considered the center of this sprite.
     
-    public Sprite(char charRepresentation, Vector<Vector2D> spriteStructure){
+    public Sprite(char charRepresentation, ArrayList<Vector2D> spriteStructure){
         this.charRepresentation = charRepresentation;
         this.spriteStructure = spriteStructure;
     }
@@ -40,7 +40,7 @@ public class Sprite {
      * 
      * @return The sprite structure that represents the positions of the pixels in the terminal interface. 
      */
-    public Vector<Vector2D> spriteStructure(){
-        return new Vector<Vector2D>(spriteStructure);
+    public ArrayList<Vector2D> spriteStructure(){
+        return new ArrayList<Vector2D>(spriteStructure);
     }
 }

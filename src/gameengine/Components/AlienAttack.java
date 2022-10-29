@@ -9,7 +9,7 @@ import gameengine.ComponentId;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,20 +38,20 @@ public class AlienAttack extends Attack{
     @Override
     protected void setBulletCollisions(GameObject bullet){
         Collider collider = (Collider)bullet.getComponent(ComponentId.Collider);
-        Vector<GameObject> playerTagged = EntityHandler.findWithTag("Player");
-        Vector<GameObject> obstacleTagged = EntityHandler.findWithTag("BigObstacle");
+        ArrayList<GameObject> playerTagged = EntityHandler.findWithTag("Player");
+        ArrayList<GameObject> obstacleTagged = EntityHandler.findWithTag("BigObstacle");
         
         for(int i = 0; i < playerTagged.size(); i++){
-            Collider playerCollider = (Collider)playerTagged.elementAt(i).getComponent(ComponentId.Collider);
+            Collider playerCollider = (Collider)playerTagged.get(i).getComponent(ComponentId.Collider);
             collider.addTwoWayCollider(playerCollider);
         }
         
         for(int i = 0; i < obstacleTagged.size(); i++){
             
-            Vector<Component> obstacleColliders = obstacleTagged.elementAt(i).getComponents(ComponentId.Collider);
+            ArrayList<Component> obstacleColliders = obstacleTagged.get(i).getComponents(ComponentId.Collider);
             
             for(int j = 0; j < obstacleColliders.size(); j++){
-                collider.addTwoWayCollider((Collider)obstacleColliders.elementAt(j));
+                collider.addTwoWayCollider((Collider)obstacleColliders.get(j));
             }
           
         }

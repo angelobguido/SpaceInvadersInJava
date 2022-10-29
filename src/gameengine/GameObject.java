@@ -8,7 +8,7 @@ import gameengine.GameExceptions.SameGameObjectException;
 import gameengine.GameHandlers.EntityHandler;
 import gamemath.Vector2D;
 import java.util.Stack;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Represents the base object of the game engine.
@@ -19,15 +19,15 @@ import java.util.Vector;
 public class GameObject {
     private String tag = ""; //tag used to find this game object
     private Vector2D position; //position in the game world
-    private Vector<Component> components; //list of all components used in this game object.
+    private ArrayList<Component> components; //list of all components used in this game object.
     private Stack<Component> removedComponentsBuffer; //buffer that will store all components that will be removed
-    private Vector<GameObject> children; //list of all children of this game object
+    private ArrayList<GameObject> children; //list of all children of this game object
     private GameObject parent; //this game object parent.
     
     public GameObject(){
         position = new Vector2D(0,0);
-        components = new Vector<>();
-        children = new Vector<>();
+        components = new ArrayList<>();
+        children = new ArrayList<>();
         removedComponentsBuffer = new Stack<>();
     }
     
@@ -37,16 +37,16 @@ public class GameObject {
         
         position = new Vector2D(copy.position);
         
-        components = new Vector<>();
+        components = new ArrayList<>();
         
         for(int i = 0; i<copy.components.size(); i++){
-            components.add(copy.components.elementAt(i).createCopy(this));
+            components.add(copy.components.get(i).createCopy(this));
         }
         
-        children = new Vector<>();
+        children = new ArrayList<>();
         
         for(int i = 0; i<copy.children.size(); i++){
-            children.add(new GameObject(copy.children.elementAt(i)));
+            children.add(new GameObject(copy.children.get(i)));
         }
         
         removedComponentsBuffer = new Stack<>();
@@ -133,7 +133,7 @@ public class GameObject {
      * @return the chosen game object.
      */
     public GameObject getChild(int index){
-        return children.elementAt(index);
+        return children.get(index);
     }
     
     /**
@@ -169,8 +169,8 @@ public class GameObject {
         
         for(int i = 0; i<components.size(); i++){
             
-            if(components.elementAt(i).id == id){
-                return components.elementAt(i);
+            if(components.get(i).id == id){
+                return components.get(i);
             }
         }
         return null;
@@ -183,20 +183,20 @@ public class GameObject {
      * @param id the id that represents the components you want.
      * @return the list of all components with the id
      */
-    public Vector<Component> getComponents(ComponentId id){
+    public ArrayList<Component> getComponents(ComponentId id){
         
-        Vector<Component> componentsFound = new Vector<>();
+        ArrayList<Component> componentsFound = new ArrayList<>();
         
         _getComponents(id, componentsFound);
         
         return componentsFound;
     }
     
-    private void _getComponents(ComponentId id, Vector<Component> componentsFound){
+    private void _getComponents(ComponentId id, ArrayList<Component> componentsFound){
         
         for(int i = 0; i < components.size(); i++){
             
-            Component currentComponent = components.elementAt(i);
+            Component currentComponent = components.get(i);
             
             if(currentComponent.id == id){
                 componentsFound.add(currentComponent);
@@ -204,7 +204,7 @@ public class GameObject {
         }
         
         for(int i = 0; i < children.size(); i++){
-            children.elementAt(i)._getComponents(id, componentsFound);
+            children.get(i)._getComponents(id, componentsFound);
         }
         
         

@@ -12,7 +12,7 @@ import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;
 import gameengine.Shape.Rectangle;
 import java.util.Stack;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,8 +22,8 @@ public class Collider extends Component {
     
     private Publisher publisher;
     private Rectangle colliderBox;
-    private Vector<Collider> colliders; //colliders that this collider will collide with
-    private Vector<Collider> otherColliders; //colliders that will collide with this collider
+    private ArrayList<Collider> colliders; //colliders that this collider will collide with
+    private ArrayList<Collider> otherColliders; //colliders that will collide with this collider
     private Stack<Collider> removedCollidersBuffer; //buffer that will store all colliders that will be removed
     
     public Collider(GameObject gameObject){
@@ -33,8 +33,8 @@ public class Collider extends Component {
         
         colliderBox = new Rectangle(gameObject.getPositionReference());
         
-        colliders = new Vector<>();
-        otherColliders = new Vector<>();
+        colliders = new ArrayList<>();
+        otherColliders = new ArrayList<>();
         removedCollidersBuffer = new Stack<>();
         
     }
@@ -48,8 +48,8 @@ public class Collider extends Component {
         
         newCollider.colliderBox = new Rectangle(gameObject.getPositionReference());
         
-        newCollider.colliders = new Vector<>(colliders);
-        newCollider.otherColliders = new Vector<>(otherColliders);
+        newCollider.colliders = new ArrayList<>(colliders);
+        newCollider.otherColliders = new ArrayList<>(otherColliders);
         newCollider.removedCollidersBuffer = (Stack<Collider>)removedCollidersBuffer.clone();
         
         return newCollider;
@@ -69,9 +69,9 @@ public class Collider extends Component {
     
     private void checkCollisions(){
         for(int i = 0; i < colliders.size(); i++){
-            if(colliderBox.isInContact(colliders.elementAt(i).getColliderBox()) == true){
+            if(colliderBox.isInContact(colliders.get(i).getColliderBox()) == true){
                 CollisionHandler.putInCollisionBuffer(this);
-                CollisionHandler.putInCollisionBuffer(colliders.elementAt(i));
+                CollisionHandler.putInCollisionBuffer(colliders.get(i));
             }
         }
     }

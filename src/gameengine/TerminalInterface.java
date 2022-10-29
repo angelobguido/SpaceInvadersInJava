@@ -5,7 +5,7 @@
 package gameengine;
 
 import gamemath.Vector2D;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Represents the terminal interface.
@@ -26,14 +26,14 @@ public class TerminalInterface extends VisualInterface {
     
     public void draw(Drawable object){
         
-        Vector<Vector2D> spriteStructure = object.image.spriteStructure();
+        ArrayList<Vector2D> spriteStructure = object.image.spriteStructure();
         char charRepresentation = object.image.charRepresentation();
         Vector2D currentPosition;
         
 
         for(int i = 0; i<spriteStructure.size(); i++){
 
-            currentPosition = Vector2D.addVectors(spriteStructure.elementAt(i), object.position);
+            currentPosition = Vector2D.addVectors(spriteStructure.get(i), object.position);
             
             if(isOutOfBounds(currentPosition)==false){
                 canvas[heigth - 1 - Math.round(currentPosition.y())][Math.round(currentPosition.x())] = charRepresentation;

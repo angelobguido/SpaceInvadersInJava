@@ -14,7 +14,7 @@ import gameengine.Components.PlayerAttack;
 import gameengine.GameHandlers.EntityHandler;
 import gamemath.*;
 import static java.lang.Math.random;
-import java.util.Vector;
+import java.util.ArrayList;
 /**
  *
  * @author angelo
@@ -77,11 +77,11 @@ public class SpaceInvaders {
             }
             
             if(i%30 == 0){
-                Vector<Component> aliensAttack = aliens.getComponents(ComponentId.Attack);
+                ArrayList<Component> aliensAttack = aliens.getComponents(ComponentId.Attack);
                 
                 for(int j = 0; j < aliensAttack.size(); j++){
                     if(random()<0.01){
-                        ((AlienAttack)aliensAttack.elementAt(j)).attack();
+                        ((AlienAttack)aliensAttack.get(j)).attack();
                     }
                     
                 }

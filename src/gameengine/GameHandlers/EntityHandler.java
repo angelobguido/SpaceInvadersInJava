@@ -5,7 +5,7 @@
 package gameengine.GameHandlers;
 
 import gameengine.GameObject;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.Stack;
 
 
@@ -15,7 +15,7 @@ import java.util.Stack;
  * @author angelo
  */
 public class EntityHandler {
-    private static Vector<GameObject> entities = new Vector<>(); //list of all present game objects
+    private static ArrayList<GameObject> entities = new ArrayList<>(); //list of all present game objects
     private static Stack<GameObject> newEntities = new Stack<>(); //buffer that will store recent added entities
     private static Stack<GameObject> removeBuffer = new Stack<>(); //buffer that will store entities that need to be removed in update
     
@@ -25,13 +25,13 @@ public class EntityHandler {
      * @param tag is the tag that represents all the game objects you want to find in the game world.
      * @return the list of game objects that have the chosen tag.
      */
-    public static Vector<GameObject> findWithTag(String tag){ 
+    public static ArrayList<GameObject> findWithTag(String tag){ 
         
-        Vector<GameObject> taggedEntities = new Vector<>();
+        ArrayList<GameObject> taggedEntities = new ArrayList<>();
         
         for(int i = 0; i < entities.size(); i++){
             
-            GameObject currentEntity = entities.elementAt(i);
+            GameObject currentEntity = entities.get(i);
             
             if(currentEntity.tagIsEqual(tag)){
                 taggedEntities.add(currentEntity);
