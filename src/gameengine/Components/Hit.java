@@ -8,7 +8,9 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Collider;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.EventHandler;
 import gameengine.GameObject;
+import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;
 
 /**
@@ -20,6 +22,7 @@ public class Hit extends Component implements Subscriber{
     private Collider col;
     private int health;
     private int maxHealth = 1;
+    public final Publisher deathEvent = new Publisher();
     
     public Hit(GameObject gameObject){
         super(gameObject, ComponentId.Hit);
@@ -55,6 +58,11 @@ public class Hit extends Component implements Subscriber{
         col = null;
         gameObject.removeComponent(this);
         gameObject = null;
+        
+        if(deathEvent.hasSubscribers()){
+            EventHandler.addEvent(deathEvent);
+        }
+        
     }
     
     @Override

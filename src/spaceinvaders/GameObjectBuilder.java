@@ -185,6 +185,8 @@ public class GameObjectBuilder {
                 }
                 
                 gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new AlienMatrixLife(gameObject));
+                gameObject.addComponent(new AlienMatrixController(gameObject));
                 
                 gameObject.setTag("AliensMatrix");
                 

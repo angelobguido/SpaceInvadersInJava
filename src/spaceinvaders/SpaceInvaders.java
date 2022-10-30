@@ -13,6 +13,7 @@ import gameengine.*;
 import gameengine.Components.AlienAttack;
 import gameengine.Components.PlayerAttack;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.EventHandler;
 import gamemath.*;
 import static java.lang.Math.random;
 import java.util.ArrayList;
@@ -31,10 +32,6 @@ public class SpaceInvaders {
         
         GameObject player = GameObjectBuilder.create(Prefab.Player);
         GameObject aliens = GameObjectBuilder.create(Prefab.AliensMatrix);
-        Physics aliensPhysics = (Physics)aliens.getComponent(ComponentId.Physics);
-        aliensPhysics.velocity = new Vector2D(0.5f,0);
-        aliens.setPosition(Vector2D.up);
-        
         
         aliens.setPosition(new Vector2D(0,30));
         
@@ -72,22 +69,7 @@ public class SpaceInvaders {
             Graphics.clean();
             
             if(i%36 == 0){
-                aliensPhysics.velocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, -1);
                 playerPhysics.velocity = Vector2D.multiplyByScalar(playerPhysics.velocity, -1);
-                aliens.setPosition(Vector2D.addVectors(aliens.position(), new Vector2D(0, -0.25f)));
-            }
-            
-            if(i%30 == 0){
-                ArrayList<Component> aliensAttack = aliens.getComponents(ComponentId.Attack);
-                
-                for(int j = 0; j < aliensAttack.size(); j++){
-                    if(random()<0.01){
-                        ((AlienAttack)aliensAttack.get(j)).attack();
-                    }
-                    
-                }
-                
-                
             }
             
             if(i%15 == 0){
@@ -96,6 +78,7 @@ public class SpaceInvaders {
             
             Graphics.update();
             CollisionHandler.update();
+            EventHandler.update();
             EntityHandler.update();
             Thread.sleep(50);
         }
