@@ -20,7 +20,7 @@ public class EntityHandler {
     private static Stack<GameObject> removeBuffer = new Stack<>(); //buffer that will store entities that need to be removed in update
     
     /**
-     * This function will find a collection of game objects that have the chosen tag.
+     * This function will find a collection of game objects that have the chosen tag inside entities list.
      * 
      * @param tag is the tag that represents all the game objects you want to find in the game world.
      * @return the list of game objects that have the chosen tag.
@@ -43,6 +43,42 @@ public class EntityHandler {
     }
     
     /**
+     * This function will find a collection of game objects that have the chosen tag inside entities list and all children.
+     * 
+     * @param tag is the tag that represents all the game objects you want to find in the game world.
+     * @return the list of game objects that have the chosen tag.
+     */
+    public static ArrayList<GameObject> findAllWithTag(String tag){ 
+                
+        ArrayList<GameObject> taggedEntities = new ArrayList<>();
+        
+        for(int i = 0; i < entities.size(); i++){
+            
+            GameObject currentEntity = entities.get(i);
+            
+            if(currentEntity.tagIsEqual(tag)){
+                taggedEntities.add(currentEntity);
+            }
+            
+            _findTagRecursive(taggedEntities, currentEntity, tag);
+        }
+        
+        return taggedEntities;
+    
+    }
+    
+    private static void _findTagRecursive(ArrayList<GameObject> taggedEntities, GameObject current, String tag){
+        
+        for(int i = 0; i < current.childCount(); i++){
+            if(current.getChild(i).tagIsEqual(tag)){
+                taggedEntities.add(current.getChild(i));
+            }
+            _findTagRecursive(taggedEntities, current.getChild(i), tag);
+        }
+        
+    }
+    
+    /**
      * Add a new game object to the game world.
      * 
      * @param gameObject is the game object you want to add.
@@ -61,7 +97,7 @@ public class EntityHandler {
     }
     
     /**
-     * Will update all game objects inside the entities list.
+     * Will update all game objects inside the entities list and manager the entities life cycle.
      */
     public static void update(){
         

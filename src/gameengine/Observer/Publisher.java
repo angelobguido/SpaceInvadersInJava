@@ -18,6 +18,10 @@ public class Publisher {
         subscribers = new ArrayList<>();
     }
     
+    public boolean hasSubscribers(){
+        return !subscribers.isEmpty();
+    }
+    
     public void subscribe(Subscriber s){
         subscribers.add(s);
     }
