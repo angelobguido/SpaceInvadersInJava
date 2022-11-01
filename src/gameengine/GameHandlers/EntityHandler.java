@@ -97,6 +97,17 @@ public class EntityHandler {
     }
     
     /**
+     * Remove all game objects that existis in the entities list.
+     * 
+     */
+    public static void removeAllEntities(){
+       while(entities.isEmpty() == false){
+           entities.get(entities.size()-1).destroy();
+           entities.remove(entities.size()-1);
+       }
+    }
+    
+    /**
      * Will update all game objects inside the entities list and manager the entities life cycle.
      */
     public static void update(){

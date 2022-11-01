@@ -6,35 +6,33 @@ package gameengine.Components;
 
 import gameengine.Component;
 import gameengine.ComponentId;
-import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
-import static java.lang.Math.random;
-import java.util.ArrayList;
 
 /**
  *
  * @author angelo
  */
-public class AlienMatrixController extends Component{
-    private final static float maxX = 20;
+public class PlayerController extends Component{
+    private final static float maxX = 35;
     private final static float minX = 1;
     private boolean isRight = true;
-    private Physics aliensPhysics;
+    private Physics playerPhysics;
+    private PlayerAttack playerAttack;
     private boolean canAttack = true;
     private int attackCooldownTimer;
-    private int attackCooldown = 20;
+    private int attackCooldown = 17;
     
-    public AlienMatrixController(GameObject gameObject){
-        super(gameObject, ComponentId.AlienMatrixController);    
+    public PlayerController(GameObject gameObject){
+        super(gameObject, ComponentId.PlayerController);    
     }
     
     @Override
     public Component createCopy(GameObject gameObject){
-        AlienMatrixController newAlienMatrixController = new AlienMatrixController(gameObject);
-        newAlienMatrixController.isRight = isRight;
+        PlayerController newPlayerController = new PlayerController(gameObject);
+        newPlayerController.isRight = isRight;
         
-        return newAlienMatrixController;
+        return newPlayerController;
     }
     
     @Override
@@ -44,35 +42,23 @@ public class AlienMatrixController extends Component{
             if(gameObject.position().x > maxX){
                 isRight = false;
                 invertVelocity();
-                goDown();
             }
         }else{
             if(gameObject.position().x < minX){
                 isRight = true;
                 invertVelocity(); 
-                goDown();
             }
         }
         
-        if(gameObject.position().x > 9 && gameObject.position().x < 15){
-            attackWithRandomAliens();
-        }
+        attack();
         
         
     }
     
-    private void attackWithRandomAliens(){
+    private void attack(){
         
         if(canAttack){
-            ArrayList<Component> aliensAttack = gameObject.getComponents(ComponentId.Attack);
-                
-            for(int j = 0; j < aliensAttack.size(); j++){
-                if(random()<0.02){
-                    ((AlienAttack)aliensAttack.get(j)).attack();
-                }
-
-            }
-            
+            playerAttack.attack();
             canAttack = false;
             attackCooldownTimer = attackCooldown;
         }
@@ -86,18 +72,18 @@ public class AlienMatrixController extends Component{
         
     }
     
-    private void goDown(){
-        gameObject.setPosition(Vector2D.addVectors(gameObject.position(), new Vector2D(0, -1f)));
-    }
-    
     private void invertVelocity(){
-        aliensPhysics.velocity.x = -aliensPhysics.velocity.x; 
+        playerPhysics.velocity.x = -playerPhysics.velocity.x; 
     }
     
     @Override
     public void start(){
-        aliensPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
-        aliensPhysics.velocity = new Vector2D(0.5f, 0);
+        
+        playerPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
+        playerAttack = (PlayerAttack)gameObject.getComponent(ComponentId.Attack);
+        
+        playerPhysics.velocity = new Vector2D(0.5f, 0);
+        
     }
     
     
@@ -105,7 +91,8 @@ public class AlienMatrixController extends Component{
     public void destroy(){
         gameObject.removeComponent(this);
         gameObject = null;
-        aliensPhysics = null;
+        playerPhysics = null;
+        playerAttack = null;
     }
     
 }

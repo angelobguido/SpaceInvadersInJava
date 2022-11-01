@@ -88,6 +88,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new PlayerAttack(gameObject, playerBullet));
+                gameObject.addComponent(new PlayerController(gameObject));
                 
                 player = new GameObject(gameObject);
                 
