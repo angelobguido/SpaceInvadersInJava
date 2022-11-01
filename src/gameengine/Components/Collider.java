@@ -112,12 +112,29 @@ public class Collider extends Component {
     }
     
     public void addCollider(Collider c){
-        colliders.add(c);
-        c.otherColliders.add(this);
+        if(c == null){
+            return;
+        }
+        
+        if(colliders.contains(c) == false){
+            colliders.add(c);
+        }
+        
+        if(c.otherColliders.contains(this) == false){
+            c.otherColliders.add(this);
+        }
+        
     }
     
     public void addTwoWayCollider(Collider c){
+        
+        
         addCollider(c);
+        
+        if(c == null){
+            return;
+        }
+        
         c.addCollider(this);
     }
     

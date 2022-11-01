@@ -65,22 +65,13 @@ public class SpaceInvaders {
         bullet.setPosition(new Vector2D(8, 3));
         
         while(true){
-            i++;
-            Graphics.clean();
-            
-            if(i%36 == 0){
-                playerPhysics.velocity = Vector2D.multiplyByScalar(playerPhysics.velocity, -1);
-            }
-            
-            if(i%15 == 0){
-                playerAttack.attack();
-            }
-            
+
+            Graphics.clean();       
             Graphics.update();
             CollisionHandler.update();
             EventHandler.update();
             EntityHandler.update();
-            Thread.sleep(50);
+            Thread.sleep(1);
         }
         
         

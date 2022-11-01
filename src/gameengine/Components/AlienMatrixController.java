@@ -54,9 +54,9 @@ public class AlienMatrixController extends Component{
             }
         }
         
-        if(gameObject.position().x > 9 && gameObject.position().x < 15){
-            attackWithRandomAliens();
-        }
+        
+        attackWithRandomAliens();
+        
         
         
     }

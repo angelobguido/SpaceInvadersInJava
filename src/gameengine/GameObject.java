@@ -86,6 +86,8 @@ public class GameObject {
         
         components.forEach(component -> {component.destroy();});
         children.forEach(child -> {child.destroy();});
+        
+        components.clear();
     }
     
     /**
