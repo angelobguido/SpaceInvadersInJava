@@ -5,18 +5,12 @@
 package spaceinvaders;
 
 import graphics.GraphicsId;
-import gameengine.Components.Physics;
-import gameengine.Components.Collider;
 import gameengine.GameHandlers.CollisionHandler;
 import gameengine.GameHandlers.Graphics;
-import gameengine.*;
-import gameengine.Components.AlienAttack;
-import gameengine.Components.PlayerAttack;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
-import gamemath.*;
-import static java.lang.Math.random;
-import java.util.ArrayList;
+import gameengine.GameHandlers.SceneManager;
+
 /**
  *
  * @author angelo
@@ -29,51 +23,17 @@ public class SpaceInvaders {
     public static void main(String[] args) throws InterruptedException {
         
         Graphics.setGraphics(GraphicsId.Terminal);
-        
-        GameObject player = GameObjectBuilder.create(Prefab.Player);
-        GameObject aliens = GameObjectBuilder.create(Prefab.AliensMatrix);
-        
-        aliens.setPosition(new Vector2D(0,30));
-        
-        GameObject bullet = GameObjectBuilder.create(Prefab.Bullet);
-        bullet.setPosition(new Vector2D(10,0));
-        
-        PlayerAttack playerAttack = (PlayerAttack)player.getComponent(ComponentId.Attack);
-        Physics playerPhysics = (Physics)player.getComponent(ComponentId.Physics);
-        playerPhysics.velocity = new Vector2D(1,0);
-        player.setPosition(new Vector2D(0,2));
-        
-        GameObject obstacle1 = GameObjectBuilder.create(Prefab.BigObstacle);
-        GameObject obstacle2 = GameObjectBuilder.create(Prefab.BigObstacle);
-        GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
-        GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
-        
-        obstacle1.setPosition(new Vector2D(5,4));
-        obstacle2.setPosition(new Vector2D(15,4));
-        obstacle3.setPosition(new Vector2D(25,4));
-        obstacle4.setPosition(new Vector2D(35,4));
-        
-        int i = 0;
-        
-        EntityHandler.addEntity(aliens);
-        EntityHandler.addEntity(player);
-        EntityHandler.addEntity(obstacle1);
-        EntityHandler.addEntity(obstacle2);
-        EntityHandler.addEntity(obstacle3);
-        EntityHandler.addEntity(obstacle4);
-        
-        bullet.setPosition(new Vector2D(8, 3));
+        SceneManager.loadScene(SceneBuilder.create(SceneId.GameMain));
         
         while(true){
-
-            Graphics.clean();       
+            Graphics.clean();
             Graphics.update();
             CollisionHandler.update();
             EventHandler.update();
             EntityHandler.update();
-            Thread.sleep(1);
+            SceneManager.update();
+            Thread.sleep(50);
         }
-        
         
     }
     
