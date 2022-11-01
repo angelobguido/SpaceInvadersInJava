@@ -10,6 +10,7 @@ import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.SceneManager;
+import static spaceinvaders.SceneBuilder.SceneId.GameMain;
 
 /**
  *
@@ -23,7 +24,7 @@ public class SpaceInvaders {
     public static void main(String[] args) throws InterruptedException {
         
         Graphics.setGraphics(GraphicsId.Terminal);
-        SceneManager.loadScene(SceneBuilder.create(SceneId.GameMain));
+        SceneManager.loadScene(SceneBuilder.create(GameMain));
         
         while(true){
             Graphics.clean();

@@ -7,10 +7,13 @@ package gameengine.Components;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SceneManager;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import static java.lang.Math.random;
 import java.util.ArrayList;
+import spaceinvaders.SceneBuilder;
+import static spaceinvaders.SceneBuilder.SceneId.GameOver;
 
 /**
  *
@@ -39,6 +42,10 @@ public class AlienMatrixController extends Component{
     
     @Override
     public void update(){
+        
+        if(gameObject.position().y < 0){
+            SceneManager.loadScene(SceneBuilder.create(GameOver));
+        }
         
         if(isRight){
             if(gameObject.position().x > maxX){

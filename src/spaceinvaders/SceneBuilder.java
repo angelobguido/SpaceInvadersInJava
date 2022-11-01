@@ -16,10 +16,8 @@ import gamemath.Vector2D;
  * @author angelo
  */
 
-enum SceneId{GameOver, GameMain}
-
 public class SceneBuilder {
-    
+    public enum SceneId{GameOver, GameMain} 
     private static Scene gameOver;
     private static Scene gameMain;
     
