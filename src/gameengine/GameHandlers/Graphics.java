@@ -25,13 +25,10 @@ public class Graphics {
     /**
      * Set the current visual interface.
      * 
-     * @param id is the representation of the desired visual interface
+     * @param chosenInterface is desired visual interface
      */
-    public static void setGraphics(GraphicsId id){
-        switch(id){
-            case Terminal: visualInterface = new TerminalInterface(40, 40); break;
-            case GraphicInterface: break;
-        }
+    public static void setGraphics(VisualInterface chosenInterface){
+        visualInterface = chosenInterface;
     }
     
     /**
