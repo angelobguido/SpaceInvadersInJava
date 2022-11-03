@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine.Components;
+package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
 import gameengine.ComponentId;
+import gameengine.Components.Collider;
 import gameengine.Components.Collider;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;

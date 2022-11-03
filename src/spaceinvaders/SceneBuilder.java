@@ -5,9 +5,9 @@
 package spaceinvaders;
 
 import gameengine.ComponentId;
-import gameengine.Components.GameOverManager;
+import gameengine.Components.SpaceInvaders.GameOverManager;
 import gameengine.Components.Physics;
-import gameengine.Components.PlayerAttack;
+import gameengine.Components.SpaceInvaders.PlayerAttack;
 import gameengine.GameObject;
 import gameengine.Scene;
 import gamemath.Vector2D;

@@ -4,7 +4,7 @@
  */
 package gameengine;
 
-import gameengine.Components.Hit;
+import gameengine.Components.SpaceInvaders.Hit;
 import gameengine.Components.SpriteRenderer;
 import gameengine.Components.Physics;
 import gameengine.Components.Collider;

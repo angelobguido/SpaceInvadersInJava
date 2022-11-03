@@ -4,6 +4,13 @@
  */
 package spaceinvaders;
 
+import gameengine.Components.SpaceInvaders.PlayerAttack;
+import gameengine.Components.SpaceInvaders.PlayerController;
+import gameengine.Components.SpaceInvaders.Hit;
+import gameengine.Components.SpaceInvaders.AlienAttack;
+import gameengine.Components.SpaceInvaders.BulletLife;
+import gameengine.Components.SpaceInvaders.AlienMatrixLife;
+import gameengine.Components.SpaceInvaders.AlienMatrixController;
 import gameengine.Components.*;
 import gameengine.*;
 import gamemath.Vector2D;
