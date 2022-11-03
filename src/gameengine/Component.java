@@ -19,27 +19,12 @@ public abstract class Component {
     
     protected GameObject gameObject;
     protected ComponentId id;
-    protected boolean isEnabled;
     
     public Component(GameObject gameObject, ComponentId id){
         this.gameObject = gameObject;
         this.id = id;
-        isEnabled = true;
     }
     
-    /**
-     * Disable this component.
-     */
-    public void disable(){
-        isEnabled = false;
-    }
-    
-    /**
-     * Enable this component.
-     */
-    public void enable(){
-        isEnabled = true;
-    }
     
     /**
      * Create a copy of this component
