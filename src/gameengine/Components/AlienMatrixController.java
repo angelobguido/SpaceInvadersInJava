@@ -104,7 +104,7 @@ public class AlienMatrixController extends Component{
     @Override
     public void start(){
         aliensPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
-        aliensPhysics.velocity = new Vector2D(0.5f, 0);
+        aliensPhysics.velocity = new Vector2D(0.2f, 0);
     }
     
     

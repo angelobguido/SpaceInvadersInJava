@@ -51,7 +51,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new Collider(gameObject));
-                gameObject.addComponent(new Hit(gameObject, 2));
+                gameObject.addComponent(new Hit(gameObject));
                 gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
                 
                 gameObject.setTag("Alien");
@@ -74,7 +74,6 @@ public class GameObjectBuilder {
                 ArrayList<Vector2D> playerBulletStructure = new ArrayList<>();
                 
                 playerBulletStructure.add(Vector2D.zero);
-                playerBulletStructure.add(Vector2D.down);
 
                 Sprite playerBulletSprite = new Sprite('1', playerBulletStructure);
                 
@@ -89,6 +88,9 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new PlayerAttack(gameObject, playerBullet));
                 gameObject.addComponent(new PlayerController(gameObject));
+                gameObject.addComponent(new Hit(gameObject, 3));
+                
+                gameObject.setTag("Player");
                 
                 player = new GameObject(gameObject);
                 
@@ -109,7 +111,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
                 gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new Hit(gameObject));
+                gameObject.addComponent(new Hit(gameObject, 2));
                 
                 gameObject.setTag("Obstacle");
                 

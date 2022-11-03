@@ -79,12 +79,27 @@ public class EntityHandler {
     }
     
     /**
-     * Add a new game object to the game world.
+     * Add a new game object to the game world after frame.
      * 
      * @param gameObject is the game object you want to add.
      */
     public static void addEntity(GameObject gameObject){
         newEntities.push(gameObject);
+    }
+    
+    /**
+     * Add a list of new game object to the game world now.
+     * It is not recommended to use inside game components.
+     * 
+     * @param gameObjects is the game object list you want to add at this moment.
+     */
+    public static void addEntitiesNow(ArrayList<GameObject> gameObjects){
+        for(int i = 0; i < gameObjects.size(); i++){
+            entities.add(gameObjects.get(i));
+        }
+        for(int i = 0; i < gameObjects.size(); i++){
+            gameObjects.get(i).start();
+        }
     }
     
     /**

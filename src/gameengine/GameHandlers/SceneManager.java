@@ -27,11 +27,7 @@ public class SceneManager {
             ArrayList<GameObject> newEntities = current.getEntities();
             
             EntityHandler.removeAllEntities();
-            
-            while(newEntities.isEmpty() == false){
-                EntityHandler.addEntity(newEntities.get(0));
-                newEntities.remove(0);
-            }
+            EntityHandler.addEntitiesNow(newEntities);
             
             canChange = false;
             

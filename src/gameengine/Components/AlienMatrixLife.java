@@ -18,7 +18,6 @@ import java.util.ArrayList;
  */
 public class AlienMatrixLife extends Component implements Subscriber {
     private int life = 0;
-    private boolean hasFoundAliens = false;
     private Physics aliensPhysics;
     
     public AlienMatrixLife(GameObject gameObject){
@@ -33,19 +32,18 @@ public class AlienMatrixLife extends Component implements Subscriber {
     
     @Override
     public void update(){
-        if(!hasFoundAliens){
-            ArrayList<GameObject> aliens = EntityHandler.findAllWithTag("Alien");
-            for(int i = 0; i < aliens.size(); i++){
-                hasFoundAliens = true;
-                ((Hit)aliens.get(i).getComponent(ComponentId.Hit)).deathEvent.subscribe(this);
-                life++;
-            }
-        }
+        
     }
     
     @Override
     public void start(){
         aliensPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
+        
+        ArrayList<GameObject> aliens = EntityHandler.findAllWithTag("Alien");
+        for(int i = 0; i < aliens.size(); i++){
+            ((Hit)aliens.get(i).getComponent(ComponentId.Hit)).deathEvent.subscribe(this);
+            life++;
+        }
     }
     
     
@@ -58,7 +56,7 @@ public class AlienMatrixLife extends Component implements Subscriber {
     @Override
     public void onNotified(){
         life--;
-        Vector2D newVelocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, 1.02f);
+        Vector2D newVelocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, 1.05f);
         aliensPhysics.velocity = newVelocity;
     }
 }

@@ -5,6 +5,7 @@
 package spaceinvaders;
 
 import gameengine.ComponentId;
+import gameengine.Components.GameOverManager;
 import gameengine.Components.Physics;
 import gameengine.Components.PlayerAttack;
 import gameengine.GameObject;
@@ -32,6 +33,8 @@ public class SceneBuilder {
         
         switch(id){
             case GameOver: 
+                
+                System.out.println("GAME OVER!");
                 
                 if(gameOver != null) return gameOver;
                 
@@ -63,12 +66,16 @@ public class SceneBuilder {
                 obstacle3.setPosition(new Vector2D(25,4));
                 obstacle4.setPosition(new Vector2D(35,4));
                 
+                GameObject gameOverManager = new GameObject();
+                gameOverManager.addComponent(new GameOverManager(gameOverManager));
+                
                 scene.addEntity(aliens);
                 scene.addEntity(player);
                 scene.addEntity(obstacle1);
                 scene.addEntity(obstacle2);
                 scene.addEntity(obstacle3);
                 scene.addEntity(obstacle4);
+                scene.addEntity(gameOverManager);
                 
                 gameMain = scene;
                 

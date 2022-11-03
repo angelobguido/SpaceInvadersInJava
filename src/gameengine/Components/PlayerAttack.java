@@ -39,16 +39,16 @@ public class PlayerAttack extends Attack{
     protected void setBulletCollisions(GameObject bullet){
         Collider collider = (Collider)bullet.getComponent(ComponentId.Collider);
         ArrayList<GameObject> aliens = EntityHandler.findAllWithTag("Alien");
-        
-        System.out.println(aliens.size());
+        ArrayList<GameObject> obstacles = EntityHandler.findAllWithTag("Obstacle");
         
         for(int i = 0; i < aliens.size(); i++){
-            
             Collider alienCollider = (Collider)aliens.get(i).getComponent(ComponentId.Collider);
-            
             collider.addTwoWayCollider(alienCollider);
-            
-            
+        }
+        
+        for(int i = 0; i < obstacles.size(); i++){
+            Collider obstacleCollider = (Collider)obstacles.get(i).getComponent(ComponentId.Collider);
+            collider.addTwoWayCollider(obstacleCollider);
         }
         
     }
