@@ -10,28 +10,73 @@ package gamemath;
  * @author angelo
  */
 public class Vector2D {
+
+    /**
+     *  X position in the game.
+     */
     public float x;
+
+    /**
+     *  Y position in the game.
+     */
     public float y;
     
+    /**
+     *  The zero vector (0,0).
+     */
     public static final Vector2D zero = new Vector2D(0,0); 
+
+    /**
+     *  The up vector (0,1).
+     */
     public static final Vector2D up = new Vector2D(0,1);
+
+    /**
+     *  The down vector (0,-1).
+     */
     public static final Vector2D down = new Vector2D(0,-1);
+
+    /**
+     *  The right vector (1,0).
+     */
     public static final Vector2D right = new Vector2D(1,0);
+
+    /**
+     *  The left vector (-1,0).
+     */
     public static final Vector2D left = new Vector2D(-1,0);
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Vector2D(float x, float y){
         this.x = x;
         this.y = y;
     }
     
+    /**
+     *
+     * @param copy
+     */
     public Vector2D(Vector2D copy){
         this.x = copy.x;
         this.y = copy.y;
     }
     
+    /**
+     *
+     * @return
+     */
     public float x(){
         return x;
     }
+
+    /**
+     *
+     * @return
+     */
     public float y(){
         return y;
     }

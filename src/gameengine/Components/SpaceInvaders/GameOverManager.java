@@ -54,7 +54,6 @@ public class GameOverManager extends Component implements Subscriber{
     
     @Override
     public void onNotified(){
-        System.out.println("AI");
         SceneManager.loadScene(SceneBuilder.create(GameOver));
     }
     
