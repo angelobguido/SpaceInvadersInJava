@@ -17,6 +17,7 @@ import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.SceneId.GameOver;
 
 /**
+ * Represents the movement and attack of an alien matrix.
  *
  * @author angelo
  */

@@ -17,6 +17,7 @@ import gamemath.Vector2D;
 import java.util.ArrayList;
 
 /**
+ * Represents the attack of a player.
  *
  * @author angelo
  */

@@ -14,6 +14,7 @@ import gamemath.Vector2D;
 import java.util.ArrayList;
 
 /**
+ * Represents the alien attack.
  *
  * @author angelo
  */

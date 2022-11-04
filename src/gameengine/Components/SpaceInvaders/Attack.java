@@ -10,6 +10,7 @@ import gameengine.GameObject;
 import gameengine.GameHandlers.EntityHandler;
 
 /**
+ * Represents the ability to attack launching a bullet.
  *
  * @author angelo
  */

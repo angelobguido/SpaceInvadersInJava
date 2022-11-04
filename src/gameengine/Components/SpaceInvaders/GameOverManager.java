@@ -15,6 +15,7 @@ import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.SceneId.GameOver;
 
 /**
+ * Represents the game over when the player dies.
  *
  * @author angelo
  */
