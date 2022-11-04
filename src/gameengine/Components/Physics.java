@@ -15,6 +15,9 @@ import gamemath.Vector2D;
  */
 public class Physics extends Component{
     
+    /**
+     *  Vector2D that represnents the velocity of the game object.
+     */
     public Vector2D velocity = Vector2D.zero;
     
     public Physics(GameObject gameObject){

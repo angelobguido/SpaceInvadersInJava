@@ -10,5 +10,9 @@ package gameengine.Observer;
  * @author angelo
  */
 public interface Subscriber {
+
+    /**
+     *  Will be called when this subscriber is notified.
+     */
     public void onNotified();
 }

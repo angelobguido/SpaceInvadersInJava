@@ -10,7 +10,6 @@ import gameengine.Drawable;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameObject;
 import gameengine.Sprite;
-import gamemath.Vector2D;
 
 /**
  *
@@ -25,10 +24,20 @@ public class SpriteRenderer extends Component{
         this.sprite = sprite;
     }
     
+    /**
+     * Will set a new sprite to this SpriteRenderer.
+     *
+     * @param sprite
+     */
     public void setSprite(Sprite sprite){
         this.sprite = sprite;
     }
     
+    /**
+     * Will get the current sprite in SpriteRenderer.
+     *
+     * @return
+     */
     public Sprite sprite(){
         return new Sprite(sprite);
     }

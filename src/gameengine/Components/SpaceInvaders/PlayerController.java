@@ -12,6 +12,7 @@ import gameengine.GameObject;
 import gamemath.Vector2D;
 
 /**
+ * Represents the movement and attack of the player.
  *
  * @author angelo
  */

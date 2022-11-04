@@ -15,6 +15,7 @@ import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;
 
 /**
+ * Represents the ability to get hit to something and lose health.
  *
  * @author angelo
  */
@@ -23,6 +24,12 @@ public class Hit extends Component implements Subscriber{
     private Collider col;
     private int health;
     private int maxHealth = 1;
+
+    /**
+     * Is the publisher that stores all the subscribers that want to now about
+     * this game object death.
+     *
+     */
     public final Publisher deathEvent = new Publisher();
     
     public Hit(GameObject gameObject){

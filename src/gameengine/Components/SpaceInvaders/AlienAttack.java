@@ -19,20 +19,12 @@ import java.util.ArrayList;
  */
 public class AlienAttack extends Attack{
     
-    /**
-     *
-     * @param gameObject
-     * @param bulletPrefab
-     */
+    
     public AlienAttack(GameObject gameObject, GameObject bulletPrefab){
         super(gameObject, bulletPrefab);
     }
     
-    /**
-     *
-     * @param gameObject
-     * @return
-     */
+
     @Override
     public Component createCopy(GameObject gameObject){
         
@@ -41,20 +33,14 @@ public class AlienAttack extends Attack{
         return newAttack;
     }
     
-    /**
-     *
-     * @param bullet
-     */
+
     @Override
     protected void setBulletVelocity(GameObject bullet){
         Physics physics = (Physics)bullet.getComponent(ComponentId.Physics);
         physics.velocity = new Vector2D(0,-0.2f);
     }
     
-    /**
-     *
-     * @param bullet
-     */
+   
     @Override
     protected void setBulletCollisions(GameObject bullet){
         Collider collider = (Collider)bullet.getComponent(ComponentId.Collider);

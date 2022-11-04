@@ -10,6 +10,8 @@ import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
 
 /**
+ * Represents the bullet life cycle. 
+ * When it exits a certain area, it gets destroyed.
  *
  * @author angelo
  */

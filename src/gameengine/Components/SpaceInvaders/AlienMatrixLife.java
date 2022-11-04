@@ -14,6 +14,8 @@ import gamemath.Vector2D;
 import java.util.ArrayList;
 
 /**
+ * Represents the life behaviour of an alien matrix. 
+ * Increase velocity whe an alien dies.
  *
  * @author angelo
  */

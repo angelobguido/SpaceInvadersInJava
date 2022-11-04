@@ -95,22 +95,48 @@ public class Collider extends Component {
     
     }
     
+    /**
+     *  Will get the current collider box.
+     * 
+     * @return the rectangle that represents the collider.
+     */
     public Rectangle getColliderBox(){
         return new Rectangle(colliderBox);
     }
     
+    /**
+     * Will change the collider box dimensions.
+     *
+     * @param newWidth
+     * @param newHeight
+     */
     public void changeColliderBoxDimensions(float newWidth, float newHeight){
         colliderBox.setDimensions(newWidth, newHeight);
     }
     
+    /**
+     * Will subscribe an object to listen collisions.
+     *
+     * @param s
+     */
     public void subscribe(Subscriber s){
         publisher.subscribe(s);
     }
     
+    /**
+     * Will unsubscribe an object to not listen collisions.
+     *
+     * @param s
+     */
     public void unsubscribe(Subscriber s){
         publisher.unsubscribe(s);
     }
     
+    /**
+     * Will add a new collider to collide with.
+     *
+     * @param c
+     */
     public void addCollider(Collider c){
         if(c == null){
             return;
@@ -126,6 +152,11 @@ public class Collider extends Component {
         
     }
     
+    /**
+     * Will add a new collider to this and will add this collider to the new collider.
+     *
+     * @param c
+     */
     public void addTwoWayCollider(Collider c){
         
         
@@ -138,10 +169,19 @@ public class Collider extends Component {
         c.addCollider(this);
     }
     
+    /**
+     * Will remove a collider in the next update or destroy.
+     *
+     * @param c
+     */
     public void removeCollider(Collider c){
         removedCollidersBuffer.push(c);
     }
     
+    /**
+     * Will notify a collision to all subscribers.
+     *
+     */
     public void notifyCollision(){
         publisher.notifySubscribers();
     }
