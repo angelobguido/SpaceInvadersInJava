@@ -9,8 +9,11 @@ import gameengine.Components.SpaceInvaders.GameOverManager;
 import gameengine.Components.Physics;
 import gameengine.Components.SpaceInvaders.PlayerAttack;
 import gameengine.GameObject;
-import gameengine.Scene;
+import gameengine.GameScene;
 import gamemath.Vector2D;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 
 /**
  * Builder used to build the space invaders scenes.
@@ -19,17 +22,17 @@ import gamemath.Vector2D;
 
 public class SceneBuilder {
     public enum SceneId{GameOver, GameMain} 
-    private static Scene gameOver;
-    private static Scene gameMain;
+    private static GameScene gameOver;
+    private static GameScene gameMain;
     
     /**
      * Static function that builds the desired scene.
      * @param id is the id of the scene you want to build.
      * @return the desired scene.
      */
-    public static Scene create(SceneId id){
+    public static GameScene create(SceneId id){
         
-        Scene scene = new Scene();
+        GameScene scene = new GameScene();
         
         switch(id){
             case GameOver: 
@@ -76,6 +79,20 @@ public class SceneBuilder {
                 scene.addEntity(obstacle3);
                 scene.addEntity(obstacle4);
                 scene.addEntity(gameOverManager);
+                
+                StackPane gameRoot = new StackPane();
+                gameRoot.setPrefSize(900, 600);
+                
+                StackPane root = new StackPane();
+                root.setPrefSize(900, 600);
+                
+                Rectangle bg = new Rectangle(900, 600);
+                
+                root.getChildren().addAll(gameRoot, bg);
+                
+                scene.setRoot(gameRoot);
+                
+                scene.setScene(new Scene(root));
                 
                 gameMain = scene;
                 

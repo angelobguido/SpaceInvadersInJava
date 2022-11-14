@@ -5,8 +5,10 @@
 package gameengine.GameHandlers;
 
 import gameengine.GameObject;
-import gameengine.Scene;
+import gameengine.GameScene;
 import java.util.ArrayList;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -14,12 +16,21 @@ import java.util.ArrayList;
  */
 public class SceneManager {
 
-    private static Scene current;
+    private static GameScene current;
     private static boolean canChange = false;
+    private static Stage stage;
     
-    public static void loadScene(Scene newScene){
+    public static void loadScene(GameScene newScene){
         current = newScene;
         canChange = true;
+    }
+    
+    public static StackPane getCurrentRoot(){
+        return current.getRoot();
+    }
+    
+    public static void setStage(Stage stage){
+        SceneManager.stage = stage;
     }
     
     public static void update(){
@@ -30,6 +41,10 @@ public class SceneManager {
             EntityHandler.addEntitiesNow(newEntities);
             
             canChange = false;
+            
+            if(stage != null){
+                stage.setScene(current.getScene());
+            }
             
         }
     }

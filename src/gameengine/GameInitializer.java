@@ -1,30 +1,29 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package spaceinvaders;
+package gameengine;
 
 import gameengine.GameHandlers.CollisionHandler;
-import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
+import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.SceneManager;
-import graphics.TerminalInterface;
+import graphics.VisualInterface;
+import javafx.stage.Stage;
+import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.SceneId.GameMain;
 
 /**
  *
  * @author angelo
  */
-
-/*
-public class SpaceInvaders {
-
-    
-    public static void main(String[] args) throws InterruptedException {
-        
-        Graphics.setGraphics(new TerminalInterface(40, 40));
+public class GameInitializer {
+    public static void init(VisualInterface vi, Stage primaryStage) throws Exception{
+        SceneManager.setStage(primaryStage);
+        Graphics.setGraphics(vi);
         SceneManager.loadScene(SceneBuilder.create(GameMain));
+        SceneManager.update();
         
         while(true){
             Graphics.clean();
@@ -35,8 +34,5 @@ public class SpaceInvaders {
             SceneManager.update();
             Thread.sleep(50);
         }
-        
     }
-    
 }
-*/

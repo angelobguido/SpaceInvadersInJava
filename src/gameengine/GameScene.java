@@ -5,16 +5,32 @@
 package gameengine;
 
 import java.util.ArrayList;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 
 /**
  *
  * @author angelo
  */
-public class Scene {
-    private ArrayList<GameObject> sceneEntities;
+public class GameScene {
+    private ArrayList<GameObject> sceneEntities = sceneEntities = new ArrayList<>();
+    private Scene fxScene;
+    private StackPane gameRoot;
     
-    public Scene(){
-        sceneEntities = new ArrayList<>();
+    public Scene getScene(){
+        return fxScene;
+    }
+    
+    public StackPane getRoot(){
+        return gameRoot;
+    }
+    
+    public void setScene(Scene fxScene){
+        this.fxScene = fxScene;
+    }
+    
+    public void setRoot(StackPane gameRoot){
+        this.gameRoot = gameRoot;
     }
     
     public void addEntity(GameObject newEntity){
