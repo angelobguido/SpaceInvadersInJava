@@ -53,8 +53,11 @@ public class GraphicInterface extends VisualInterface {
             Vector2D position = drawStack.pop().position;
             
             if(root != null){
-                Circle c1 = new Circle(position.x*10, -position.y*10, 10);
+                System.out.println(position.x);
+                Circle c1 = new Circle(10);
                 c1.setFill(Color.WHITE);
+                c1.setTranslateX(position.x*10);
+                c1.setTranslateY(-position.y*10);
                 
                 root.getChildren().add(c1);
             }
