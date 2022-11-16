@@ -12,6 +12,7 @@ import java.util.Stack;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -37,6 +38,9 @@ public class GraphicInterface extends VisualInterface {
     }
     
     public void clean(){
+        
+        root = SceneManager.getCurrentRoot();
+        
         root.getChildren().clear();
         
     }
@@ -49,7 +53,10 @@ public class GraphicInterface extends VisualInterface {
             Vector2D position = drawStack.pop().position;
             
             if(root != null){
-                root.getChildren().add(new Circle(position.x, -position.y, 5));
+                Circle c1 = new Circle(position.x*10, -position.y*10, 10);
+                c1.setFill(Color.WHITE);
+                
+                root.getChildren().add(c1);
             }
             
         }

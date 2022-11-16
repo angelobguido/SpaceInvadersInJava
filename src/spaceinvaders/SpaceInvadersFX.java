@@ -105,7 +105,7 @@ public class SpaceInvadersFX extends Application {
         MenuItem itemStart = new MenuItem("Start");
         itemStart.setOnActive(() -> {
             try{
-                GameInitializer.init(new TerminalInterface(40,40), stage);
+                GameInitializer.init(stage);
             }catch(Exception e){
                 System.exit(1);
                 //Do nothing

@@ -13,7 +13,10 @@ import gameengine.GameScene;
 import gamemath.Vector2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 /**
  * Builder used to build the space invaders scenes.
@@ -88,7 +91,7 @@ public class SceneBuilder {
                 
                 Rectangle bg = new Rectangle(900, 600);
                 
-                root.getChildren().addAll(gameRoot, bg);
+                root.getChildren().addAll(bg, gameRoot);
                 
                 scene.setRoot(gameRoot);
                 

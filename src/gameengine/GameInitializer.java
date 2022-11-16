@@ -9,7 +9,12 @@ import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.SceneManager;
+import graphics.GraphicInterface;
+import graphics.TerminalInterface;
 import graphics.VisualInterface;
+import javafx.application.Platform;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.SceneId.GameMain;
@@ -19,20 +24,49 @@ import static spaceinvaders.SceneBuilder.SceneId.GameMain;
  * @author angelo
  */
 public class GameInitializer {
-    public static void init(VisualInterface vi, Stage primaryStage) throws Exception{
+    public static void init(Stage primaryStage) throws Exception{
         SceneManager.setStage(primaryStage);
-        Graphics.setGraphics(vi);
+        Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadScene(SceneBuilder.create(GameMain));
         SceneManager.update();
         
-        while(true){
-            Graphics.clean();
-            Graphics.update();
-            CollisionHandler.update();
-            EventHandler.update();
-            EntityHandler.update();
-            SceneManager.update();
-            Thread.sleep(50);
-        }
+        Circle t1 = new Circle(10);
+        t1.setFill(Color.WHITE);
+        
+        SceneManager.getCurrentRoot().getChildren().add(t1);
+        
+        int i = 0;
+        
+        Thread t = new Thread( () ->{
+            
+            while(true){
+            
+                System.out.println("AAAAAa");
+                
+                Platform.runLater(()->{
+                    
+                    Graphics.clean();
+                    Graphics.update();
+                    
+                });
+                
+                CollisionHandler.update();
+                EventHandler.update();
+                EntityHandler.update();
+                SceneManager.update();
+
+                try{
+                    Thread.sleep(50);
+                }catch(Exception e){
+                    System.exit(1);
+                }
+
+
+            }
+            
+        });
+        
+        t.start();
+        
     }
 }
