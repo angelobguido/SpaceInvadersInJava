@@ -19,9 +19,10 @@ import java.util.Stack;
  */
 public class Graphics {
     
-    private static VisualInterface visualInterface; //visual interface that will draw the stored drawables
-    private static Stack<Drawable> buffer = new Stack<>(); //will store the drawables for the next update
-   
+    private static VisualInterface visualInterface; //visual interface that will draw the stored drawables.
+    private static Stack<Drawable> renderBuffer = new Stack<>(); //will store the drawables for the next update>
+    private static Stack<Drawable> undrawBuffer = new Stack<>(); //will store all the draws that are going to be deleted in next update.
+    
     /**
      * Set the current visual interface.
      * 
@@ -37,14 +38,16 @@ public class Graphics {
      * @param object is the object tha you want to draw in the next update.
      */
     public static void putInRenderBuffer(Drawable object){
-        buffer.push(object);
+        renderBuffer.push(object);
     }
     
     /**
-     * Will clear the screen of the visual interface.
+     * Will put the drawable object inside the buffer to undraw.
+     * 
+     * @param object is the object tha you want to undraw in the next update.
      */
-    public static void clean(){
-        visualInterface.clean();
+    public static void putInUndrawBuffer(Drawable object){
+        undrawBuffer.push(object);
     }
     
     /**
@@ -52,9 +55,14 @@ public class Graphics {
      * Delegating the draw part to the visual interface.
      */
     public static void update(){
-        while(buffer.empty()==false){
-            visualInterface.draw(buffer.pop());
+        while(renderBuffer.empty()==false){
+            visualInterface.draw(renderBuffer.pop());
         }
+        
+        while(undrawBuffer.empty()==false){
+            visualInterface.undraw(undrawBuffer.pop());
+        }
+        
         visualInterface.update();
     }
 }

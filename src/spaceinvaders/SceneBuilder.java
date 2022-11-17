@@ -44,6 +44,20 @@ public class SceneBuilder {
                 
                 if(gameOver != null) return gameOver;
                 
+                StackPane gameRootGO = new StackPane();
+                gameRootGO.setPrefSize(900, 600);
+                
+                StackPane rootGO = new StackPane();
+                rootGO.setPrefSize(900, 600);
+                
+                Rectangle bgGO = new Rectangle(900, 600);
+                
+                rootGO.getChildren().addAll(bgGO, gameRootGO);
+                
+                scene.setRoot(gameRootGO);
+                
+                scene.setScene(new Scene(rootGO));
+                
                 gameOver = scene;
                 
                 break;

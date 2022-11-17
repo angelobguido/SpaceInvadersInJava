@@ -18,10 +18,11 @@ import gameengine.Sprite;
 public class SpriteRenderer extends Component{
     
     private Sprite sprite;
+    private Drawable drawElement;
     
     public SpriteRenderer(GameObject gameObject, Sprite sprite){
         super(gameObject, ComponentId.SpriteRenderer);
-        this.sprite = sprite;
+        this.drawElement = new Drawable(sprite, gameObject.getPositionReference());
     }
     
     /**
@@ -30,29 +31,20 @@ public class SpriteRenderer extends Component{
      * @param sprite
      */
     public void setSprite(Sprite sprite){
-        this.sprite = sprite;
+        drawElement.sprite = sprite;
     }
-    
-    /**
-     * Will get the current sprite in SpriteRenderer.
-     *
-     * @return
-     */
-    public Sprite sprite(){
-        return new Sprite(sprite);
-    }
-    
+      
     @Override
     public Component createCopy(GameObject gameObject){
         
-        SpriteRenderer newSpriteRenderer = new SpriteRenderer(gameObject, sprite);
+        SpriteRenderer newSpriteRenderer = new SpriteRenderer(gameObject, drawElement.sprite);
         
         return newSpriteRenderer;
     }
     
     @Override
     public void update(){
-        Graphics.putInRenderBuffer(new Drawable(sprite, gameObject.getPositionReference()));
+        Graphics.putInRenderBuffer(drawElement);
     }
     
     @Override
@@ -65,5 +57,6 @@ public class SpriteRenderer extends Component{
         sprite = null;
         gameObject.removeComponent(this);
         gameObject = null;
+        Graphics.putInUndrawBuffer(drawElement);
     }
 }

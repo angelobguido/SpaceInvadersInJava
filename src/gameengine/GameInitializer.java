@@ -30,26 +30,11 @@ public class GameInitializer {
         SceneManager.loadScene(SceneBuilder.create(GameMain));
         SceneManager.update();
         
-        Circle t1 = new Circle(10);
-        t1.setFill(Color.WHITE);
-        
-        SceneManager.getCurrentRoot().getChildren().add(t1);
-        
-        int i = 0;
-        
         Thread t = new Thread( () ->{
             
             while(true){
-            
-                System.out.println("AAAAAa");
                 
-                Platform.runLater(()->{
-                    
-                    Graphics.clean();
-                    Graphics.update();
-                    
-                });
-                
+                Graphics.update();
                 CollisionHandler.update();
                 EventHandler.update();
                 EntityHandler.update();

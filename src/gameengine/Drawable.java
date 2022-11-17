@@ -5,17 +5,32 @@
 package gameengine;
 
 import gamemath.Vector2D;
+import javafx.scene.Node;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 /**
  * This represents all the drawable objects.
  * @author angelo
  */
 public class Drawable {
-    public Sprite image;
-    public Vector2D position;
+    public Sprite sprite;
+    private Vector2D position;
+    private Circle graphics;
     
-    public Drawable(Sprite image, Vector2D position){
-        this.image = image;
+    public Drawable(Sprite sprite, Vector2D position){
+        this.sprite = sprite;
         this.position = position;
+        
+        graphics = new Circle(10);
+        graphics.setFill(Color.WHITE);
+    }
+    
+    public Vector2D position(){
+        return new Vector2D(position);
+    }
+    
+    public Node graphics(){
+        return graphics;
     }
 }

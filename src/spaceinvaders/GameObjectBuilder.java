@@ -15,6 +15,8 @@ import gameengine.Components.*;
 import gameengine.*;
 import gamemath.Vector2D;
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import static spaceinvaders.Prefab.Bullet;
 
 /**
@@ -53,7 +55,9 @@ public class GameObjectBuilder {
                 
                 alienStructure.add(Vector2D.zero);
                 
-                Sprite alienSprite = new Sprite('$', alienStructure);
+                Sprite alienSprite = new Sprite();
+                alienSprite.charRepresentation = '$';
+                alienSprite.spriteStructure = alienStructure;
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
@@ -82,12 +86,18 @@ public class GameObjectBuilder {
                 
                 playerBulletStructure.add(Vector2D.zero);
 
-                Sprite playerBulletSprite = new Sprite('1', playerBulletStructure);
+                Sprite playerBulletSprite = new Sprite();
+                playerBulletSprite.charRepresentation = '1';
+                playerBulletSprite.spriteStructure = playerBulletStructure;
+                
                 
                 GameObject playerBullet = GameObjectBuilder.create(Bullet);
                 ((SpriteRenderer)playerBullet.getComponent(ComponentId.SpriteRenderer)).setSprite(playerBulletSprite);
                 
-                Sprite playerSprite = new Sprite('%', playerStructure);
+                Sprite playerSprite = new Sprite();
+                playerSprite.charRepresentation = '%';
+                playerSprite.spriteStructure = playerStructure;
+                
                 Collider playerCollider = new Collider(gameObject);
                 playerCollider.changeColliderBoxDimensions(3, 3);
                 gameObject.addComponent(playerCollider);
@@ -112,8 +122,9 @@ public class GameObjectBuilder {
                 
                 obstacleStructure.add(Vector2D.zero);
                 
-                
-                Sprite obstacleSprite = new Sprite('@', obstacleStructure);
+                Sprite obstacleSprite = new Sprite();
+                obstacleSprite.charRepresentation = '@';
+                obstacleSprite.spriteStructure = obstacleStructure;
                 
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
@@ -212,7 +223,9 @@ public class GameObjectBuilder {
                 
                 bulletStructure.add(Vector2D.zero);
 
-                Sprite bulletSprite = new Sprite('O', bulletStructure);
+                Sprite bulletSprite = new Sprite();
+                bulletSprite.charRepresentation = '0';
+                bulletSprite.spriteStructure = bulletStructure;
                 
                 Physics bulletPhysics = new Physics(gameObject);
                 bulletPhysics.velocity = new Vector2D(0,0.1f);

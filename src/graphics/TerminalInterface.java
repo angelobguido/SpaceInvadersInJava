@@ -26,16 +26,17 @@ public class TerminalInterface extends VisualInterface {
         clean();
     }
     
+    @Override
     public void draw(Drawable object){
         
-        ArrayList<Vector2D> spriteStructure = object.image.spriteStructure();
-        char charRepresentation = object.image.charRepresentation();
+        ArrayList<Vector2D> spriteStructure = object.sprite.spriteStructure;
+        char charRepresentation = object.sprite.charRepresentation;
         Vector2D currentPosition;
         
 
         for(int i = 0; i<spriteStructure.size(); i++){
 
-            currentPosition = Vector2D.addVectors(spriteStructure.get(i), object.position);
+            currentPosition = Vector2D.addVectors(spriteStructure.get(i), object.position());
             
             if(isOutOfBounds(currentPosition)==false){
                 canvas[heigth - 1 - Math.round(currentPosition.y())][Math.round(currentPosition.x())] = charRepresentation;
@@ -43,6 +44,11 @@ public class TerminalInterface extends VisualInterface {
 
         }
 
+    }
+    
+    @Override
+    public void undraw(Drawable object){
+        
     }
     
     private boolean isOutOfBounds(Vector2D position){
@@ -60,7 +66,10 @@ public class TerminalInterface extends VisualInterface {
         }
     }
     
+    @Override
     public void update(){
+        
+        clean();
         
         for(int i = -1; i<heigth+1; i++){
             for(int j = -1; j<width+1; j++){
@@ -75,10 +84,12 @@ public class TerminalInterface extends VisualInterface {
         }
     }
     
+    @Override
     protected void setWidth(int width){
         this.width = width;
     }
     
+    @Override
     protected void setHeigth(int heigth){
         this.heigth = heigth;
     }

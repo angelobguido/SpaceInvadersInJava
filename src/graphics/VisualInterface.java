@@ -26,11 +26,14 @@ public abstract class VisualInterface {
      */
     public abstract void draw(Drawable object);
     
-    /**
-     * Will clear the screen of the visual interface.
-     */
-    public abstract void clean();
     
+    /**
+     * Function used to undraw the drawable object in the viusal interface.
+     * 
+     * @param object 
+     */
+    public abstract void undraw(Drawable object);
+   
     /**
      * Will update the screen of the viusal interface.
      */
