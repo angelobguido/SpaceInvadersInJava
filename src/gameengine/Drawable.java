@@ -16,14 +16,16 @@ import javafx.scene.shape.Circle;
 public class Drawable {
     public Sprite sprite;
     private Vector2D position;
-    private Circle graphics;
+    private Node graphics;
     
     public Drawable(Sprite sprite, Vector2D position){
         this.sprite = sprite;
         this.position = position;
         
-        graphics = new Circle(10);
-        graphics.setFill(Color.WHITE);
+        if(sprite.content != null){
+            graphics = sprite.content.generateContent();
+        }
+        
     }
     
     public Vector2D position(){

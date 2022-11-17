@@ -58,6 +58,7 @@ public class GameObjectBuilder {
                 Sprite alienSprite = new Sprite();
                 alienSprite.charRepresentation = '$';
                 alienSprite.spriteStructure = alienStructure;
+                alienSprite.content = new GameImage();
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
@@ -89,6 +90,7 @@ public class GameObjectBuilder {
                 Sprite playerBulletSprite = new Sprite();
                 playerBulletSprite.charRepresentation = '1';
                 playerBulletSprite.spriteStructure = playerBulletStructure;
+                playerBulletSprite.content = new GameImage();
                 
                 
                 GameObject playerBullet = GameObjectBuilder.create(Bullet);
@@ -97,6 +99,7 @@ public class GameObjectBuilder {
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
                 playerSprite.spriteStructure = playerStructure;
+                playerSprite.content = new GameImage();
                 
                 Collider playerCollider = new Collider(gameObject);
                 playerCollider.changeColliderBoxDimensions(3, 3);
@@ -125,6 +128,7 @@ public class GameObjectBuilder {
                 Sprite obstacleSprite = new Sprite();
                 obstacleSprite.charRepresentation = '@';
                 obstacleSprite.spriteStructure = obstacleStructure;
+                obstacleSprite.content = new GameImage();
                 
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
@@ -226,6 +230,7 @@ public class GameObjectBuilder {
                 Sprite bulletSprite = new Sprite();
                 bulletSprite.charRepresentation = '0';
                 bulletSprite.spriteStructure = bulletStructure;
+                bulletSprite.content = new GameImage();
                 
                 Physics bulletPhysics = new Physics(gameObject);
                 bulletPhysics.velocity = new Vector2D(0,0.1f);
