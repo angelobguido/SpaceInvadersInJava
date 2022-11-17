@@ -15,6 +15,7 @@ import gameengine.Components.*;
 import gameengine.*;
 import gamemath.Vector2D;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import static spaceinvaders.Prefab.Bullet;
@@ -99,7 +100,9 @@ public class GameObjectBuilder {
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
                 playerSprite.spriteStructure = playerStructure;
-                playerSprite.content = new GameImage();
+                Image playerImage = new Image(GameObjectBuilder.class.getResource("player.png").toExternalForm());
+                
+                playerSprite.content = new GameImage(playerImage, 60, 60);
                 
                 Collider playerCollider = new Collider(gameObject);
                 playerCollider.changeColliderBoxDimensions(3, 3);

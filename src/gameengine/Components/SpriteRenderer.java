@@ -17,7 +17,6 @@ import gameengine.Sprite;
  */
 public class SpriteRenderer extends Component{
     
-    private Sprite sprite;
     private Drawable drawElement;
     
     public SpriteRenderer(GameObject gameObject, Sprite sprite){
@@ -54,9 +53,9 @@ public class SpriteRenderer extends Component{
     
     @Override
     public void destroy(){
-        sprite = null;
         gameObject.removeComponent(this);
         gameObject = null;
         Graphics.putInUndrawBuffer(drawElement);
+        drawElement = null;
     }
 }

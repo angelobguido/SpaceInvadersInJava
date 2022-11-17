@@ -4,6 +4,8 @@
  */
 package gameengine;
 
+import javafx.scene.Node;
+
 /**
  *
  * @author angelo
