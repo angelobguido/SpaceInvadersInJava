@@ -8,6 +8,7 @@ import gameengine.ComponentId;
 import gameengine.Components.SpaceInvaders.GameOverManager;
 import gameengine.Components.Physics;
 import gameengine.Components.SpaceInvaders.PlayerAttack;
+import gameengine.GameHandlers.InputHandler;
 import gameengine.GameObject;
 import gameengine.GameScene;
 import gamemath.Vector2D;
@@ -115,6 +116,10 @@ public class SceneBuilder {
                 scene.setRoot(gameRoot);
                 
                 scene.setScene(new Scene(root));
+                
+                scene.getScene().setOnKeyPressed((event)->{
+                    InputHandler.sendButton(event.getCode());
+                });
                 
                 gameMain = scene;
                 

@@ -8,6 +8,7 @@ import gameengine.GameHandlers.CollisionHandler;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.Graphics;
+import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.SceneManager;
 import graphics.GraphicInterface;
 import graphics.TerminalInterface;
@@ -45,6 +46,8 @@ public class GameInitializer {
                 }catch(Exception e){
                     System.exit(1);
                 }
+                
+                InputHandler.update();
 
 
             }

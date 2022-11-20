@@ -8,6 +8,8 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.Components.Physics;
+import gameengine.GameHandlers.InputHandler;
+import gameengine.GameHandlers.InputHandler.Command;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 
@@ -17,9 +19,7 @@ import gamemath.Vector2D;
  * @author angelo
  */
 public class PlayerController extends Component{
-    private final static float maxX = 35;
-    private final static float minX = 1;
-    private boolean isRight = true;
+    
     private Physics playerPhysics;
     private PlayerAttack playerAttack;
     private boolean canAttack = true;
@@ -33,7 +33,6 @@ public class PlayerController extends Component{
     @Override
     public Component createCopy(GameObject gameObject){
         PlayerController newPlayerController = new PlayerController(gameObject);
-        newPlayerController.isRight = isRight;
         
         return newPlayerController;
     }
@@ -41,20 +40,14 @@ public class PlayerController extends Component{
     @Override
     public void update(){
         
-        if(isRight){
-            if(gameObject.position().x > maxX){
-                isRight = false;
-                invertVelocity();
-            }
-        }else{
-            if(gameObject.position().x < minX){
-                isRight = true;
-                invertVelocity(); 
-            }
+        Command c = InputHandler.getCommand();
+        
+        switch(c){
+            case Nothing: playerPhysics.velocity = Vector2D.zero; break;
+            case Left: playerPhysics.velocity = new Vector2D(-2, 0); break;
+            case Right: playerPhysics.velocity = new Vector2D(2, 0); break;
+            case Shoot: playerAttack.attack(); break;
         }
-        
-        attack();
-        
         
     }
     
@@ -84,8 +77,6 @@ public class PlayerController extends Component{
         
         playerPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
         playerAttack = (PlayerAttack)gameObject.getComponent(ComponentId.Attack);
-        
-        playerPhysics.velocity = new Vector2D(0.5f, 0);
         
     }
     
