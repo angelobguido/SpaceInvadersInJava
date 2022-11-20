@@ -12,6 +12,8 @@ import gameengine.GameObject;
 import gameengine.GameScene;
 import gamemath.Vector2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -81,10 +83,10 @@ public class SceneBuilder {
                 GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
                 GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
 
-                obstacle1.setPosition(new Vector2D(5,4));
-                obstacle2.setPosition(new Vector2D(15,4));
-                obstacle3.setPosition(new Vector2D(25,4));
-                obstacle4.setPosition(new Vector2D(35,4));
+                obstacle1.setPosition(new Vector2D(5,6));
+                obstacle2.setPosition(new Vector2D(15,6));
+                obstacle3.setPosition(new Vector2D(25,6));
+                obstacle4.setPosition(new Vector2D(35,6));
                 
                 GameObject gameOverManager = new GameObject();
                 gameOverManager.addComponent(new GameOverManager(gameOverManager));
@@ -103,7 +105,10 @@ public class SceneBuilder {
                 StackPane root = new StackPane();
                 root.setPrefSize(900, 600);
                 
-                Rectangle bg = new Rectangle(900, 600);
+                ImageView bg = new ImageView(new Image(SceneBuilder.class.getResource("images/background.png").toExternalForm()));
+                bg.setFitHeight(900);
+                bg.setFitHeight(900);
+                bg.setPreserveRatio(true);
                 
                 root.getChildren().addAll(bg, gameRoot);
                 
