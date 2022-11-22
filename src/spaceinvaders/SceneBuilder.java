@@ -16,10 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import spaceinvaders.ScreenAssets.GameOverScreen;
 
 /**
  * Builder used to build the space invaders scenes.
@@ -28,8 +26,13 @@ import javafx.scene.text.Text;
 
 public class SceneBuilder {
     public enum SceneId{GameOver, GameMain} 
+    private static Stage stage;
     private static GameScene gameOver;
     private static GameScene gameMain;
+    
+    public static void setMainStage(Stage stage){
+        SceneBuilder.stage = stage;
+    }
     
     /**
      * Static function that builds the desired scene.
@@ -43,90 +46,94 @@ public class SceneBuilder {
         switch(id){
             case GameOver: 
                 
-                System.out.println("GAME OVER!");
-                
                 if(gameOver != null) return gameOver;
-                
-                StackPane gameRootGO = new StackPane();
-                gameRootGO.setPrefSize(900, 600);
-                
-                StackPane rootGO = new StackPane();
-                rootGO.setPrefSize(900, 600);
-                
-                Rectangle bgGO = new Rectangle(900, 600);
-                
-                rootGO.getChildren().addAll(bgGO, gameRootGO);
-                
-                scene.setRoot(gameRootGO);
-                
-                scene.setScene(new Scene(rootGO));
-                
-                gameOver = scene;
-                
+                scene = generateGameOver();
                 break;
+                
             
             case GameMain:
                 
-                if(gameMain != null) return gameMain;
-                
-                GameObject player = GameObjectBuilder.create(Prefab.Player);
-                GameObject aliens = GameObjectBuilder.create(Prefab.AliensMatrix);
-
-                aliens.setPosition(new Vector2D(0,30));
-
-                PlayerAttack playerAttack = (PlayerAttack)player.getComponent(ComponentId.Attack);
-                Physics playerPhysics = (Physics)player.getComponent(ComponentId.Physics);
-                playerPhysics.velocity = new Vector2D(1,0);
-                player.setPosition(new Vector2D(0,2));
-
-                GameObject obstacle1 = GameObjectBuilder.create(Prefab.BigObstacle);
-                GameObject obstacle2 = GameObjectBuilder.create(Prefab.BigObstacle);
-                GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
-                GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
-
-                obstacle1.setPosition(new Vector2D(5,6));
-                obstacle2.setPosition(new Vector2D(15,6));
-                obstacle3.setPosition(new Vector2D(25,6));
-                obstacle4.setPosition(new Vector2D(35,6));
-                
-                GameObject gameOverManager = new GameObject();
-                gameOverManager.addComponent(new GameOverManager(gameOverManager));
-                
-                scene.addEntity(aliens);
-                scene.addEntity(player);
-                scene.addEntity(obstacle1);
-                scene.addEntity(obstacle2);
-                scene.addEntity(obstacle3);
-                scene.addEntity(obstacle4);
-                scene.addEntity(gameOverManager);
-                
-                StackPane gameRoot = new StackPane();
-                gameRoot.setPrefSize(900, 600);
-                
-                StackPane root = new StackPane();
-                root.setPrefSize(900, 600);
-                
-                ImageView bg = new ImageView(new Image(SceneBuilder.class.getResource("images/background.png").toExternalForm()));
-                bg.setFitHeight(900);
-                bg.setFitHeight(900);
-                bg.setPreserveRatio(true);
-                
-                root.getChildren().addAll(bg, gameRoot);
-                
-                scene.setRoot(gameRoot);
-                
-                scene.setScene(new Scene(root));
-                
-                scene.getScene().setOnKeyPressed((event)->{
-                    InputHandler.sendButton(event.getCode());
-                });
-                
-                gameMain = scene;
-                
+                scene = generateMainGame();
                 break;
             
             
         }
+        
+        return scene;
+    }
+    
+    private static GameScene generateGameOver(){
+        
+        GameScene scene = new GameScene();
+        
+        GameOverScreen gos = new GameOverScreen(stage, create(SceneId.GameMain));
+        
+        System.out.println("GAME OVER!");
+        
+        scene.setScene(gos.generateScene());
+        
+        gameOver = scene;
+        
+        return scene;
+    }
+    
+    private static GameScene generateMainGame(){
+        
+        GameScene scene = new GameScene();
+        
+        GameObject player = GameObjectBuilder.create(Prefab.Player);
+        GameObject aliens = GameObjectBuilder.create(Prefab.AliensMatrix);
+
+        aliens.setPosition(new Vector2D(0,30));
+
+        PlayerAttack playerAttack = (PlayerAttack)player.getComponent(ComponentId.Attack);
+        Physics playerPhysics = (Physics)player.getComponent(ComponentId.Physics);
+        playerPhysics.velocity = new Vector2D(1,0);
+        player.setPosition(new Vector2D(0,2));
+
+        GameObject obstacle1 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle2 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
+        GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
+
+        obstacle1.setPosition(new Vector2D(5,6));
+        obstacle2.setPosition(new Vector2D(15,6));
+        obstacle3.setPosition(new Vector2D(25,6));
+        obstacle4.setPosition(new Vector2D(35,6));
+
+        GameObject gameOverManager = new GameObject();
+        gameOverManager.addComponent(new GameOverManager(gameOverManager));
+
+        scene.addEntity(aliens);
+        scene.addEntity(player);
+        scene.addEntity(obstacle1);
+        scene.addEntity(obstacle2);
+        scene.addEntity(obstacle3);
+        scene.addEntity(obstacle4);
+        scene.addEntity(gameOverManager);
+
+        StackPane gameRoot = new StackPane();
+        gameRoot.setPrefSize(900, 600);
+
+        StackPane root = new StackPane();
+        root.setPrefSize(900, 600);
+
+        ImageView bg = new ImageView(new Image(SceneBuilder.class.getResource("images/background.png").toExternalForm()));
+        bg.setFitHeight(900);
+        bg.setFitHeight(900);
+        bg.setPreserveRatio(true);
+
+        root.getChildren().addAll(bg, gameRoot);
+
+        scene.setRoot(gameRoot);
+
+        scene.setScene(new Scene(root));
+
+        scene.getScene().setOnKeyPressed((event)->{
+            InputHandler.sendButton(event.getCode());
+        });
+   
+        gameMain = scene;
         
         return scene;
     }

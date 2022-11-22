@@ -51,6 +51,10 @@ public class GraphicInterface extends VisualInterface {
     public void update(){
         
         root = SceneManager.getCurrentRoot();
+
+        if(root == null){
+            return;
+        }
         
         Platform.runLater(()->{
             

@@ -22,6 +22,7 @@ public class GameScene {
     }
     
     public StackPane getRoot(){
+        
         return gameRoot;
     }
     

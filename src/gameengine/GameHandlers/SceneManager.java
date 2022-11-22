@@ -7,6 +7,7 @@ package gameengine.GameHandlers;
 import gameengine.GameObject;
 import gameengine.GameScene;
 import java.util.ArrayList;
+import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,7 +27,7 @@ public class SceneManager {
     }
     
     public static StackPane getCurrentRoot(){
-        return current.getRoot();
+       return current.getRoot();
     }
     
     public static void setStage(Stage stage){
@@ -43,7 +44,7 @@ public class SceneManager {
             canChange = false;
             
             if(stage != null){
-                stage.setScene(current.getScene());
+                Platform.runLater(()->{stage.setScene(current.getScene());});
             }
             
         }

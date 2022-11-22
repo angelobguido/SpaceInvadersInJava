@@ -25,6 +25,9 @@ import static spaceinvaders.SceneBuilder.SceneId.GameMain;
  * @author angelo
  */
 public class GameInitializer {
+    
+    private static boolean hasStopped = false;
+    
     public static void init(Stage primaryStage) throws Exception{
         SceneManager.setStage(primaryStage);
         Graphics.setGraphics(new GraphicInterface());
@@ -33,7 +36,7 @@ public class GameInitializer {
         
         Thread t = new Thread( () ->{
             
-            while(true){
+            while(hasStopped == false){
                 
                 Graphics.update();
                 CollisionHandler.update();
@@ -49,12 +52,15 @@ public class GameInitializer {
                 
                 InputHandler.update();
 
-
             }
             
         });
         
         t.start();
         
+    }
+    
+    public static void stop(){
+        hasStopped = true;
     }
 }
