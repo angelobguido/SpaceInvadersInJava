@@ -42,17 +42,15 @@ public class GameOverScreen {
         
         MenuItem itemRetry = new MenuItem("Retry");
         itemRetry.setOnActive(() -> {
-            
-            Thread t = new Thread( () ->  GameInitializer.init(stage));
-            t.start();
+            GameInitializer.init(stage);
             
         });
         
         MenuItem itemMenu = new MenuItem("Menu");
-        itemRetry.setOnActive(() -> stage.setScene(mainMenu));
+        itemMenu.setOnActive(() -> stage.setScene(mainMenu));
         
         MenuItem itemQuit = new MenuItem("Quit");
-        itemQuit.setOnActive(() -> System.exit(0));
+        itemQuit.setOnActive(() -> {System.out.println("Quit"); System.exit(0);});
         
         menuBox = new VBox(10, itemRetry, itemQuit);
         menuBox.setAlignment(Pos.CENTER);
