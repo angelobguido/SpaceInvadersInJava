@@ -28,7 +28,10 @@ public class GameInitializer {
     
     private static boolean hasStopped = false;
     
-    public static void init(Stage primaryStage) throws Exception{
+    public static void init(Stage primaryStage){
+        
+        hasStopped = false;
+        
         SceneManager.setStage(primaryStage);
         Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadScene(SceneBuilder.create(GameMain));
@@ -36,21 +39,24 @@ public class GameInitializer {
         
         Thread t = new Thread( () ->{
             
+            
             while(hasStopped == false){
+                
+                System.out.println("Frame");
                 
                 Graphics.update();
                 CollisionHandler.update();
                 EventHandler.update();
                 EntityHandler.update();
                 SceneManager.update();
-
+                InputHandler.update();
+                
                 try{
                     Thread.sleep(50);
                 }catch(Exception e){
                     System.exit(1);
                 }
                 
-                InputHandler.update();
 
             }
             

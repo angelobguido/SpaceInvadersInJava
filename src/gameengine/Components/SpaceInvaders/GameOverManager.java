@@ -8,6 +8,7 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class GameOverManager extends Component implements Subscriber{
     @Override
     public void onNotified(){
         SceneManager.loadScene(SceneBuilder.create(GameOver));
+        GameInitializer.stop();
     }
     
 }

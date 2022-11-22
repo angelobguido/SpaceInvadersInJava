@@ -52,14 +52,7 @@ public class SpaceInvadersFX extends Application {
         itemExit.setOnActive(() -> System.exit(0));
         
         MenuItem itemStart = new MenuItem("Start");
-        itemStart.setOnActive(() -> {
-            try{
-                GameInitializer.init(stage);
-            }catch(Exception e){
-                System.exit(1);
-                //Do nothing
-            }
-        });
+        itemStart.setOnActive(() -> GameInitializer.init(stage));
         
         menuBox = new VBox(10, itemStart, itemExit);
         menuBox.setAlignment(Pos.CENTER);

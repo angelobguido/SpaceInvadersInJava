@@ -43,7 +43,7 @@ public class GameOverScreen {
         MenuItem itemRetry = new MenuItem("Retry");
         itemRetry.setOnActive(() -> {
             
-            Thread t = new Thread( () ->  SceneManager.loadScene(mainGame));
+            Thread t = new Thread( () ->  GameInitializer.init(stage));
             t.start();
             
         });

@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import static java.lang.Math.random;
@@ -47,6 +48,7 @@ public class AlienMatrixController extends Component{
         
         if(gameObject.position().y < 0){
             SceneManager.loadScene(SceneBuilder.create(GameOver));
+            GameInitializer.stop();
         }
         
         if(isRight){
