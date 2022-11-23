@@ -4,6 +4,7 @@
  */
 package spaceinvaders;
 
+import gameengine.GameHandlers.SceneManager;
 import gameengine.GameInitializer;
 import graphics.GraphicInterface;
 import graphics.TerminalInterface;
@@ -37,75 +38,12 @@ import spaceinvaders.ScreenAssets.Selector;
  */
 public class SpaceInvadersFX extends Application {
     
-    private VBox menuBox;
-    private int currentItem = 0;
-    private Stage stage;
-    
-    
-    private Parent createContent(){
-        StackPane root = new StackPane();
-        root.setPrefSize(900, 600);
-        
-        Rectangle bg = new Rectangle(900, 600);
-        
-        MenuItem itemExit = new MenuItem("Exit");
-        itemExit.setOnActive(() -> System.exit(0));
-        
-        MenuItem itemStart = new MenuItem("Start");
-        itemStart.setOnActive(() -> GameInitializer.init(stage));
-        
-        menuBox = new VBox(10, itemStart, itemExit);
-        menuBox.setAlignment(Pos.CENTER);
-        menuBox.setScaleX(2);
-        menuBox.setScaleY(2);
-        
-        getMenuItem(0).setActive(true);
-        
-        Text title = new Text("SPACE INVADERS");
-        title.setFill(Color.WHITE);
-        title.setTranslateY(-200);
-        title.setScaleX(4);
-        title.setScaleY(4);
-        
-        root.getChildren().addAll(bg, title, menuBox);
-        
-        return root;
-        
-    }
-    
-    
-    private MenuItem getMenuItem(int index){
-        return (MenuItem)menuBox.getChildren().get(index);
-    }
-    
     @Override
-    public void start(Stage primaryStage) {
-        stage = primaryStage;
-        Scene scene = new Scene(createContent());
-        scene.setOnKeyPressed(event -> {
-            if(event.getCode() == KeyCode.UP){
-                if (currentItem > 0){
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(--currentItem).setActive(true);
-                }
-            }
-            
-            if(event.getCode() == KeyCode.DOWN){
-                if(currentItem < menuBox.getChildren().size() -1){
-                    getMenuItem(currentItem).setActive(false);
-                    getMenuItem(++currentItem).setActive(true);
-                }
-            }
-            
-            if(event.getCode() == KeyCode.ENTER){
-                getMenuItem(currentItem).activate();
-                
-            }
-        });
+    public void start(Stage stage) {
         
-        SceneBuilder.setMainStage(stage);
-        
-        stage.setScene(scene);
+        SceneManager.setStage(stage);
+    
+        stage.setScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu).getScene());
         stage.show();
     }
 

@@ -141,4 +141,10 @@ public class EntityHandler {
         
         entities.forEach(entity -> {entity.update();});
     } 
+    
+    public static void reset(){
+        entities.clear();
+        newEntities.clear();
+        removeBuffer.clear();
+    }
 }

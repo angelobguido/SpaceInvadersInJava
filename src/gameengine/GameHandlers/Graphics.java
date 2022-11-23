@@ -65,4 +65,9 @@ public class Graphics {
         
         visualInterface.update();
     }
+    
+    public static void reset(){
+        renderBuffer.clear();
+        undrawBuffer.clear();
+    }
 }

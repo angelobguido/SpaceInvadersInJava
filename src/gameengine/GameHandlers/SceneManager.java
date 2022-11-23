@@ -6,6 +6,7 @@ package gameengine.GameHandlers;
 
 import gameengine.GameObject;
 import gameengine.GameScene;
+import gameengine.MenuScene;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
@@ -21,9 +22,16 @@ public class SceneManager {
     private static boolean canChange = false;
     private static Stage stage;
     
-    public static void loadScene(GameScene newScene){
-        current = newScene;
+    public static void loadGameScene(GameScene scene){
+        current = scene;
         canChange = true;
+    }
+    
+    public static void loadMenuScene(MenuScene scene){
+        
+        if(stage != null){
+                Platform.runLater(()->{stage.setScene(scene.getScene());});
+        }
     }
     
     public static StackPane getCurrentRoot(){

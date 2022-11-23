@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import spaceinvaders.SceneBuilder;
-import static spaceinvaders.SceneBuilder.SceneId.GameMain;
+import static spaceinvaders.SceneBuilder.GameSceneId.GameMain;
 
 /**
  *
@@ -28,13 +28,12 @@ public class GameInitializer {
     
     private static boolean hasStopped = false;
     
-    public static void init(Stage primaryStage){
+    public static void init(GameScene game){
         
         hasStopped = false;
         
-        SceneManager.setStage(primaryStage);
         Graphics.setGraphics(new GraphicInterface());
-        SceneManager.loadScene(SceneBuilder.create(GameMain));
+        SceneManager.loadGameScene(game);
         SceneManager.update();
         
         Thread t = new Thread( () ->{
@@ -56,9 +55,9 @@ public class GameInitializer {
                 }catch(Exception e){
                     System.exit(1);
                 }
-                
-
+ 
             }
+            
             
         });
         
@@ -66,7 +65,16 @@ public class GameInitializer {
         
     }
     
+    private static void resetAll(){
+        CollisionHandler.reset();
+        EntityHandler.reset();
+        EventHandler.reset();
+        Graphics.reset();
+        InputHandler.reset();
+    }
+    
     public static void stop(){
+        resetAll();
         hasStopped = true;
     }
 }

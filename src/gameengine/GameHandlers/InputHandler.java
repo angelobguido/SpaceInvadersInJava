@@ -49,4 +49,8 @@ public class InputHandler {
        }
    }
    
+   public static void reset(){
+       commands.clear();
+   }
+   
 }

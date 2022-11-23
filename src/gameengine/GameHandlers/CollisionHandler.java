@@ -36,4 +36,8 @@ public class CollisionHandler {
             (buffer.pop()).notifyCollision();
         }
     }
+    
+    public static void reset(){
+        buffer.clear();
+    }
 }

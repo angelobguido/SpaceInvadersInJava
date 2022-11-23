@@ -15,7 +15,7 @@ import gamemath.Vector2D;
 import static java.lang.Math.random;
 import java.util.ArrayList;
 import spaceinvaders.SceneBuilder;
-import static spaceinvaders.SceneBuilder.SceneId.GameOver;
+import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
 /**
  * Represents the movement and attack of an alien matrix.
@@ -47,8 +47,9 @@ public class AlienMatrixController extends Component{
     public void update(){
         
         if(gameObject.position().y < 0){
-            SceneManager.loadScene(SceneBuilder.create(GameOver));
+            System.out.println("END");
             GameInitializer.stop();
+            SceneManager.loadMenuScene(SceneBuilder.createMenu(GameOver));
         }
         
         if(isRight){

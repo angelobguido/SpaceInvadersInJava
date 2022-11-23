@@ -13,7 +13,7 @@ import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
 import java.util.ArrayList;
 import spaceinvaders.SceneBuilder;
-import static spaceinvaders.SceneBuilder.SceneId.GameOver;
+import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
 /**
  * Represents the game over when the player dies.
@@ -56,8 +56,8 @@ public class GameOverManager extends Component implements Subscriber{
     
     @Override
     public void onNotified(){
-        SceneManager.loadScene(SceneBuilder.create(GameOver));
         GameInitializer.stop();
+        SceneManager.loadMenuScene(SceneBuilder.createMenu(GameOver));
     }
     
 }

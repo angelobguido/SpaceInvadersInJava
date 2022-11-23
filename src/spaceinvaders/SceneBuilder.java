@@ -11,6 +11,7 @@ import gameengine.Components.SpaceInvaders.PlayerAttack;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameObject;
 import gameengine.GameScene;
+import gameengine.MenuScene;
 import gamemath.Vector2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import spaceinvaders.ScreenAssets.GameOverScreen;
+import spaceinvaders.ScreenAssets.MainMenuScreen;
 
 /**
  * Builder used to build the space invaders scenes.
@@ -25,23 +27,35 @@ import spaceinvaders.ScreenAssets.GameOverScreen;
  */
 
 public class SceneBuilder {
-    public enum SceneId{GameOver, GameMain} 
-    private static Stage stage;
-    private static GameScene gameOver;
+    public enum GameSceneId{GameMain}
+    public enum MenuSceneId{GameOver, MainMenu}
+    private static MenuScene gameOver;
+    private static MenuScene mainMenu;
     private static GameScene gameMain;
-    
-    public static void setMainStage(Stage stage){
-        SceneBuilder.stage = stage;
-    }
     
     /**
      * Static function that builds the desired scene.
      * @param id is the id of the scene you want to build.
      * @return the desired scene.
      */
-    public static GameScene create(SceneId id){
+    public static GameScene createGame(GameSceneId id){
         
         GameScene scene = new GameScene();
+        
+        switch(id){
+            case GameMain:
+                
+                scene = generateMainGame();
+                break;
+
+        }
+        
+        return scene;
+    }
+    
+    public static MenuScene createMenu(MenuSceneId id){
+        
+        MenuScene scene = new MenuScene();
         
         switch(id){
             case GameOver: 
@@ -51,28 +65,42 @@ public class SceneBuilder {
                 break;
                 
             
-            case GameMain:
+            case MainMenu:
                 
-                scene = generateMainGame();
+                scene = generateMainMenu();
                 break;
-            
             
         }
         
         return scene;
     }
     
-    private static GameScene generateGameOver(){
+    private static MenuScene generateGameOver(){
         
-        GameScene scene = new GameScene();
+        MenuScene scene = new MenuScene();
         
-        GameOverScreen gos = new GameOverScreen(stage, create(SceneId.GameMain));
+        GameOverScreen gos = new GameOverScreen(createGame(GameSceneId.GameMain));
         
         System.out.println("GAME OVER!");
         
         scene.setScene(gos.generateScene());
         
         gameOver = scene;
+        
+        return scene;
+    }
+    
+    private static MenuScene generateMainMenu(){
+        
+        MenuScene scene = new MenuScene();
+        
+        MainMenuScreen mms = new MainMenuScreen(createGame(GameSceneId.GameMain));
+        
+        System.out.println("GAME OVER!");
+        
+        scene.setScene(mms.generateScene());
+        
+        mainMenu = scene;
         
         return scene;
     }

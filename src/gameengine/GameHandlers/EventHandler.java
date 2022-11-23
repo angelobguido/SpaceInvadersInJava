@@ -42,4 +42,8 @@ public class EventHandler {
         }
     }
     
+    public static void reset(){
+        events.clear();
+    }
+    
 }
