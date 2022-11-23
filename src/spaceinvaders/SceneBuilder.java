@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import spaceinvaders.ScreenAssets.GameOverScreen;
 import spaceinvaders.ScreenAssets.MainMenuScreen;
 
@@ -31,7 +30,6 @@ public class SceneBuilder {
     public enum MenuSceneId{GameOver, MainMenu}
     private static MenuScene gameOver;
     private static MenuScene mainMenu;
-    private static GameScene gameMain;
     
     /**
      * Static function that builds the desired scene.
@@ -67,6 +65,7 @@ public class SceneBuilder {
             
             case MainMenu:
                 
+                if(mainMenu != null) return mainMenu;
                 scene = generateMainMenu();
                 break;
             
@@ -161,8 +160,6 @@ public class SceneBuilder {
             InputHandler.sendButton(event.getCode());
         });
    
-        gameMain = scene;
-        
         return scene;
     }
     

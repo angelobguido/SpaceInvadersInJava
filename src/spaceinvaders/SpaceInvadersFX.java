@@ -5,32 +5,9 @@
 package spaceinvaders;
 
 import gameengine.GameHandlers.SceneManager;
-import gameengine.GameInitializer;
-import graphics.GraphicInterface;
-import graphics.TerminalInterface;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
-import spaceinvaders.ScreenAssets.MenuItem;
-import spaceinvaders.ScreenAssets.Selector;
 
 /**
  *

@@ -11,14 +11,6 @@ import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.SceneManager;
 import graphics.GraphicInterface;
-import graphics.TerminalInterface;
-import graphics.VisualInterface;
-import javafx.application.Platform;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-import spaceinvaders.SceneBuilder;
-import static spaceinvaders.SceneBuilder.GameSceneId.GameMain;
 
 /**
  *
