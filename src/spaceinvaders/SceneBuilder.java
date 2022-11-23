@@ -28,8 +28,6 @@ import spaceinvaders.ScreenAssets.MainMenuScreen;
 public class SceneBuilder {
     public enum GameSceneId{GameMain}
     public enum MenuSceneId{GameOver, MainMenu}
-    private static MenuScene gameOver;
-    private static MenuScene mainMenu;
     
     /**
      * Static function that builds the desired scene.
@@ -58,14 +56,12 @@ public class SceneBuilder {
         switch(id){
             case GameOver: 
                 
-                if(gameOver != null) return gameOver;
                 scene = generateGameOver();
                 break;
                 
             
             case MainMenu:
                 
-                if(mainMenu != null) return mainMenu;
                 scene = generateMainMenu();
                 break;
             
@@ -84,8 +80,6 @@ public class SceneBuilder {
         
         scene.setScene(gos.generateScene());
         
-        gameOver = scene;
-        
         return scene;
     }
     
@@ -98,8 +92,6 @@ public class SceneBuilder {
         System.out.println("GAME OVER!");
         
         scene.setScene(mms.generateScene());
-        
-        mainMenu = scene;
         
         return scene;
     }
