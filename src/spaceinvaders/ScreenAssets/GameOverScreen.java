@@ -5,6 +5,7 @@
 package spaceinvaders.ScreenAssets;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
 import javafx.geometry.Pos;
@@ -60,7 +61,19 @@ public class GameOverScreen {
         title.setScaleX(4);
         title.setScaleY(4);
         
-        root.getChildren().addAll(bg, title, menuBox);
+        Text score = new Text();
+        score.setFill(Color.WHITE);
+        score.textProperty().bind(ScoreManager.currentScore());
+        
+        Text highScore = new Text();
+        highScore.setFill(Color.WHITE);
+        highScore.textProperty().bind(ScoreManager.highScore());
+        
+        VBox scoreBox = new VBox(2, score, highScore);
+        scoreBox.setAlignment(Pos.CENTER);
+        scoreBox.setTranslateY(-150);
+        
+        root.getChildren().addAll(bg, title, scoreBox, menuBox);
         
         return root;
         

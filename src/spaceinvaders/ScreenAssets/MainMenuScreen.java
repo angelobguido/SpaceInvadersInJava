@@ -5,6 +5,7 @@
 package spaceinvaders.ScreenAssets;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
 import javafx.geometry.Pos;
@@ -57,7 +58,15 @@ public class MainMenuScreen {
         title.setScaleX(4);
         title.setScaleY(4);
         
-        root.getChildren().addAll(bg, title, menuBox);
+        Text score = new Text();
+        score.setFill(Color.WHITE);
+        score.setTranslateY(-150);
+        score.setScaleX(2);
+        score.setScaleY(2);
+        score.textProperty().bind(ScoreManager.highScore());
+        
+        
+        root.getChildren().addAll(bg, title, score, menuBox);
         
         return root;
         
@@ -91,6 +100,8 @@ public class MainMenuScreen {
                 
             }
         });
+        
+        
         
         return scene;
     }

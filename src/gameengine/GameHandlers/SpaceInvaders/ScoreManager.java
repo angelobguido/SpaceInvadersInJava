@@ -4,27 +4,48 @@
  */
 package gameengine.GameHandlers.SpaceInvaders;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author angelo
  */
 public class ScoreManager {
-    private static int highScore;
-    private static int currentScore;
+    private static SimpleStringProperty highScoreText = new SimpleStringProperty("High Score: 0");
+    private static SimpleStringProperty currentScoreText = new SimpleStringProperty("Score: 0");
+    private static int highScore = 0;
+    private static int currentScore = 0;
     
     public static void init(){
-        currentScore = 0;
-        highScore = 0;
+        updateHighScore();
+    }
+    
+    public static SimpleStringProperty highScore(){
+        return highScoreText;
+    }
+    
+    public static SimpleStringProperty currentScore(){
+        return currentScoreText;
     }
     
     public static void increment(int points){
         if(points < 0) return;
         
-        currentScore+=points;
+        currentScore += points;
+        
+        currentScoreText.set("Score: "+Integer.toString(currentScore));
     }
     
     public static void reset(){
+        
         currentScore = 0;
+        
+        currentScoreText.set("Score: "+Integer.toString(currentScore));
+    }
+    
+    private static void updateHighScore(){
+        highScoreText.set("High Score: 100");
     }
     
 }
