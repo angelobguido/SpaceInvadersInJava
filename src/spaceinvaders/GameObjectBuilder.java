@@ -19,16 +19,16 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import static spaceinvaders.Prefab.Bullet;
+import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 /**
  * Builder used to build the space invaders game objects.
  * @author angelo
  */
 
-enum Prefab{Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
-
 public class GameObjectBuilder {
+   
+    public enum Prefab{Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
     
     private static GameObject alien;
     private static GameObject player;

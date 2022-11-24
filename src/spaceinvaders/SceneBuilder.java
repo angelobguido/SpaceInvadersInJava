@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import spaceinvaders.GameObjectBuilder.Prefab;
 import spaceinvaders.ScreenAssets.GameOverScreen;
 import spaceinvaders.ScreenAssets.MainGameHud;
 import spaceinvaders.ScreenAssets.MainMenuScreen;

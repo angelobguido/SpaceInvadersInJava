@@ -3,29 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/AlienAttack.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/Attack.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/graphics/TerminalInterface.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpriteRenderer.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/PlayerController.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/graphics/GraphicInterface.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/PlayerAttack.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Component.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/GameOverManager.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Observer/Subscriber.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/Hit.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/BulletLife.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/SceneBuilder.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/AlienMatrixLife.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/SpaceInvadersFX.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/Collider.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/Physics.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Observer/Publisher.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameInitializer.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameScene.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/AlienMatrixController.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/SpaceInvaders.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/SceneManager.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/GameObjectBuilder.java</file>
         </group>
     </open-files>
 </project-private>
