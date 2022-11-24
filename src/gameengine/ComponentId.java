@@ -10,4 +10,4 @@ package gameengine;
  * @author angelo
  */
 public enum ComponentId{Physics, SpriteRenderer, Collider, Hit, Attack, BulletLife, AlienMatrixLife,
-                        AlienMatrixController, PlayerController, GameOverManager, ScoreCounter}
+                        AlienMatrixController, PlayerController, GameObjectManager, ScoreCounter, UfoController}

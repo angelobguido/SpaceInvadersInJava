@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Publisher {
     private ArrayList<Subscriber> subscribers;
+    private boolean canNotify = true;
     
     public Publisher(){
         subscribers = new ArrayList<>();
@@ -50,9 +51,15 @@ public class Publisher {
      *
      */
     public void notifySubscribers(){
+        if(canNotify == false) return;
+        
         for(int i = 0; i<subscribers.size(); i++){
             subscribers.get(i).onNotified();
         }
+    }
+    
+    public void disable(){
+        canNotify = false;
     }
     
 }

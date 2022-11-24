@@ -11,7 +11,9 @@ import gameengine.GameHandlers.SceneManager;
 import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
+import static java.lang.Math.random;
 import java.util.ArrayList;
+import spaceinvaders.GameObjectBuilder;
 import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
@@ -20,27 +22,38 @@ import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
  *
  * @author angelo
  */
-public class GameOverManager extends Component implements Subscriber{
+public class GameObjectManager extends Component implements Subscriber{
     
-    public GameOverManager(GameObject gameObject){
-        super(gameObject, ComponentId.GameOverManager);
+    private int timer = 0;
+    private final int time = 50;
+    
+    public GameObjectManager(GameObject gameObject){
+        super(gameObject, ComponentId.GameObjectManager);
     }
     
     @Override
     public Component createCopy(GameObject gameObject){
-        GameOverManager govm = new GameOverManager(gameObject);
+        GameObjectManager govm = new GameObjectManager(gameObject);
         return govm;
     }
     
     @Override
     public void update(){
         
+        timer++;
+        if(timer<time) return;
+        
+        timer = 0;
+        
+        if(random() < 0.25){
+            EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.UFO));
+        }
+        
     }
     
     @Override
     public void start(){
         ArrayList<GameObject> player = EntityHandler.findWithTag("Player");
-        System.out.println(player.size());
         for(int i = 0; i < player.size(); i++){
             Hit playerHit = (Hit)player.get(i).getComponent(ComponentId.Hit);
             playerHit.deathEvent.subscribe(this);

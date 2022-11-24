@@ -14,6 +14,7 @@ import gameengine.Components.SpaceInvaders.AlienMatrixController;
 import gameengine.Components.*;
 import gameengine.*;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
+import gameengine.Components.SpaceInvaders.UfoController;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
@@ -26,8 +27,10 @@ import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 public class GameObjectBuilder {
    
-    public enum Prefab{Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
+    public enum Prefab{UFO, Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
     
+    
+    private static GameObject ufo;
     private static GameObject alien;
     private static GameObject player;
     private static GameObject obstacle;
@@ -47,6 +50,35 @@ public class GameObjectBuilder {
         GameObject gameObject = new GameObject();
         
         switch(prefab){
+            
+            case UFO:
+                
+                if(ufo != null) return new GameObject(ufo);
+                
+                
+                ArrayList<Vector2D> ufoStructure = new ArrayList<>();
+                
+                ufoStructure.add(Vector2D.zero);
+                
+                Sprite ufoSprite = new Sprite();
+                ufoSprite.charRepresentation = 'H';
+                ufoSprite.spriteStructure = ufoStructure;
+                ufoSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/ufo.png").toExternalForm()), 40, 40);
+                
+                gameObject.addComponent(new SpriteRenderer(gameObject, ufoSprite));
+                gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new Hit(gameObject));
+                gameObject.addComponent(new UfoController(gameObject));
+                gameObject.addComponent(new ScoreCounter(gameObject, 200));
+                
+                gameObject.setTag("Alien");
+                
+                ufo = new GameObject(gameObject);
+                
+                break;
+
+            
             case Alien: 
                 
                 if(alien != null) return new GameObject(alien);

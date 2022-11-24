@@ -5,7 +5,7 @@
 package spaceinvaders;
 
 import gameengine.ComponentId;
-import gameengine.Components.SpaceInvaders.GameOverManager;
+import gameengine.Components.SpaceInvaders.GameObjectManager;
 import gameengine.Components.Physics;
 import gameengine.Components.SpaceInvaders.PlayerAttack;
 import gameengine.GameHandlers.InputHandler;
@@ -136,7 +136,7 @@ public class SceneBuilder {
         obstacle4.setPosition(new Vector2D(35,6));
 
         GameObject gameOverManager = new GameObject();
-        gameOverManager.addComponent(new GameOverManager(gameOverManager));
+        gameOverManager.addComponent(new GameObjectManager(gameOverManager));
 
         scene.addEntity(aliens);
         scene.addEntity(player);
