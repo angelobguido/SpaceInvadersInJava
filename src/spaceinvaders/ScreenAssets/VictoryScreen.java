@@ -17,19 +17,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import spaceinvaders.SceneBuilder;
 
 /**
  *
  * @author angelo
  */
-public class GameOverScreen {
+public class VictoryScreen {
     private VBox menuBox;
     private int currentItem = 0;
     private GameScene mainGame;
     
-    public GameOverScreen(GameScene mainGame){
+    public VictoryScreen(GameScene mainGame){
         this.mainGame = mainGame;
     }
     
@@ -39,8 +38,8 @@ public class GameOverScreen {
         
         Rectangle bg = new Rectangle(900, 600);
         
-        MenuItem itemRetry = new MenuItem("Retry");
-        itemRetry.setOnActive(() -> GameInitializer.init(mainGame));
+        MenuItem itemPlayAgain = new MenuItem("Play Again");
+        itemPlayAgain.setOnActive(() -> GameInitializer.init(mainGame));
         
         MenuItem itemMenu = new MenuItem("Menu");
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));
@@ -48,14 +47,14 @@ public class GameOverScreen {
         MenuItem itemQuit = new MenuItem("Quit");
         itemQuit.setOnActive(() -> {System.out.println("Quit"); System.exit(0);});
         
-        menuBox = new VBox(10, itemRetry, itemMenu, itemQuit);
+        menuBox = new VBox(10, itemPlayAgain, itemMenu, itemQuit);
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setScaleX(2);
         menuBox.setScaleY(2);
         
         getMenuItem(0).setActive(true);
         
-        Text title = new Text("GAME OVER!");
+        Text title = new Text("VICTORY!");
         title.setFill(Color.WHITE);
         title.setTranslateY(-200);
         title.setScaleX(4);
@@ -110,6 +109,4 @@ public class GameOverScreen {
         
         return scene;
     }
-
-    
 }

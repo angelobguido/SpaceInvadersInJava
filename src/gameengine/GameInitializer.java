@@ -10,6 +10,7 @@ import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import graphics.GraphicInterface;
 
 /**
@@ -23,7 +24,7 @@ public class GameInitializer {
     public static void init(GameScene game){
         
         hasStopped = false;
-        
+        resetAll();
         Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadGameScene(game);
         SceneManager.update();
@@ -32,8 +33,6 @@ public class GameInitializer {
             
             
             while(hasStopped == false){
-                
-                System.out.println("Frame");
                 
                 Graphics.update();
                 CollisionHandler.update();
@@ -63,10 +62,10 @@ public class GameInitializer {
         EventHandler.reset();
         Graphics.reset();
         InputHandler.reset();
+        ScoreManager.reset();
     }
     
     public static void stop(){
-        resetAll();
         hasStopped = true;
     }
 }

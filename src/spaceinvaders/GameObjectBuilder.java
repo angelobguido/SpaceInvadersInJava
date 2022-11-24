@@ -13,6 +13,7 @@ import gameengine.Components.SpaceInvaders.AlienMatrixLife;
 import gameengine.Components.SpaceInvaders.AlienMatrixController;
 import gameengine.Components.*;
 import gameengine.*;
+import gameengine.Components.SpaceInvaders.ScoreCounter;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
@@ -66,6 +67,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new Hit(gameObject));
                 gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+                gameObject.addComponent(new ScoreCounter(gameObject, 10));
                 
                 gameObject.setTag("Alien");
                 

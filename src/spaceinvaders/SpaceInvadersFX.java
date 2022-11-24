@@ -5,6 +5,7 @@
 package spaceinvaders;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import javafx.application.Application;
 
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ public class SpaceInvadersFX extends Application {
     public void start(Stage stage) {
         
         SceneManager.setStage(stage);
+        ScoreManager.init();
     
         stage.setScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu).getScene());
         stage.show();
