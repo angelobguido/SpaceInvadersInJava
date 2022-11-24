@@ -26,7 +26,7 @@ public class ScoreCounter extends Component implements Subscriber {
     
     @Override
     public Component createCopy(GameObject obj){
-        return new ScoreCounter(gameObject, points);
+        return new ScoreCounter(obj, points);
     }
     
     @Override
@@ -47,6 +47,7 @@ public class ScoreCounter extends Component implements Subscriber {
     
     @Override
     public void onNotified(){
+        System.out.println(points);
         ScoreManager.increment(points);
     }
 }

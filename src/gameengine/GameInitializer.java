@@ -24,7 +24,7 @@ public class GameInitializer {
     public static void init(GameScene game){
         
         hasStopped = false;
-        
+        resetAll();
         Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadGameScene(game);
         SceneManager.update();
@@ -33,8 +33,6 @@ public class GameInitializer {
             
             
             while(hasStopped == false){
-                
-                System.out.println("Frame");
                 
                 Graphics.update();
                 CollisionHandler.update();
@@ -68,7 +66,6 @@ public class GameInitializer {
     }
     
     public static void stop(){
-        resetAll();
         hasStopped = true;
     }
 }

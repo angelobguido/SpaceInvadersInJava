@@ -18,7 +18,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import spaceinvaders.ScreenAssets.GameOverScreen;
+import spaceinvaders.ScreenAssets.MainGameHud;
 import spaceinvaders.ScreenAssets.MainMenuScreen;
+import spaceinvaders.ScreenAssets.VictoryScreen;
 
 /**
  * Builder used to build the space invaders scenes.
@@ -27,9 +29,7 @@ import spaceinvaders.ScreenAssets.MainMenuScreen;
 
 public class SceneBuilder {
     public enum GameSceneId{GameMain}
-    public enum MenuSceneId{GameOver, MainMenu}
-    private static MenuScene gameOver;
-    private static MenuScene mainMenu;
+    public enum MenuSceneId{GameOver, Victory, MainMenu}
     
     /**
      * Static function that builds the desired scene.
@@ -38,40 +38,37 @@ public class SceneBuilder {
      */
     public static GameScene createGame(GameSceneId id){
         
-        GameScene scene = new GameScene();
-        
         switch(id){
             case GameMain:
                 
-                scene = generateMainGame();
-                break;
-
+                return generateMainGame();
+        
         }
         
-        return scene;
+        return generateMainGame();
+        
     }
     
     public static MenuScene createMenu(MenuSceneId id){
         
-        MenuScene scene = new MenuScene();
-        
         switch(id){
             case GameOver: 
                 
-                if(gameOver != null) return gameOver;
-                scene = generateGameOver();
-                break;
+                return generateGameOver();
                 
-            
+                
+            case Victory:
+                
+                return generateVictory();
+                
             case MainMenu:
                 
-                if(mainMenu != null) return mainMenu;
-                scene = generateMainMenu();
-                break;
+                return generateMainMenu();
+                
             
         }
         
-        return scene;
+        return generateMainMenu();
     }
     
     private static MenuScene generateGameOver(){
@@ -84,7 +81,18 @@ public class SceneBuilder {
         
         scene.setScene(gos.generateScene());
         
-        gameOver = scene;
+        return scene;
+    }
+    
+    private static MenuScene generateVictory(){
+        
+        MenuScene scene = new MenuScene();
+        
+        VictoryScreen vs = new VictoryScreen(createGame(GameSceneId.GameMain));
+        
+        System.out.println("Victory!");
+        
+        scene.setScene(vs.generateScene());
         
         return scene;
     }
@@ -98,8 +106,6 @@ public class SceneBuilder {
         System.out.println("GAME OVER!");
         
         scene.setScene(mms.generateScene());
-        
-        mainMenu = scene;
         
         return scene;
     }
@@ -150,7 +156,10 @@ public class SceneBuilder {
         bg.setFitHeight(900);
         bg.setPreserveRatio(true);
 
-        root.getChildren().addAll(bg, gameRoot);
+        
+        MainGameHud hud = new MainGameHud();
+        
+        root.getChildren().addAll(bg, gameRoot, hud.generateHUD());
 
         scene.setRoot(gameRoot);
 

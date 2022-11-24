@@ -18,7 +18,7 @@ public class ScoreManager {
     private static int currentScore = 0;
     
     public static void init(){
-        updateHighScore();
+        getHighScore();
     }
     
     public static SimpleStringProperty highScore(){
@@ -35,6 +35,11 @@ public class ScoreManager {
         currentScore += points;
         
         currentScoreText.set("Score: "+Integer.toString(currentScore));
+        
+        if(currentScore > highScore){
+            highScoreText.set("HighScore: "+Integer.toString(currentScore));
+            highScore = currentScore;
+        }
     }
     
     public static void reset(){
@@ -44,8 +49,13 @@ public class ScoreManager {
         currentScoreText.set("Score: "+Integer.toString(currentScore));
     }
     
-    private static void updateHighScore(){
+    private static void getHighScore(){
         highScoreText.set("High Score: 100");
+        highScore = 100;
+    }
+    
+    public static void saveHighScore(){
+        //ToDo
     }
     
 }
