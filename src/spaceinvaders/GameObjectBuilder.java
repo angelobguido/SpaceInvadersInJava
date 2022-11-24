@@ -17,8 +17,6 @@ import gameengine.Components.SpaceInvaders.ScoreCounter;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 /**
