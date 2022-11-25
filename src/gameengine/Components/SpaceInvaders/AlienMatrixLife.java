@@ -68,7 +68,8 @@ public class AlienMatrixLife extends Component implements Subscriber {
         
         if(life<=0){
             GameInitializer.stop();
-            SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.Victory));
+            GameInitializer.reInit(SceneBuilder.createGame(SceneBuilder.GameSceneId.GameMain));
+            //SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.Victory));
         }
     }
 }
