@@ -5,13 +5,16 @@
 package spaceinvaders.ScreenAssets;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -42,7 +45,25 @@ public class MainGameHud {
         scoreBox.setAlignment(Pos.CENTER);
         scoreBox.setTranslateY(-350);
         
-        root.getChildren().addAll(scoreBox);
+        ImageView heart1 = new ImageView();
+        ImageView heart2 = new ImageView();
+        ImageView heart3 = new ImageView();
+        
+        heart1.setFitHeight(30);
+        heart1.setFitWidth(30);
+        heart2.setFitHeight(30);
+        heart2.setFitWidth(30);
+        heart3.setFitHeight(30);
+        heart3.setFitWidth(30);
+        
+        
+        heart1.imageProperty().bind(HealthManager.heartImage1());
+        heart2.imageProperty().bind(HealthManager.heartImage2());
+        heart3.imageProperty().bind(HealthManager.heartImage3());
+        
+        HBox healthBar = new HBox(10, heart1, heart2, heart3);
+        
+        root.getChildren().addAll(scoreBox, healthBar);
         
         return root;
         

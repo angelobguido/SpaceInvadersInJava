@@ -23,7 +23,7 @@ public class Hit extends Component implements Subscriber{
     
     private Collider col;
     private int health;
-    private int maxHealth = 1;
+    protected int maxHealth = 1;
 
     /**
      * Is the publisher that stores all the subscribers that want to now about
@@ -76,8 +76,13 @@ public class Hit extends Component implements Subscriber{
     @Override
     public void onNotified(){
         health--;
+        onHit();
         if(health<=0){
             EntityHandler.removeEntity(gameObject);
         }
+    }
+    
+    protected void onHit(){
+        //Action when entity takes a hit
     }
 }

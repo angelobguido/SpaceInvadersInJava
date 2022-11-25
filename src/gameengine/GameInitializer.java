@@ -10,6 +10,7 @@ import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import graphics.GraphicInterface;
 
@@ -63,6 +64,7 @@ public class GameInitializer {
         Graphics.reset();
         InputHandler.reset();
         ScoreManager.reset();
+        HealthManager.reset();
     }
     
     public static void stop(){

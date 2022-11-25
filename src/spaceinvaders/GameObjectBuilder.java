@@ -13,6 +13,7 @@ import gameengine.Components.SpaceInvaders.AlienMatrixLife;
 import gameengine.Components.SpaceInvaders.AlienMatrixController;
 import gameengine.Components.*;
 import gameengine.*;
+import gameengine.Components.SpaceInvaders.PlayerHit;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
 import gameengine.Components.SpaceInvaders.UfoController;
 import gamemath.Vector2D;
@@ -149,7 +150,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new PlayerAttack(gameObject, playerBullet));
                 gameObject.addComponent(new PlayerController(gameObject));
-                gameObject.addComponent(new Hit(gameObject, 3));
+                gameObject.addComponent(new PlayerHit(gameObject));
                 
                 gameObject.setTag("Player");
                 
