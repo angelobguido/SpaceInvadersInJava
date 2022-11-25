@@ -46,6 +46,7 @@ public class GameObjectManager extends Component implements Subscriber{
         timer = 0;
         
         if(random() < 0.25){
+            System.out.println("Spawned");
             EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.UFO));
         }
         

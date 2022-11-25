@@ -63,7 +63,13 @@ public class GameObjectBuilder {
                 Sprite ufoSprite = new Sprite();
                 ufoSprite.charRepresentation = 'H';
                 ufoSprite.spriteStructure = ufoStructure;
-                ufoSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/ufo.png").toExternalForm()), 40, 40);
+                
+                GameAnimation ufoAnimation = new GameAnimation(40, 40);
+                ufoAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/ufo1.png").toExternalForm()));
+                ufoAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/ufo2.png").toExternalForm()));
+                ufoAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/ufo3.png").toExternalForm()));
+                
+                ufoSprite.content = ufoAnimation;
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, ufoSprite));
                 gameObject.addComponent(new Physics(gameObject));
