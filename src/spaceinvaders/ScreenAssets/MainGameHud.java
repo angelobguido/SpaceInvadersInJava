@@ -30,9 +30,11 @@ public class MainGameHud {
         
         Text score = new Text();
         score.textProperty().bind(ScoreManager.currentScore());
+        score.setFill(Color.WHITE);
         
         Text highScore = new Text();
         highScore.textProperty().bind(ScoreManager.highScore());
+        highScore.setFill(Color.WHITE);
         
         VBox scoreBox = new VBox(score, highScore);
         scoreBox.setScaleX(3);
