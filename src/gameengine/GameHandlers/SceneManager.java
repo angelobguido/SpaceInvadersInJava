@@ -4,6 +4,7 @@
  */
 package gameengine.GameHandlers;
 
+import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameObject;
 import gameengine.GameScene;
 import gameengine.MenuScene;
@@ -46,6 +47,7 @@ public class SceneManager {
         if(canChange == true){
             ArrayList<GameObject> newEntities = current.getEntities();
             
+            HealthManager.reset();
             EntityHandler.removeAllEntities();
             EntityHandler.addEntitiesNow(newEntities);
             

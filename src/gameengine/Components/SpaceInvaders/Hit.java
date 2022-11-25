@@ -67,6 +67,8 @@ public class Hit extends Component implements Subscriber{
         gameObject.removeComponent(this);
         gameObject = null;
         
+        if(health>0) deathEvent.disable();
+        
         if(deathEvent.hasSubscribers()){
             EventHandler.addEvent(deathEvent);
         }

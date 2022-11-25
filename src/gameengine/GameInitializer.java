@@ -21,15 +21,14 @@ import graphics.GraphicInterface;
 public class GameInitializer {
     
     private static boolean hasStopped = false;
-    private static int timesPlayed;
+    private static int timesPlayed = 1;
     
     public static void init(GameScene game){
-        timesPlayed = 1;
         
         hasStopped = false;
+        timesPlayed = 1;
         
         resetAll();
-        ScoreManager.reset();
         
         Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadGameScene(game);
@@ -62,41 +61,8 @@ public class GameInitializer {
         
     }
     
-    public static void reInit(GameScene game){
-        
+    public static void reInit(){
         timesPlayed++;
-        
-        hasStopped = false;
-        resetAll();
-        Graphics.setGraphics(new GraphicInterface());
-        SceneManager.loadGameScene(game);
-        SceneManager.update();
-        
-        Thread t = new Thread( () ->{
-            
-            
-            while(hasStopped == false){
-                
-                Graphics.update();
-                CollisionHandler.update();
-                EventHandler.update();
-                EntityHandler.update();
-                SceneManager.update();
-                InputHandler.update();
-                
-                try{
-                    Thread.sleep(50);
-                }catch(Exception e){
-                    System.exit(1);
-                }
- 
-            }
-            
-            
-        });
-        
-        t.start();
-        
     }
     
     private static void resetAll(){
@@ -106,6 +72,7 @@ public class GameInitializer {
         Graphics.reset();
         InputHandler.reset();
         HealthManager.reset();
+        ScoreManager.reset();
     }
     
     public static void stop(){

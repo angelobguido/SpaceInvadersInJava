@@ -67,8 +67,8 @@ public class AlienMatrixLife extends Component implements Subscriber {
         aliensPhysics.velocity = newVelocity;
         
         if(life<=0){
-            GameInitializer.stop();
-            GameInitializer.reInit(SceneBuilder.createGame(SceneBuilder.GameSceneId.GameMain));
+            GameInitializer.reInit();
+            SceneManager.loadGameScene(SceneBuilder.createGame(SceneBuilder.GameSceneId.GameMain));
             //SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.Victory));
         }
     }
