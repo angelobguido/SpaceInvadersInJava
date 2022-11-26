@@ -75,7 +75,7 @@ public class GameObjectBuilder {
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, ufoSprite));
                 gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new Collider(gameObject, 3, 3));
                 gameObject.addComponent(new Hit(gameObject));
                 gameObject.addComponent(new UfoController(gameObject));
                 gameObject.addComponent(new ScoreCounter(gameObject, 200));
@@ -102,7 +102,7 @@ public class GameObjectBuilder {
                 
                 gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
                 gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new Collider(gameObject));
+                gameObject.addComponent(new Collider(gameObject, 3, 3));
                 gameObject.addComponent(new Hit(gameObject));
                 gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
                 gameObject.addComponent(new ScoreCounter(gameObject, 10));
@@ -146,7 +146,7 @@ public class GameObjectBuilder {
                 playerSprite.content = new GameImage(playerImage, 50, 50);
                 
                 Collider playerCollider = new Collider(gameObject);
-                playerCollider.changeColliderBoxDimensions(3, 3);
+                playerCollider.changeColliderBoxDimensions(4, 3);
                 gameObject.addComponent(playerCollider);
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
                 gameObject.addComponent(new Physics(gameObject));
