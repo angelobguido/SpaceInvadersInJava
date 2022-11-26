@@ -22,6 +22,7 @@ import javafx.stage.Stage;
  * @author angelo
  */
 public class GraphicInterface extends VisualInterface {
+    private static final double offSet = 300;
     private int width;
     private int height;
     private StackPane root;
@@ -64,8 +65,8 @@ public class GraphicInterface extends VisualInterface {
 
                 Vector2D position = currentDraw.position();
 
-                currentDraw.graphics().setTranslateX(position.x*10 - 200);
-                currentDraw.graphics().setTranslateY(-position.y*10 + 200);
+                currentDraw.graphics().setTranslateX(position.x*10 - offSet);
+                currentDraw.graphics().setTranslateY(-position.y*10 + offSet);
 
                 if(!root.getChildren().contains(currentDraw.graphics())){
                     root.getChildren().add(currentDraw.graphics());

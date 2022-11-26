@@ -13,6 +13,7 @@ import gameengine.Components.SpaceInvaders.AlienMatrixLife;
 import gameengine.Components.SpaceInvaders.AlienMatrixController;
 import gameengine.Components.*;
 import gameengine.*;
+import gameengine.Components.SpaceInvaders.AlienController;
 import gameengine.Components.SpaceInvaders.PlayerHit;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
 import gameengine.Components.SpaceInvaders.UfoController;
@@ -105,6 +106,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(new Hit(gameObject));
                 gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
                 gameObject.addComponent(new ScoreCounter(gameObject, 10));
+                gameObject.addComponent(new AlienController(gameObject));
                 
                 gameObject.setTag("Alien");
                 
@@ -229,7 +231,7 @@ public class GameObjectBuilder {
                 
                 for(int i = 0; i<11; i++){
                     alienCopy = GameObjectBuilder.create(Prefab.Alien);
-                    alienCopy.setPosition(new Vector2D(4*i, 0));
+                    alienCopy.setPosition(new Vector2D(5*i, 0));
                     gameObject.addChild(alienCopy);
                 }
                 
@@ -247,7 +249,7 @@ public class GameObjectBuilder {
                 
                 for(int i = 0; i < 5; i++){
                     aliensLineCopy = GameObjectBuilder.create(Prefab.AliensLine);
-                    aliensLineCopy.setPosition(new Vector2D(0, 4*i));
+                    aliensLineCopy.setPosition(new Vector2D(0, 5.3f*i));
                     gameObject.addChild(aliensLineCopy);
                 }
                 

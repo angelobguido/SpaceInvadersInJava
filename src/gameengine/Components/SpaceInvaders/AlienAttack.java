@@ -38,7 +38,7 @@ public class AlienAttack extends Attack{
     @Override
     protected void setBulletVelocity(GameObject bullet){
         Physics physics = (Physics)bullet.getComponent(ComponentId.Physics);
-        physics.velocity = new Vector2D(0,-0.2f);
+        physics.velocity = new Vector2D(0,-2f);
     }
     
    

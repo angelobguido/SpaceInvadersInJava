@@ -17,7 +17,7 @@ import gamemath.Vector2D;
  */
 public class UfoController extends Component{
     private final static float maxX = 100;
-    private final static Vector2D initialPosition = new Vector2D(-10, 50);
+    private final static Vector2D initialPosition = new Vector2D(-10, 65);
     private Physics ufoPhysics;
     private boolean removed = false;
     
