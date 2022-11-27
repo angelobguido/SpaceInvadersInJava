@@ -12,6 +12,7 @@ import gameengine.Components.Collider;
 import gameengine.Components.Physics;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SpaceInvaders.PowerManager;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import java.util.ArrayList;
@@ -23,14 +24,44 @@ import java.util.ArrayList;
  */
 public class PlayerAttack extends Attack{
     
-    public PlayerAttack(GameObject gameObject, GameObject bulletPrefab){
-        super(gameObject, bulletPrefab);
+    private GameObject normalBullet;
+    private GameObject specialBullet;
+    
+    private static final int maxSpecialBullets = 5;
+    private int specialBulletsLeft = 0;
+    
+    public PlayerAttack(GameObject gameObject, GameObject normalBulletPrefab, GameObject specialBulletPrefab){
+        super(gameObject, normalBulletPrefab);
+        
+        normalBullet = normalBulletPrefab;
+        specialBullet = specialBulletPrefab;
+    }
+    
+    @Override
+    public void update(){
+        if(PowerManager.getPower() == true){
+            specialBulletsLeft = maxSpecialBullets;
+        }
+        
+        if(specialBulletsLeft == 0){
+            bulletPrefab = normalBullet;
+        }
+        else{
+            bulletPrefab = specialBullet;
+        }
+    }
+    
+    @Override
+    protected void onAttack(){
+        if(specialBulletsLeft > 0){
+            specialBulletsLeft--;
+        }
     }
     
     @Override
     public Component createCopy(GameObject gameObject){
         
-        PlayerAttack newAttack = new PlayerAttack(gameObject, bulletPrefab);
+        PlayerAttack newAttack = new PlayerAttack(gameObject, normalBullet, specialBullet);
         
         return newAttack;
     }

@@ -15,12 +15,12 @@ import gameengine.Components.*;
 import gameengine.*;
 import gameengine.Components.SpaceInvaders.AlienController;
 import gameengine.Components.SpaceInvaders.PlayerHit;
+import gameengine.Components.SpaceInvaders.PowerUpController;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
 import gameengine.Components.SpaceInvaders.UfoController;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 /**
  * Builder used to build the space invaders game objects.
@@ -29,9 +29,10 @@ import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 public class GameObjectBuilder {
    
-    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensMatrix, Bullet}
+    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensMatrix, PowerUp}
     
     
+    private static GameObject powerUp;
     private static GameObject ufo;
     private static GameObject alien;
     private static GameObject middleAlien;
@@ -52,6 +53,38 @@ public class GameObjectBuilder {
         GameObject gameObject = new GameObject();
         
         switch(prefab){
+            
+            case PowerUp:
+                if(powerUp != null) return new GameObject(powerUp);
+                
+                
+                ArrayList<Vector2D> powerUpStructure = new ArrayList<>();
+                
+                powerUpStructure.add(Vector2D.zero);
+                
+                Sprite powerUpSprite = new Sprite();
+                powerUpSprite.charRepresentation = '?';
+                powerUpSprite.spriteStructure = powerUpStructure;
+                
+                GameAnimation powerUpAnimation = new GameAnimation(40, 40);
+                powerUpAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/power_up1.png").toExternalForm()));
+                powerUpAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/power_up2.png").toExternalForm()));
+                powerUpAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/power_up3.png").toExternalForm()));
+                
+                powerUpSprite.content = powerUpAnimation;
+                
+                gameObject.addComponent(new SpriteRenderer(gameObject, powerUpSprite));
+                gameObject.addComponent(new Physics(gameObject));
+                gameObject.addComponent(new Collider(gameObject, 3, 3));
+                gameObject.addComponent(new Hit(gameObject));
+                gameObject.addComponent(new PowerUpController(gameObject));
+                
+                gameObject.setTag("PowerUp");
+                
+                powerUp = new GameObject(gameObject);
+                
+                break;
+
             
             case UFO:
                 
@@ -126,6 +159,7 @@ public class GameObjectBuilder {
                 playerStructure.add(new Vector2D(-1,-1));
         
                 GameObject playerBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm())));
+                GameObject specialBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/special_bullet.png").toExternalForm())));
                 
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
@@ -139,7 +173,7 @@ public class GameObjectBuilder {
                 gameObject.addComponent(playerCollider);
                 gameObject.addComponent(new SpriteRenderer(gameObject, playerSprite));
                 gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new PlayerAttack(gameObject, playerBullet));
+                gameObject.addComponent(new PlayerAttack(gameObject, playerBullet, specialBullet));
                 gameObject.addComponent(new PlayerController(gameObject));
                 gameObject.addComponent(new PlayerHit(gameObject));
                 

@@ -42,6 +42,8 @@ public abstract class Attack extends Component {
     
     public void attack(){
         
+        onAttack();
+        
         GameObject bullet = new GameObject(bulletPrefab);
         bullet.setPosition(gameObject.position());
         
@@ -49,6 +51,10 @@ public abstract class Attack extends Component {
         setBulletCollisions(bullet);
         
         EntityHandler.addEntity(bullet);
+        
+    }
+    
+    protected void onAttack(){
         
     }
     
