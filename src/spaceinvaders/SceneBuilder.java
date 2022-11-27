@@ -130,10 +130,10 @@ public class SceneBuilder {
         GameObject obstacle3 = GameObjectBuilder.create(Prefab.BigObstacle);
         GameObject obstacle4 = GameObjectBuilder.create(Prefab.BigObstacle);
 
-        obstacle1.setPosition(new Vector2D(5,6));
-        obstacle2.setPosition(new Vector2D(15,6));
-        obstacle3.setPosition(new Vector2D(25,6));
-        obstacle4.setPosition(new Vector2D(35,6));
+        obstacle1.setPosition(new Vector2D(7,6));
+        obstacle2.setPosition(new Vector2D(23,6));
+        obstacle3.setPosition(new Vector2D(38,6));
+        obstacle4.setPosition(new Vector2D(54,6));
 
         GameObject gameOverManager = new GameObject();
         gameOverManager.addComponent(new GameObjectManager(gameOverManager));

@@ -33,6 +33,14 @@ public class Rectangle {
         this.height = 1;
     }
     
+    public float width(){
+        return width;
+    }
+    
+    public float height(){
+        return height;
+    }
+    
     /**
      * This function will set the dimensions of the rectangle.
      * 

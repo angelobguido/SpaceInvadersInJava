@@ -46,12 +46,6 @@ public class AlienMatrixController extends Component{
     @Override
     public void update(){
         
-        if(gameObject.position().y < 0){
-            System.out.println("END");
-            GameInitializer.stop();
-            SceneManager.loadMenuScene(SceneBuilder.createMenu(GameOver));
-        }
-        
         if(isRight){
             if(gameObject.position().x > maxX){
                 isRight = false;
@@ -109,7 +103,7 @@ public class AlienMatrixController extends Component{
     @Override
     public void start(){
         aliensPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
-        aliensPhysics.velocity = new Vector2D(0.2f, 0);
+        aliensPhysics.velocity = new Vector2D(0.1f, 0);
     }
     
     

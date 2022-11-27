@@ -39,6 +39,19 @@ public class Collider extends Component {
         
     }
     
+    public Collider(GameObject gameObject, float width, float height){
+        super(gameObject, ComponentId.Collider);
+        
+        publisher = new Publisher();
+        
+        colliderBox = new Rectangle(width, height, gameObject.getPositionReference());
+        
+        colliders = new ArrayList<>();
+        otherColliders = new ArrayList<>();
+        removedCollidersBuffer = new Stack<>();
+        
+    }
+    
     @Override
     public Component createCopy(GameObject gameObject){
         
@@ -46,7 +59,7 @@ public class Collider extends Component {
         
         newCollider.publisher = new Publisher();
         
-        newCollider.colliderBox = new Rectangle(gameObject.getPositionReference());
+        newCollider.colliderBox = new Rectangle(colliderBox.width(), colliderBox.height(), gameObject.getPositionReference());
         
         newCollider.colliders = new ArrayList<>(colliders);
         newCollider.otherColliders = new ArrayList<>(otherColliders);

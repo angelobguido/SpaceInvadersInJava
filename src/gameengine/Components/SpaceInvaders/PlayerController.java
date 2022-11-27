@@ -41,12 +41,19 @@ public class PlayerController extends Component{
     public void update(){
         
         Command c = InputHandler.getCommand();
+            
+        if(attackCooldownTimer <= 0){
+            canAttack = true;
+            
+        }else{
+            attackCooldownTimer--;        
+        }
         
         switch(c){
             case Nothing: playerPhysics.velocity = Vector2D.zero; break;
             case Left: playerPhysics.velocity = new Vector2D(-2, 0); break;
             case Right: playerPhysics.velocity = new Vector2D(2, 0); break;
-            case Shoot: playerAttack.attack(); break;
+            case Shoot: attack(); break;
         }
         
     }
@@ -57,13 +64,6 @@ public class PlayerController extends Component{
             playerAttack.attack();
             canAttack = false;
             attackCooldownTimer = attackCooldown;
-        }
-        else{
-            attackCooldownTimer--;
-            
-            if(attackCooldownTimer <= 0){
-                canAttack = true;
-            }
         }
         
     }
