@@ -5,6 +5,8 @@
 package gameengine;
 
 import gamemath.Vector2D;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -17,6 +19,10 @@ public class Drawable {
     public Sprite sprite;
     private Vector2D position;
     private Node graphics;
+    private SimpleDoubleProperty xPosition = new SimpleDoubleProperty();
+    private SimpleDoubleProperty yPosition = new SimpleDoubleProperty();
+    private SimpleBooleanProperty disable = new SimpleBooleanProperty(true);
+    private boolean isInScene = false;
     
     public Drawable(Sprite sprite, Vector2D position){
         this.sprite = sprite;
@@ -30,6 +36,26 @@ public class Drawable {
     
     public Vector2D position(){
         return new Vector2D(position);
+    }
+    
+    public SimpleDoubleProperty xPosition(){
+        return xPosition;
+    }
+    
+    public SimpleDoubleProperty yPosition(){
+        return yPosition;
+    }
+    
+    public SimpleBooleanProperty disable(){
+        return disable;
+    }
+    
+    public void enterScene(){
+        isInScene = true;
+    }
+    
+    public boolean isInScene(){
+        return isInScene;
     }
     
     public Node graphics(){

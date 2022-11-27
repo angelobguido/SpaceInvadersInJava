@@ -26,6 +26,7 @@ public class GraphicInterface extends VisualInterface {
     private int height;
     private StackPane root;
     private Stack<Drawable> draws = new Stack<>();
+    private Stack<Drawable> moves = new Stack<>();
     private Stack<Drawable> undraws = new Stack<>();
     
     
@@ -35,6 +36,11 @@ public class GraphicInterface extends VisualInterface {
     
     @Override
     public void draw(Drawable object){
+        
+        if(object.isInScene()){
+            moves.push(object);
+            return;
+        }
         
         draws.push(object);
 
@@ -56,33 +62,49 @@ public class GraphicInterface extends VisualInterface {
             return;
         }
         
-        Platform.runLater(()->{
-            
+        Platform.runLater(()-> {
+
             while(draws.isEmpty() == false){
 
                 Drawable currentDraw = draws.pop();
 
                 Vector2D position = currentDraw.position();
 
-                currentDraw.graphics().setTranslateX(position.x*10 - 200);
-                currentDraw.graphics().setTranslateY(-position.y*10 + 200);
+                currentDraw.xPosition().set(position.x*10 - 200);
+                currentDraw.yPosition().set(-position.y*10 + 200);
 
-                if(!root.getChildren().contains(currentDraw.graphics())){
-                    root.getChildren().add(currentDraw.graphics());
-                }
+                currentDraw.graphics().translateXProperty().bind(currentDraw.xPosition());
+                currentDraw.graphics().translateYProperty().bind(currentDraw.yPosition());
+                currentDraw.graphics().visibleProperty().bind(currentDraw.disable());
+                
+                currentDraw.enterScene();
 
-            }
-
-            while(undraws.isEmpty() == false){
-
-                Drawable currentDraw = undraws.pop();
-
-                root.getChildren().remove(currentDraw.graphics());
+                root.getChildren().add(currentDraw.graphics());
 
             }
 
         });
         
+        while(moves.isEmpty() == false){
+
+            Drawable currentDraw = moves.pop();
+
+            Vector2D position = currentDraw.position();
+
+            currentDraw.xPosition().set(position.x*10 - 200);
+            currentDraw.yPosition().set(-position.y*10 + 200);
+
+        }
+        
+        while(undraws.isEmpty() == false){
+
+            Drawable currentDraw = undraws.pop();
+            currentDraw.disable().set(false);
+            
+        }
+
+        
+
     }
     
     protected void setWidth(int width){
