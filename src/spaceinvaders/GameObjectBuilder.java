@@ -29,7 +29,7 @@ import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 public class GameObjectBuilder {
    
-    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
+    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensMatrix, Bullet}
     
     
     private static GameObject ufo;
@@ -39,9 +39,7 @@ public class GameObjectBuilder {
     private static GameObject player;
     private static GameObject obstacle;
     private static GameObject bigObstacle;
-    private static GameObject aliensLine;
     private static GameObject aliensMatrix;
-    private static GameObject bullet;
 
     
     /**
@@ -126,19 +124,8 @@ public class GameObjectBuilder {
                 playerStructure.add(new Vector2D(0,-1));
                 playerStructure.add(new Vector2D(1,-1));
                 playerStructure.add(new Vector2D(-1,-1));
-                
-                ArrayList<Vector2D> playerBulletStructure = new ArrayList<>();
-                
-                playerBulletStructure.add(Vector2D.zero);
-
-                Sprite playerBulletSprite = new Sprite();
-                playerBulletSprite.charRepresentation = '1';
-                playerBulletSprite.spriteStructure = playerBulletStructure;
-                playerBulletSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm()), 30, 30);
-                
-                
-                GameObject playerBullet = GameObjectBuilder.create(Bullet);
-                ((SpriteRenderer)playerBullet.getComponent(ComponentId.SpriteRenderer)).setSprite(playerBulletSprite);
+        
+                GameObject playerBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm())));
                 
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
@@ -225,15 +212,6 @@ public class GameObjectBuilder {
                 
                 break;
                 
-            case AliensLine:
-                
-                if(aliensLine != null) return new GameObject(aliensLine);
-                
-                gameObject = createAliensLine(GameObjectBuilder.create(Prefab.Alien));
-                aliensLine = new GameObject(gameObject);
-                
-                break;
-                
             case AliensMatrix:
                 
                 if(aliensMatrix != null) return new GameObject(aliensMatrix);
@@ -265,34 +243,7 @@ public class GameObjectBuilder {
                 aliensMatrix = new GameObject(gameObject);
                 
                 break;
-                
-            case Bullet:
-                
-                if(bullet != null) return new GameObject(bullet);
-                
-                ArrayList<Vector2D> bulletStructure = new ArrayList<>();
-                
-                bulletStructure.add(Vector2D.zero);
-
-                Sprite bulletSprite = new Sprite();
-                bulletSprite.charRepresentation = '0';
-                bulletSprite.spriteStructure = bulletStructure;
-                bulletSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/alien_bullet.png").toExternalForm()), 30, 30);
-                
-                Physics bulletPhysics = new Physics(gameObject);
-                bulletPhysics.velocity = new Vector2D(0,0.1f);
-                
-                gameObject.addComponent(bulletPhysics);
-                gameObject.addComponent(new Collider(gameObject));
-                gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
-                gameObject.addComponent(new Hit(gameObject));
-                gameObject.addComponent(new BulletLife(gameObject));
-                
-                gameObject.setTag("Bullet");
-                
-                bullet = new GameObject(gameObject);
-                
-                break;
+            
             
         }
         
@@ -316,7 +267,7 @@ public class GameObjectBuilder {
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
         gameObject.addComponent(new Hit(gameObject));
-        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/alien_bullet.png").toExternalForm())))));
         gameObject.addComponent(new ScoreCounter(gameObject, 30));
         gameObject.addComponent(new AlienController(gameObject));
 
@@ -342,7 +293,7 @@ public class GameObjectBuilder {
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
         gameObject.addComponent(new Hit(gameObject));
-        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/middle_alien_bullet.png").toExternalForm())))));
         gameObject.addComponent(new ScoreCounter(gameObject, 20));
         gameObject.addComponent(new AlienController(gameObject));
 
@@ -368,7 +319,7 @@ public class GameObjectBuilder {
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
         gameObject.addComponent(new Hit(gameObject));
-        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/front_alien_bullet.png").toExternalForm())))));
         gameObject.addComponent(new ScoreCounter(gameObject, 10));
         gameObject.addComponent(new AlienController(gameObject));
 
@@ -389,5 +340,35 @@ public class GameObjectBuilder {
         }
 
         return gameObject;
+    }
+    
+    public static GameObject createBullet(Sprite bulletSprite){
+        
+        GameObject gameObject = new GameObject();
+        
+        Physics bulletPhysics = new Physics(gameObject);
+        
+        gameObject.addComponent(bulletPhysics);
+        gameObject.addComponent(new Collider(gameObject));
+        gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
+        gameObject.addComponent(new Hit(gameObject));
+        gameObject.addComponent(new BulletLife(gameObject));
+
+        gameObject.setTag("Bullet");
+
+        return gameObject;
+    }
+    
+    private static Sprite createBulletSprite(Image bulletImage){
+        ArrayList<Vector2D> bulletStructure = new ArrayList<>();
+
+        bulletStructure.add(Vector2D.zero);
+
+        Sprite bulletSprite = new Sprite();
+        bulletSprite.charRepresentation = '0';
+        bulletSprite.spriteStructure = bulletStructure;
+        bulletSprite.content = new GameImage(bulletImage, 30, 30);
+        
+        return bulletSprite;
     }
 }
