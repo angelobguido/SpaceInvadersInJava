@@ -29,11 +29,13 @@ import static spaceinvaders.GameObjectBuilder.Prefab.Bullet;
 
 public class GameObjectBuilder {
    
-    public enum Prefab{UFO, Alien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
+    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensLine, AliensMatrix, Bullet}
     
     
     private static GameObject ufo;
     private static GameObject alien;
+    private static GameObject middleAlien;
+    private static GameObject frontAlien;
     private static GameObject player;
     private static GameObject obstacle;
     private static GameObject bigObstacle;
@@ -91,26 +93,26 @@ public class GameObjectBuilder {
                 
                 if(alien != null) return new GameObject(alien);
                 
-                ArrayList<Vector2D> alienStructure = new ArrayList<>();
-                
-                alienStructure.add(Vector2D.zero);
-                
-                Sprite alienSprite = new Sprite();
-                alienSprite.charRepresentation = '$';
-                alienSprite.spriteStructure = alienStructure;
-                alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/enemy.png").toExternalForm()), 40, 40);
-                
-                gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
-                gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new Collider(gameObject, 3, 3));
-                gameObject.addComponent(new Hit(gameObject));
-                gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
-                gameObject.addComponent(new ScoreCounter(gameObject, 10));
-                gameObject.addComponent(new AlienController(gameObject));
-                
-                gameObject.setTag("Alien");
-                
+                gameObject = createBasicAlien();
                 alien = new GameObject(gameObject);
+                
+                break;
+                
+            case MiddleAlien: 
+
+                if(middleAlien != null) return new GameObject(middleAlien);
+
+                gameObject = createMiddleAlien();
+                middleAlien = new GameObject(gameObject);
+
+                break;
+
+            case FrontAlien: 
+
+                if(frontAlien != null) return new GameObject(frontAlien);
+
+                gameObject = createFrontAlien();
+                frontAlien = new GameObject(gameObject);
                 
                 break;
             
@@ -227,16 +229,7 @@ public class GameObjectBuilder {
                 
                 if(aliensLine != null) return new GameObject(aliensLine);
                 
-                GameObject alienCopy;
-                
-                for(int i = 0; i<11; i++){
-                    alienCopy = GameObjectBuilder.create(Prefab.Alien);
-                    alienCopy.setPosition(new Vector2D(5*i, 0));
-                    gameObject.addChild(alienCopy);
-                }
-                
-                gameObject.setTag("AliensLine");
-                
+                gameObject = createAliensLine(GameObjectBuilder.create(Prefab.Alien));
                 aliensLine = new GameObject(gameObject);
                 
                 break;
@@ -247,12 +240,22 @@ public class GameObjectBuilder {
                 
                 GameObject aliensLineCopy;
                 
-                for(int i = 0; i < 5; i++){
-                    aliensLineCopy = GameObjectBuilder.create(Prefab.AliensLine);
+                for(int i = 0; i < 2; i++){
+                    aliensLineCopy = createAliensLine(create(Prefab.FrontAlien));
                     aliensLineCopy.setPosition(new Vector2D(0, 5.3f*i));
                     gameObject.addChild(aliensLineCopy);
                 }
                 
+                for(int i = 2; i < 4; i++){
+                    aliensLineCopy = createAliensLine(create(Prefab.MiddleAlien));
+                    aliensLineCopy.setPosition(new Vector2D(0, 5.3f*i));
+                    gameObject.addChild(aliensLineCopy);
+                }
+                
+                aliensLineCopy = createAliensLine(create(Prefab.Alien));
+                aliensLineCopy.setPosition(new Vector2D(0, 5.3f*4));
+                gameObject.addChild(aliensLineCopy);
+
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new AlienMatrixLife(gameObject));
                 gameObject.addComponent(new AlienMatrixController(gameObject));
@@ -296,4 +299,95 @@ public class GameObjectBuilder {
         return gameObject;
     }
     
+    public static GameObject createBasicAlien(){
+        
+        GameObject gameObject = new GameObject();
+        
+        ArrayList<Vector2D> alienStructure = new ArrayList<>();
+                
+        alienStructure.add(Vector2D.zero);
+
+        Sprite alienSprite = new Sprite();
+        alienSprite.charRepresentation = '$';
+        alienSprite.spriteStructure = alienStructure;
+        alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/enemy.png").toExternalForm()), 40, 40);
+
+        gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
+        gameObject.addComponent(new Physics(gameObject));
+        gameObject.addComponent(new Collider(gameObject, 3, 3));
+        gameObject.addComponent(new Hit(gameObject));
+        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new ScoreCounter(gameObject, 30));
+        gameObject.addComponent(new AlienController(gameObject));
+
+        gameObject.setTag("Alien");
+
+        return gameObject;
+    }
+    
+    public static GameObject createMiddleAlien(){
+        
+        GameObject gameObject = new GameObject();
+        
+        ArrayList<Vector2D> alienStructure = new ArrayList<>();
+                
+        alienStructure.add(Vector2D.zero);
+
+        Sprite alienSprite = new Sprite();
+        alienSprite.charRepresentation = '8';
+        alienSprite.spriteStructure = alienStructure;
+        alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/middle_enemy.png").toExternalForm()), 40, 40);
+
+        gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
+        gameObject.addComponent(new Physics(gameObject));
+        gameObject.addComponent(new Collider(gameObject, 3, 3));
+        gameObject.addComponent(new Hit(gameObject));
+        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new ScoreCounter(gameObject, 20));
+        gameObject.addComponent(new AlienController(gameObject));
+
+        gameObject.setTag("Alien");
+
+        return gameObject;
+    }
+    
+    public static GameObject createFrontAlien(){
+        
+        GameObject gameObject = new GameObject();
+        
+        ArrayList<Vector2D> alienStructure = new ArrayList<>();
+                
+        alienStructure.add(Vector2D.zero);
+
+        Sprite alienSprite = new Sprite();
+        alienSprite.charRepresentation = '+';
+        alienSprite.spriteStructure = alienStructure;
+        alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/front_enemy.png").toExternalForm()), 40, 40);
+
+        gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
+        gameObject.addComponent(new Physics(gameObject));
+        gameObject.addComponent(new Collider(gameObject, 3, 3));
+        gameObject.addComponent(new Hit(gameObject));
+        gameObject.addComponent(new AlienAttack(gameObject, GameObjectBuilder.create(Bullet)));
+        gameObject.addComponent(new ScoreCounter(gameObject, 10));
+        gameObject.addComponent(new AlienController(gameObject));
+
+        gameObject.setTag("Alien");
+
+        return gameObject;
+    }
+    
+    public static GameObject createAliensLine(GameObject alien){
+        
+        GameObject gameObject = new GameObject();
+        GameObject alienCopy;
+        
+       for(int i = 0; i<11; i++){
+            alienCopy = new GameObject(alien);
+            alienCopy.setPosition(new Vector2D(5*i, 0));
+            gameObject.addChild(alienCopy);
+        }
+
+        return gameObject;
+    }
 }
