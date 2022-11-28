@@ -43,8 +43,6 @@ public class GameInitializer {
                 
                 frame++;
                 
-                System.out.println("Frame: "+ frame);
-                
                 Graphics.update();
                 CollisionHandler.update();
                 EventHandler.update();

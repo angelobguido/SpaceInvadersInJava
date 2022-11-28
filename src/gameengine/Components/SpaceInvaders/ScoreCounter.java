@@ -47,7 +47,6 @@ public class ScoreCounter extends Component implements Subscriber {
     
     @Override
     public void onNotified(){
-        System.out.println(points);
         ScoreManager.increment(points);
     }
 }
