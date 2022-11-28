@@ -53,9 +53,7 @@ public class Publisher {
     public void notifySubscribers(){
         if(canNotify == false) return;
         
-        for(int i = 0; i<subscribers.size(); i++){
-            subscribers.get(i).onNotified();
-        }
+        subscribers.forEach(subscriber -> subscriber.onNotified());
     }
     
     public void disable(){

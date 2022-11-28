@@ -77,7 +77,6 @@ public class Hit extends Component implements Subscriber{
     
     @Override
     public void onNotified(){
-        System.out.println(this);
         health--;
         onHit();
         if(health<=0){

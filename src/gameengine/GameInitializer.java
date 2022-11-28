@@ -23,6 +23,8 @@ public class GameInitializer {
     private static boolean hasStopped = false;
     private static int timesPlayed = 1;
     
+    public static int frame = 0;
+    
     public static void init(GameScene game){
         
         hasStopped = false;
@@ -38,6 +40,10 @@ public class GameInitializer {
             
             
             while(hasStopped == false){
+                
+                frame++;
+                
+                System.out.println("Frame: "+ frame);
                 
                 Graphics.update();
                 CollisionHandler.update();
@@ -73,6 +79,8 @@ public class GameInitializer {
         InputHandler.reset();
         HealthManager.reset();
         ScoreManager.reset();
+        
+        frame = 0;
     }
     
     public static void stop(){

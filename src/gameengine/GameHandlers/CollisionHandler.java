@@ -5,6 +5,7 @@
 package gameengine.GameHandlers;
 
 import gameengine.Components.Collider;
+import gameengine.GameInitializer;
 import java.util.Stack;
 
 /**
@@ -23,6 +24,7 @@ public class CollisionHandler {
      */
     public static void putInCollisionBuffer(Collider c){
         if(buffer.contains(c) == false){
+            
             buffer.push(c);
         }
         

@@ -72,10 +72,10 @@ public class Rectangle {
         float otherMinY = otherRectangle.center.y - otherRectangle.height/2;
         
         if(
-            thisMaxX>otherMinX &&
-            thisMinX<otherMaxX &&
-            thisMaxY>otherMinY &&
-            thisMinY<otherMaxY
+            thisMaxX>=otherMinX &&
+            thisMinX<=otherMaxX &&
+            thisMaxY>=otherMinY &&
+            thisMinY<=otherMaxY
           )
         {
             return true;

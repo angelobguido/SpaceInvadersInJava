@@ -50,8 +50,7 @@ public class GameObjectManager extends Component implements Subscriber{
         }
         
         if(random() < 0.9){
-            EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.PowerUp));
-            System.out.println("Spawned");
+            //EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.PowerUp));
         }
         
     }

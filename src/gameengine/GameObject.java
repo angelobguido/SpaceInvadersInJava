@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class GameObject {
     private String tag = ""; //tag used to find this game object
     private Vector2D position; //position in the game world
-    private ArrayList<Component> components; //list of all components used in this game object.
-    private Stack<Component> removedComponentsBuffer; //buffer that will store all components that will be removed
-    private ArrayList<GameObject> children; //list of all children of this game object
+    private ArrayList<Component> components = new ArrayList<>(); //list of all components used in this game object.
+    private Stack<Component> removedComponentsBuffer = new Stack<>(); //buffer that will store all components that will be removed
+    private ArrayList<GameObject> children = new ArrayList<>(); //list of all children of this game object
     private GameObject parent; //this game object parent.
     
     public GameObject(){
@@ -37,19 +37,15 @@ public class GameObject {
         
         position = new Vector2D(copy.position);
         
-        components = new ArrayList<>();
-        
         for(int i = 0; i<copy.components.size(); i++){
             components.add(copy.components.get(i).createCopy(this));
         }
         
-        children = new ArrayList<>();
-        
         for(int i = 0; i<copy.children.size(); i++){
-            children.add(new GameObject(copy.children.get(i)));
+            GameObject currentChild = new GameObject(copy.children.get(i));
+            currentChild.parent = this;
+            children.add(currentChild);
         }
-        
-        removedComponentsBuffer = new Stack<>();
         
     }
     
@@ -84,10 +80,18 @@ public class GameObject {
             parent.children.remove(this);
         }
         
-        components.forEach(component -> {component.destroy();});
-        children.forEach(child -> {child.destroy();});
+        destroyComponentsRecursive(this);
+        
+    }
+    
+    private void destroyComponentsRecursive(GameObject go){
+        
+        go.components.forEach(component -> component.destroy());
         
         components.clear();
+        
+        go.children.forEach(child -> destroyComponentsRecursive(child));
+    
     }
     
     /**

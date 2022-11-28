@@ -383,7 +383,7 @@ public class GameObjectBuilder {
         Physics bulletPhysics = new Physics(gameObject);
         
         gameObject.addComponent(bulletPhysics);
-        gameObject.addComponent(new Collider(gameObject));
+        gameObject.addComponent(new Collider(gameObject, 2, 2));
         gameObject.addComponent(new SpriteRenderer(gameObject, bulletSprite));
         gameObject.addComponent(new Hit(gameObject));
         gameObject.addComponent(new BulletLife(gameObject));

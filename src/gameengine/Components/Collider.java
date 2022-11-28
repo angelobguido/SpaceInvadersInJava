@@ -7,6 +7,7 @@ package gameengine.Components;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.GameHandlers.CollisionHandler;
+import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;
@@ -20,35 +21,23 @@ import java.util.ArrayList;
  */
 public class Collider extends Component {
     
-    private Publisher publisher;
+    private Publisher publisher = new Publisher();
     private Rectangle colliderBox;
-    private ArrayList<Collider> colliders; //colliders that this collider will collide with
-    private ArrayList<Collider> otherColliders; //colliders that will collide with this collider
-    private Stack<Collider> removedCollidersBuffer; //buffer that will store all colliders that will be removed
+    private ArrayList<Collider> colliders = new ArrayList<>(); //colliders that this collider will collide with
+    private ArrayList<Collider> otherColliders = new ArrayList<>(); //colliders that will collide with this collider
+    private Stack<Collider> removedCollidersBuffer = new Stack<>(); //buffer that will store all colliders that will be removed
     
     public Collider(GameObject gameObject){
         super(gameObject, ComponentId.Collider);
         
-        publisher = new Publisher();
-        
         colliderBox = new Rectangle(gameObject.getPositionReference());
-        
-        colliders = new ArrayList<>();
-        otherColliders = new ArrayList<>();
-        removedCollidersBuffer = new Stack<>();
         
     }
     
     public Collider(GameObject gameObject, float width, float height){
         super(gameObject, ComponentId.Collider);
         
-        publisher = new Publisher();
-        
         colliderBox = new Rectangle(width, height, gameObject.getPositionReference());
-        
-        colliders = new ArrayList<>();
-        otherColliders = new ArrayList<>();
-        removedCollidersBuffer = new Stack<>();
         
     }
     
@@ -57,13 +46,7 @@ public class Collider extends Component {
         
         Collider newCollider = new Collider(gameObject);
         
-        newCollider.publisher = new Publisher();
-        
-        newCollider.colliderBox = new Rectangle(colliderBox.width(), colliderBox.height(), gameObject.getPositionReference());
-        
-        newCollider.colliders = new ArrayList<>(colliders);
-        newCollider.otherColliders = new ArrayList<>(otherColliders);
-        newCollider.removedCollidersBuffer = (Stack<Collider>)removedCollidersBuffer.clone();
+        newCollider.colliderBox.setDimensions(colliderBox.width(), colliderBox.height());
         
         return newCollider;
     }
@@ -71,10 +54,7 @@ public class Collider extends Component {
     @Override
     public void update(){
         
-        //will first remove all colliders that needs to be removed
-        while(removedCollidersBuffer.isEmpty() == false){
-            colliders.remove(removedCollidersBuffer.pop());
-        }
+        if(gameObject.tagIsEqual("Alien")) System.out.println("Alien: "+colliders.size()); 
         
         checkCollisions();
         
@@ -84,7 +64,16 @@ public class Collider extends Component {
         for(int i = 0; i < colliders.size(); i++){
             if(colliderBox.isInContact(colliders.get(i).getColliderBox()) == true){
                 CollisionHandler.putInCollisionBuffer(this);
-                CollisionHandler.putInCollisionBuffer(colliders.get(i));
+                
+                if(gameObject.tagIsEqual("Bullet")){
+                    System.out.println("Debug: "+GameInitializer.frame);
+                    System.out.println("Tag: "+ colliders.get(i).gameObject.tagIsEqual("Alien"));
+                    System.out.println("Contains: "+ colliders.get(i).colliders.contains(this));
+                    System.out.println("Contact: "+ colliders.get(i).getColliderBox().isInContact(colliderBox));
+                }
+                
+                //CollisionHandler.putInCollisionBuffer(colliders.get(i));
+                return;
             }
         }
     }
@@ -98,10 +87,8 @@ public class Collider extends Component {
     public void destroy(){
         
         colliders.clear();
-        colliders = null;
         
-        otherColliders.forEach(collider -> {collider.removeCollider(this);});
-        otherColliders = null;
+        otherColliders.forEach(collider -> collider.colliders.remove(this));
         
         gameObject.removeComponent(this);
         gameObject = null;
@@ -151,17 +138,9 @@ public class Collider extends Component {
      * @param c
      */
     public void addCollider(Collider c){
-        if(c == null){
-            return;
-        }
         
-        if(colliders.contains(c) == false){
-            colliders.add(c);
-        }
-        
-        if(c.otherColliders.contains(this) == false){
-            c.otherColliders.add(this);
-        }
+        colliders.add(c);
+        c.otherColliders.add(this);
         
     }
     
@@ -172,14 +151,9 @@ public class Collider extends Component {
      */
     public void addTwoWayCollider(Collider c){
         
-        
         addCollider(c);
-        
-        if(c == null){
-            return;
-        }
-        
         c.addCollider(this);
+        
     }
     
     /**
@@ -188,7 +162,10 @@ public class Collider extends Component {
      * @param c
      */
     public void removeCollider(Collider c){
-        removedCollidersBuffer.push(c);
+        
+        c.otherColliders.remove(this);
+        colliders.remove(c);
+        
     }
     
     /**

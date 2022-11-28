@@ -56,10 +56,6 @@ public class EntityHandler {
             
             GameObject currentEntity = entities.get(i);
             
-            if(currentEntity.tagIsEqual(tag)){
-                taggedEntities.add(currentEntity);
-            }
-            
             _findTagRecursive(taggedEntities, currentEntity, tag);
         }
         
@@ -69,10 +65,11 @@ public class EntityHandler {
     
     private static void _findTagRecursive(ArrayList<GameObject> taggedEntities, GameObject current, String tag){
         
+        if(current.tagIsEqual(tag)){
+            taggedEntities.add(current);
+        }
+        
         for(int i = 0; i < current.childCount(); i++){
-            if(current.getChild(i).tagIsEqual(tag)){
-                taggedEntities.add(current.getChild(i));
-            }
             _findTagRecursive(taggedEntities, current.getChild(i), tag);
         }
         
@@ -139,7 +136,7 @@ public class EntityHandler {
             entities.remove(removedEntity);
         }
         
-        entities.forEach(entity -> {entity.update();});
+        entities.forEach(entity -> entity.update());
     } 
     
     public static void reset(){
