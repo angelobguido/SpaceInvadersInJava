@@ -216,25 +216,25 @@ public class GameObjectBuilder {
                 
                 for(int i = -2; i < 3; i++){
                     obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
-                    obstacleCopy.setPosition(new Vector2D(i, 0));
+                    obstacleCopy.setPosition(new Vector2D(2*i, 0));
                     gameObject.addChild(obstacleCopy);
                 }
                 
                 for(int i = -2; i < 3; i++){
                     obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
-                    obstacleCopy.setPosition(new Vector2D(i, 1));
+                    obstacleCopy.setPosition(new Vector2D(2*i, 2*1));
                     gameObject.addChild(obstacleCopy);
                 }
                 
                 for(int i = -2; i < 3; i++){
                     obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
-                    obstacleCopy.setPosition(new Vector2D(i, 2));
+                    obstacleCopy.setPosition(new Vector2D(2*i, 2*2));
                     gameObject.addChild(obstacleCopy);
                 }
                 
                 for(int i = -1; i < 2; i++){
                     obstacleCopy = GameObjectBuilder.create(Prefab.Obstacle);
-                    obstacleCopy.setPosition(new Vector2D(i, 3));
+                    obstacleCopy.setPosition(new Vector2D(2*i, 2*3));
                     gameObject.addChild(obstacleCopy);
                 }
                 
