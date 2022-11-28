@@ -6,7 +6,9 @@ package gameengine.Components;
 
 import gameengine.Component;
 import gameengine.ComponentId;
+import gameengine.GameHandlers.PhysicsHandler;
 import gameengine.GameObject;
+import gameengine.PhysicsElement;
 import gamemath.Vector2D;
 
 /**
@@ -35,7 +37,7 @@ public class Physics extends Component{
     
     @Override
     public void update(){
-        gameObject.setPosition(Vector2D.addVectors(velocity, gameObject.position()));
+        PhysicsHandler.putInBuffer(new PhysicsElement(gameObject, velocity));
     }
     
     @Override

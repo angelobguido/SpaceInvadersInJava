@@ -13,4 +13,9 @@ import gamemath.Vector2D;
 public class PhysicsElement {
     public GameObject entity;
     public Vector2D translation;
+    
+    public PhysicsElement(GameObject entity, Vector2D translation){
+        this.entity = entity;
+        this.translation = translation;
+    }
 }

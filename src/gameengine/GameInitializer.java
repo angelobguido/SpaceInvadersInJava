@@ -9,6 +9,7 @@ import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameHandlers.InputHandler;
+import gameengine.GameHandlers.PhysicsHandler;
 import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
@@ -47,6 +48,7 @@ public class GameInitializer {
                 CollisionHandler.update();
                 EventHandler.update();
                 EntityHandler.update();
+                PhysicsHandler.update();
                 SceneManager.update();
                 InputHandler.update();
                 
@@ -77,6 +79,7 @@ public class GameInitializer {
         InputHandler.reset();
         HealthManager.reset();
         ScoreManager.reset();
+        PhysicsHandler.reset();
         
         frame = 0;
     }

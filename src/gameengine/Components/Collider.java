@@ -55,7 +55,6 @@ public class Collider extends Component {
     @Override
     public void update(){
         
-        if(gameObject.tagIsEqual("Alien")) System.out.println("Alien frame: "+GameInitializer.frame);
         checkCollisions();
         
     }
@@ -63,26 +62,9 @@ public class Collider extends Component {
     private void checkCollisions(){
         for(int i = 0; i < colliders.size(); i++){
             
-            if(gameObject.tagIsEqual("Alien")) System.out.println("Alien contact: "+colliderBox.isInContact(colliders.get(i).getColliderBox()));
-            
-            if(colliderBox.isInContact(colliders.get(i).getColliderBox()) == true){
+           if(colliderBox.isInContact(colliders.get(i).getColliderBox()) == true){
                 CollisionHandler.putInCollisionBuffer(this);
-                
-                if(gameObject.tagIsEqual("Bullet")){
-                    Debug.bullet = gameObject;
-                    Debug.entity = colliders.get(i).gameObject;
-                    Debug.collisionFrame = GameInitializer.frame;
-                    System.out.println("Contact: "+colliders.get(i).getColliderBox().isInContact(colliderBox));
-                    System.out.println("Contains: "+colliders.get(i).colliders.contains(this));
-                    System.out.println("Is alien: "+colliders.get(i).gameObject.tagIsEqual("Alien"));
-                    System.out.println("Frame: "+GameInitializer.frame);
-                }
-                
-                if(gameObject.tagIsEqual("Alien")){
-                    System.out.println("Alien collision");
-                }
-                
-                //CollisionHandler.putInCollisionBuffer(colliders.get(i));
+             
                 return;
             }
         }
