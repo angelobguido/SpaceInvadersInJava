@@ -17,6 +17,7 @@ import gameengine.Components.SpaceInvaders.AlienController;
 import gameengine.Components.SpaceInvaders.PlayerHit;
 import gameengine.Components.SpaceInvaders.PowerUpController;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
+import gameengine.Components.SpaceInvaders.SpecialBulletController;
 import gameengine.Components.SpaceInvaders.UfoController;
 import gamemath.Vector2D;
 import java.util.ArrayList;
@@ -160,6 +161,7 @@ public class GameObjectBuilder {
         
                 GameObject playerBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm())));
                 GameObject specialBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/special_bullet.png").toExternalForm())));
+                specialBullet.addComponent(new SpecialBulletController(specialBullet, playerBullet));
                 
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';

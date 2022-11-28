@@ -49,7 +49,7 @@ public class GameObjectManager extends Component implements Subscriber{
             EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.UFO));
         }
         
-        if(random() < 0.1){
+        if(random() < 0.9){
             EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.PowerUp));
         }
         
