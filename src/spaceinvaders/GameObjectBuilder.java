@@ -160,8 +160,9 @@ public class GameObjectBuilder {
                 playerStructure.add(new Vector2D(-1,-1));
         
                 GameObject playerBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm())));
+                GameObject extraBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/extra_bullet.png").toExternalForm())));
                 GameObject specialBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/special_bullet.png").toExternalForm())));
-                specialBullet.addComponent(new SpecialBulletController(specialBullet, playerBullet));
+                specialBullet.addComponent(new SpecialBulletController(specialBullet, extraBullet));
                 
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
