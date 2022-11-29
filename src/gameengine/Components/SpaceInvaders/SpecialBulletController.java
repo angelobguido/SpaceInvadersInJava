@@ -66,28 +66,28 @@ public class SpecialBulletController extends Component{
         physics.velocity = new Vector2D(1,1);
         setCollisions(bulletClone);
         
-        EntityHandler.addEntity(new GameObject(bulletClone));
+        EntityHandler.addEntity(bulletClone);
         
         bulletClone = new GameObject(bulletClone);
         physics = (Physics)bulletClone.getComponent(ComponentId.Physics);
         physics.velocity = new Vector2D(-1,-1);
         setCollisions(bulletClone);
         
-        EntityHandler.addEntity(new GameObject(bulletClone));
+        EntityHandler.addEntity(bulletClone);
         
         bulletClone = new GameObject(bulletClone);
         physics = (Physics)bulletClone.getComponent(ComponentId.Physics);
         physics.velocity = new Vector2D(1,-1);
         setCollisions(bulletClone);
         
-        EntityHandler.addEntity(new GameObject(bulletClone));
+        EntityHandler.addEntity(bulletClone);
         
         bulletClone = new GameObject(bulletClone);
         physics = (Physics)bulletClone.getComponent(ComponentId.Physics);
         physics.velocity = new Vector2D(-1,1);
         setCollisions(bulletClone);
         
-        EntityHandler.addEntity(new GameObject(bulletClone));
+        EntityHandler.addEntity(bulletClone);
         
     }
     
