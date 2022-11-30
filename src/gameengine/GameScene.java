@@ -43,7 +43,6 @@ public class GameScene {
         ArrayList<GameObject> entityList = new ArrayList<>();
         
         for(int i = 0; i < sceneEntities.size(); i++){
-            System.out.println(i);
             entityList.add(new GameObject(sceneEntities.get(i)));
         }
         

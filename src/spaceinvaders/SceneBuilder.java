@@ -104,8 +104,6 @@ public class SceneBuilder {
         
         MainMenuScreen mms = new MainMenuScreen(createGame(GameSceneId.GameMain));
         
-        System.out.println("GAME OVER!");
-        
         scene.setScene(mms.generateScene());
         
         return scene;

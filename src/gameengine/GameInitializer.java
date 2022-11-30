@@ -12,8 +12,10 @@ import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.PhysicsHandler;
 import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
+import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import graphics.GraphicInterface;
+import spaceinvaders.SceneBuilder;
 
 /**
  *
@@ -29,7 +31,6 @@ public class GameInitializer {
     public static void init(GameScene game){
         
         hasStopped = false;
-        timesPlayed = 1;
         
         resetAll();
         
@@ -38,7 +39,6 @@ public class GameInitializer {
         SceneManager.update();
         
         Thread t = new Thread( () ->{
-            
             
             while(hasStopped == false){
                 
@@ -67,8 +67,9 @@ public class GameInitializer {
         
     }
     
-    public static void reInit(){
-        timesPlayed++;
+    public static void reInit(GameScene game){
+        ProgressManager.nextLevel();
+        SceneManager.loadGameScene(game);
     }
     
     private static void resetAll(){
@@ -80,6 +81,7 @@ public class GameInitializer {
         HealthManager.reset();
         ScoreManager.reset();
         PhysicsHandler.reset();
+        ProgressManager.reset();
         
         frame = 0;
     }

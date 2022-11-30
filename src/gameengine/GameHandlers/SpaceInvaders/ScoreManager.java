@@ -58,7 +58,6 @@ public class ScoreManager {
     
     private static void getHighScore(){
         if(saveFile.exists()){
-            System.out.println("aaa");
             try{
                 DataInputStream input = new DataInputStream(new FileInputStream(saveFile));
                 highScore = input.readInt();

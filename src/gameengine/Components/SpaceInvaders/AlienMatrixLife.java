@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
@@ -63,13 +64,11 @@ public class AlienMatrixLife extends Component implements Subscriber {
     public void onNotified(){
         life--;
         
-        Vector2D newVelocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, 1.05f);
+        Vector2D newVelocity = Vector2D.multiplyByScalar(aliensPhysics.velocity, ProgressManager.getAlienVelocityMultiplier());
         aliensPhysics.velocity = newVelocity;
         
         if(life<=0){
-            GameInitializer.reInit();
-            SceneManager.loadGameScene(SceneBuilder.createGame(SceneBuilder.GameSceneId.GameMain));
-            //SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.Victory));
+            GameInitializer.reInit(SceneBuilder.createGame(SceneBuilder.GameSceneId.GameMain));
         }
     }
 }

@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gamemath.Vector2D;
@@ -64,7 +65,6 @@ public class AlienMatrixController extends Component{
         attackWithRandomAliens();
         
         
-        
     }
     
     private void attackWithRandomAliens(){
@@ -73,7 +73,7 @@ public class AlienMatrixController extends Component{
             ArrayList<Component> aliensAttack = gameObject.getComponents(ComponentId.Attack);
                 
             for(int j = 0; j < aliensAttack.size(); j++){
-                if(random()<0.02){
+                if(random()<ProgressManager.getAlienAttackRate()){
                     ((AlienAttack)aliensAttack.get(j)).attack();
                 }
 
@@ -103,7 +103,7 @@ public class AlienMatrixController extends Component{
     @Override
     public void start(){
         aliensPhysics = (Physics)gameObject.getComponent(ComponentId.Physics);
-        aliensPhysics.velocity = new Vector2D(0.1f, 0);
+        aliensPhysics.velocity = ProgressManager.getAlienInitialVelocity();
     }
     
     
