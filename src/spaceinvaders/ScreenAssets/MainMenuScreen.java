@@ -47,7 +47,7 @@ public class MainMenuScreen {
         Rectangle bg = new Rectangle(900, 600);
         
         MenuItem itemExit = new MenuItem("Exit");
-        itemExit.setOnActive(() -> System.exit(0));
+        itemExit.setOnActive(() -> {ScoreManager.saveHighScore(); System.exit(0);});
         
         MenuItem itemStart = new MenuItem("Start");
         itemStart.setOnActive(() -> GameInitializer.init(mainGame));

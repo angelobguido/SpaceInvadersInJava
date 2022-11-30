@@ -46,7 +46,7 @@ public class GameOverScreen {
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));
         
         MenuItem itemQuit = new MenuItem("Quit");
-        itemQuit.setOnActive(() -> {System.out.println("Quit"); System.exit(0);});
+        itemQuit.setOnActive(() -> {System.out.println("Quit"); ScoreManager.saveHighScore(); System.exit(0);});
         
         menuBox = new VBox(10, itemRetry, itemMenu, itemQuit);
         menuBox.setAlignment(Pos.CENTER);

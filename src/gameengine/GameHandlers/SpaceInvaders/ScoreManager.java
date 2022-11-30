@@ -4,6 +4,12 @@
  */
 package gameengine.GameHandlers.SpaceInvaders;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import static java.lang.System.out;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -14,6 +20,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class ScoreManager {
     private static SimpleStringProperty highScoreText = new SimpleStringProperty("High Score: 0");
     private static SimpleStringProperty currentScoreText = new SimpleStringProperty("Score: 0");
+    private static File saveFile = new File("score.bin");
     private static int highScore = 0;
     private static int currentScore = 0;
     
@@ -50,12 +57,32 @@ public class ScoreManager {
     }
     
     private static void getHighScore(){
-        highScoreText.set("High Score: 100");
-        highScore = 100;
+        if(saveFile.exists()){
+            System.out.println("aaa");
+            try{
+                DataInputStream input = new DataInputStream(new FileInputStream(saveFile));
+                highScore = input.readInt();
+                input.close();
+            }catch(Exception e){
+                //Do nothing
+            }
+            
+        }
+        
+        highScoreText.set("High Score: "+Integer.toString(highScore));
+        
     }
     
     public static void saveHighScore(){
-        //ToDo
+        try{
+            DataOutputStream output = new DataOutputStream(new FileOutputStream(saveFile));
+            output.writeInt(highScore);
+            output.close();
+        }catch(Exception e){
+            //Do nothing
+        }
+        
+        
     }
     
 }
