@@ -8,7 +8,6 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
-import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameInitializer;
 import gameengine.GameObject;

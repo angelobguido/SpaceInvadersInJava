@@ -15,7 +15,6 @@ import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import graphics.GraphicInterface;
-import spaceinvaders.SceneBuilder;
 
 /**
  *

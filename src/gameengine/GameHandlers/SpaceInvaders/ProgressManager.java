@@ -5,12 +5,6 @@
 package gameengine.GameHandlers.SpaceInvaders;
 
 import gamemath.Vector2D;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
