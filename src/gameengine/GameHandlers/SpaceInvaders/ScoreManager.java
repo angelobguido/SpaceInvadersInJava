@@ -18,8 +18,8 @@ import javafx.beans.property.SimpleStringProperty;
  * @author angelo
  */
 public class ScoreManager {
-    private static SimpleStringProperty highScoreText = new SimpleStringProperty("High Score: 0");
-    private static SimpleStringProperty currentScoreText = new SimpleStringProperty("Score: 0");
+    private static SimpleStringProperty highScoreText = new SimpleStringProperty("HIGH SCORE: 0");
+    private static SimpleStringProperty currentScoreText = new SimpleStringProperty("SCORE: 0");
     private static File saveFile = new File("score.bin");
     private static int highScore = 0;
     private static int currentScore = 0;
@@ -41,10 +41,10 @@ public class ScoreManager {
         
         currentScore += points;
         
-        currentScoreText.set("Score: "+Integer.toString(currentScore));
+        currentScoreText.set("SCORE: "+Integer.toString(currentScore));
         
         if(currentScore > highScore){
-            highScoreText.set("HighScore: "+Integer.toString(currentScore));
+            highScoreText.set("HIGH SCORE: "+Integer.toString(currentScore));
             highScore = currentScore;
         }
     }
@@ -53,7 +53,7 @@ public class ScoreManager {
         
         currentScore = 0;
         
-        currentScoreText.set("Score: "+Integer.toString(currentScore));
+        currentScoreText.set("SCORE: "+Integer.toString(currentScore));
     }
     
     private static void getHighScore(){
@@ -68,7 +68,7 @@ public class ScoreManager {
             
         }
         
-        highScoreText.set("High Score: "+Integer.toString(highScore));
+        highScoreText.set("HIGH SCORE: "+Integer.toString(highScore));
         
     }
     

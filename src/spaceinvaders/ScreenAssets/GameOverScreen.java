@@ -39,14 +39,14 @@ public class GameOverScreen {
         
         Rectangle bg = new Rectangle(900, 600);
         
-        MenuItem itemRetry = new MenuItem("Retry");
+        MenuItem itemRetry = new MenuItem("RETRY");
         itemRetry.setOnActive(() -> GameInitializer.init(mainGame));
         
-        MenuItem itemMenu = new MenuItem("Menu");
+        MenuItem itemMenu = new MenuItem("MENU");
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));
         
-        MenuItem itemQuit = new MenuItem("Quit");
-        itemQuit.setOnActive(() -> {System.out.println("Quit"); ScoreManager.saveHighScore(); System.exit(0);});
+        MenuItem itemQuit = new MenuItem("QUIT");
+        itemQuit.setOnActive(() -> {ScoreManager.saveHighScore(); System.exit(0);});
         
         menuBox = new VBox(10, itemRetry, itemMenu, itemQuit);
         menuBox.setAlignment(Pos.CENTER);
