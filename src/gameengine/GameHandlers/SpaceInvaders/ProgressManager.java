@@ -5,6 +5,7 @@
 package gameengine.GameHandlers.SpaceInvaders;
 
 import gamemath.Vector2D;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
@@ -12,13 +13,20 @@ import gamemath.Vector2D;
  */
 public class ProgressManager {
     private static int level = 1;
+    private static SimpleStringProperty levelText = new SimpleStringProperty("LEVEL: 1");
     
     public static void nextLevel(){
         level++;
+        levelText.set("LEVEL: "+level);
     }
     
     public static void reset(){
         level = 1;
+        levelText.set("LEVEL: "+level);
+    }
+    
+    public static SimpleStringProperty levelText(){
+        return levelText;
     }
     
     public static Vector2D getAlienInitialVelocity(){

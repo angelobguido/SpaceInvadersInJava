@@ -6,6 +6,7 @@ package spaceinvaders.ScreenAssets;
 
 import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
+import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
@@ -39,9 +40,13 @@ public class MainGameHud {
         highScore.textProperty().bind(ScoreManager.highScore());
         highScore.setFill(Color.WHITE);
         
-        VBox scoreBox = new VBox(score, highScore);
-        scoreBox.setScaleX(3);
-        scoreBox.setScaleY(3);
+        Text level = new Text();
+        level.textProperty().bind(ProgressManager.levelText());
+        level.setFill(Color.WHITE);
+        
+        VBox scoreBox = new VBox(level, score, highScore);
+        scoreBox.setScaleX(2);
+        scoreBox.setScaleY(2);
         scoreBox.setAlignment(Pos.CENTER);
         scoreBox.setTranslateY(-350);
         
