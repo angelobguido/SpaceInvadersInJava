@@ -49,12 +49,12 @@ public class MainGameHud {
         ImageView heart2 = new ImageView();
         ImageView heart3 = new ImageView();
         
-        heart1.setFitHeight(30);
-        heart1.setFitWidth(30);
-        heart2.setFitHeight(30);
-        heart2.setFitWidth(30);
-        heart3.setFitHeight(30);
-        heart3.setFitWidth(30);
+        heart1.setFitHeight(60);
+        heart1.setFitWidth(60);
+        heart2.setFitHeight(60);
+        heart2.setFitWidth(60);
+        heart3.setFitHeight(60);
+        heart3.setFitWidth(60);
         
         
         heart1.imageProperty().bind(HealthManager.heartImage1());
@@ -62,6 +62,10 @@ public class MainGameHud {
         heart3.imageProperty().bind(HealthManager.heartImage3());
         
         HBox healthBar = new HBox(10, heart1, heart2, heart3);
+        healthBar.setTranslateX(40);
+        healthBar.setTranslateY(40);
+        healthBar.setScaleX(1);
+        healthBar.setScaleY(1);
         
         root.getChildren().addAll(scoreBox, healthBar);
         
