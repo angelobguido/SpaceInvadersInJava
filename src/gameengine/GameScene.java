@@ -17,7 +17,7 @@ public class GameScene {
     private ArrayList<GameObject> sceneEntities = sceneEntities = new ArrayList<>();
     private Scene fxScene;
     private StackPane gameRoot;
-    private GraphicsContext canvasPane;
+    private GraphicsContext gameScreen;
     
     public Scene getScene(){
         return fxScene;
@@ -36,11 +36,11 @@ public class GameScene {
     }
     
     public void setCanvasPane(GraphicsContext canvasPane){
-        this.canvasPane = canvasPane;
+        this.gameScreen = canvasPane;
     }
     
-    public GraphicsContext canvasPane(){
-        return canvasPane;
+    public GraphicsContext gameScreen(){
+        return gameScreen;
     }
     
     public void addEntity(GameObject newEntity){

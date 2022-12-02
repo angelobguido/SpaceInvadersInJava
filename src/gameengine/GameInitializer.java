@@ -33,7 +33,7 @@ public class GameInitializer {
         
         resetAll();
         
-        Graphics.setGraphics(new GraphicInterface(game.canvasPane()));
+        Graphics.setGraphics(new GraphicInterface());
         SceneManager.loadGameScene(game);
         SceneManager.update();
         

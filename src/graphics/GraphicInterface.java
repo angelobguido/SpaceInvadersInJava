@@ -22,14 +22,13 @@ public class GraphicInterface extends VisualInterface {
     private int width;
     private int height;
     private StackPane root;
-    private GraphicsContext canvasPane;
+    private GraphicsContext gameScreen;
     private Stack<Drawable> draws = new Stack<>();
     private Stack<Drawable> undraws = new Stack<>();
     
     
-    public GraphicInterface(GraphicsContext canvasPane){
+    public GraphicInterface(){
         super(0, 0);
-        this.canvasPane = canvasPane;
     }
     
     @Override
@@ -49,22 +48,27 @@ public class GraphicInterface extends VisualInterface {
     @Override
     public void update(){
         
-        clear();
+        Platform.runLater(() -> {
+            
+            gameScreen = SceneManager.getGameScreen();
         
-        while(draws.isEmpty() == false){
+            clear();
 
-            Drawable currentDraw = draws.pop();
+            while(draws.isEmpty() == false){
 
-            Vector2D position = currentDraw.position();
+                Drawable currentDraw = draws.pop();
 
-            canvasPane.drawImage(currentDraw.sprite.image, position.x*10, -position.y*10+800);
-
-        }
+                currentDraw.drawGameImage(gameScreen);
+            }
+        
+        
+        });
+        
 
     }
     
     private void clear(){
-        canvasPane.clearRect(0, 0, 1200, 1200);
+        gameScreen.clearRect(0, 0, 900, 900);
     }
     
     protected void setWidth(int width){

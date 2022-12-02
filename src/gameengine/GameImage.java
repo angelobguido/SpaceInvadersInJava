@@ -5,6 +5,7 @@
 package gameengine;
 
 import javafx.scene.Node;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -14,38 +15,16 @@ import javafx.scene.shape.Circle;
  *
  * @author angelo
  */
-public class GameImage extends GraphicalContent{
+public class GameImage{
     
-    private Image image;
-    private double width;
-    private double height;
-    
-    public GameImage(){
-        
-    }
+    public Image image;
+    public double width;
+    public double height;
     
     public GameImage(Image image, double width, double height){
         this.image = image;
         this.width = width;
         this.height = height;
     }
-    
-    @Override
-    public Node generateContent(){
-        
-        if(image == null){
-            Circle c = new Circle(10);
-            c.setFill(Color.WHITE);
-
-            return c;
-        }
-        
-        ImageView i = new ImageView(image);
-        i.setFitHeight(height);
-        i.setFitWidth(width);
-        i.setPreserveRatio(true);
-        
-        return i;
-        
-    }
+   
 }

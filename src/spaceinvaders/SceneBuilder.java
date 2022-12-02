@@ -13,6 +13,7 @@ import gameengine.GameObject;
 import gameengine.GameScene;
 import gameengine.MenuScene;
 import gamemath.Vector2D;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -145,23 +146,24 @@ public class SceneBuilder {
         scene.addEntity(obstacle4);
         scene.addEntity(gameOverManager);
 
-        Canvas canvas = new Canvas(1200, 1200);
+        Canvas canvas = new Canvas(900, 900);
 
         StackPane root = new StackPane();
-        root.setPrefSize(900, 600);
 
         ImageView bg = new ImageView(new Image(SceneBuilder.class.getResource("images/background.png").toExternalForm()));
         bg.setFitHeight(900);
         bg.setFitHeight(900);
         bg.setPreserveRatio(true);
-
         
         MainGameHud hud = new MainGameHud();
         
-        canvas.setTranslateX(200);
-        canvas.setTranslateY(-200);
+        StackPane gameScreen = new StackPane();
         
-        root.getChildren().addAll(/*bg,*/ canvas, hud.generateHUD());
+        gameScreen.getChildren().add(canvas);
+        gameScreen.setAlignment(Pos.BOTTOM_LEFT);
+        
+        
+        root.getChildren().addAll(bg, gameScreen, hud.generateHUD());
 
         scene.setScene(new Scene(root));
 

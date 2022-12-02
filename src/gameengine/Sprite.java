@@ -17,6 +17,5 @@ import javafx.scene.image.Image;
 public class Sprite {
     public char charRepresentation; //the char that will be printed in the terminal interface.
     public ArrayList<Vector2D> spriteStructure; //the first vector2D of this vector is the considered the center of this sprite.
-    public GraphicalContent content;
     public Image image;
 }
