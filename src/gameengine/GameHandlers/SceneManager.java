@@ -53,7 +53,10 @@ public class SceneManager {
             ArrayList<GameObject> newEntities = current.getEntities();
             
             HealthManager.reset();
-            EntityHandler.removeAllEntities();
+            EntityHandler.reset();
+            EventHandler.reset();
+            PhysicsHandler.reset();
+            
             EntityHandler.addEntitiesNow(newEntities);
             
             canChange = false;

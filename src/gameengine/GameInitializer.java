@@ -52,7 +52,7 @@ public class GameInitializer {
                 InputHandler.update();
                 
                 try{
-                    Thread.sleep(50);
+                    Thread.sleep(25);
                 }catch(Exception e){
                     System.exit(1);
                 }
