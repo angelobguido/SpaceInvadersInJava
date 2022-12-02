@@ -34,11 +34,11 @@ public class ProgressManager {
     }
     
     public static float getAlienVelocityMultiplier(){
-        return 1.05f+(level-1)*0.01f;
+        return 1.05f+(level-1)*0.005f;
     }
     
     public static double getAlienAttackRate(){
-        return 0.02+(level-1)*0.08;
+        return 0.02+(level-1)*0.009;
     }
     
     
