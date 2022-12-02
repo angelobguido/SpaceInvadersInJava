@@ -69,5 +69,6 @@ public class Graphics {
     public static void reset(){
         renderBuffer.clear();
         undrawBuffer.clear();
+        visualInterface = null;
     }
 }

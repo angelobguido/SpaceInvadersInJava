@@ -7,15 +7,11 @@ package graphics;
 import gameengine.Drawable;
 import gameengine.GameHandlers.SceneManager;
 import gamemath.Vector2D;
-import java.util.ArrayList;
 import java.util.Stack;
 import javafx.application.Platform;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
+
 
 /**
  *
@@ -26,12 +22,14 @@ public class GraphicInterface extends VisualInterface {
     private int width;
     private int height;
     private StackPane root;
+    private GraphicsContext canvasPane;
     private Stack<Drawable> draws = new Stack<>();
     private Stack<Drawable> undraws = new Stack<>();
     
     
-    public GraphicInterface(){
+    public GraphicInterface(GraphicsContext canvasPane){
         super(0, 0);
+        this.canvasPane = canvasPane;
     }
     
     @Override
@@ -51,39 +49,22 @@ public class GraphicInterface extends VisualInterface {
     @Override
     public void update(){
         
-        root = SceneManager.getCurrentRoot();
+        clear();
+        
+        while(draws.isEmpty() == false){
 
-        if(root == null){
-            return;
+            Drawable currentDraw = draws.pop();
+
+            Vector2D position = currentDraw.position();
+
+            canvasPane.drawImage(currentDraw.sprite.image, position.x*10, -position.y*10+800);
+
         }
-        
-        Platform.runLater(()->{
-            
-            while(draws.isEmpty() == false){
 
-                Drawable currentDraw = draws.pop();
-
-                Vector2D position = currentDraw.position();
-
-                currentDraw.graphics().setTranslateX(position.x*10 - offSet);
-                currentDraw.graphics().setTranslateY(-position.y*10 + offSet);
-
-                if(!root.getChildren().contains(currentDraw.graphics())){
-                    root.getChildren().add(currentDraw.graphics());
-                }
-
-            }
-
-            while(undraws.isEmpty() == false){
-
-                Drawable currentDraw = undraws.pop();
-
-                root.getChildren().remove(currentDraw.graphics());
-
-            }
-
-        });
-        
+    }
+    
+    private void clear(){
+        canvasPane.clearRect(0, 0, 1200, 1200);
     }
     
     protected void setWidth(int width){

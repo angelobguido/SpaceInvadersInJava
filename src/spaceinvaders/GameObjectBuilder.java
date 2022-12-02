@@ -74,6 +74,8 @@ public class GameObjectBuilder {
                 
                 powerUpSprite.content = powerUpAnimation;
                 
+                powerUpSprite.image = new Image(GameObjectBuilder.class.getResource("images/power_up1.png").toExternalForm(), 40, 40, true, false);
+                
                 gameObject.addComponent(new SpriteRenderer(gameObject, powerUpSprite));
                 gameObject.addComponent(new Physics(gameObject));
                 gameObject.addComponent(new Collider(gameObject, 3, 3));
@@ -99,6 +101,7 @@ public class GameObjectBuilder {
                 Sprite ufoSprite = new Sprite();
                 ufoSprite.charRepresentation = 'H';
                 ufoSprite.spriteStructure = ufoStructure;
+                ufoSprite.image = new Image(GameObjectBuilder.class.getResource("images/ufo1.png").toExternalForm(), 40, 40, true, false);
                 
                 GameAnimation ufoAnimation = new GameAnimation(40, 40);
                 ufoAnimation.addImage(new Image(GameObjectBuilder.class.getResource("images/ufo1.png").toExternalForm()));
@@ -167,9 +170,10 @@ public class GameObjectBuilder {
                 Sprite playerSprite = new Sprite();
                 playerSprite.charRepresentation = '%';
                 playerSprite.spriteStructure = playerStructure;
-                Image playerImage = new Image(GameObjectBuilder.class.getResource("images/player.png").toExternalForm());
+                Image playerImage = new Image(GameObjectBuilder.class.getResource("images/player.png").toExternalForm(), 40, 40, true, false);
                 
                 playerSprite.content = new GameImage(playerImage, 50, 50);
+                playerSprite.image = playerImage;
                 
                 Collider playerCollider = new Collider(gameObject);
                 playerCollider.changeColliderBoxDimensions(4, 3);
@@ -199,6 +203,7 @@ public class GameObjectBuilder {
                 obstacleSprite.charRepresentation = '@';
                 obstacleSprite.spriteStructure = obstacleStructure;
                 obstacleSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/obstacle.png").toExternalForm()), 20, 20);
+                obstacleSprite.image = new Image(GameObjectBuilder.class.getResource("images/obstacle.png").toExternalForm(), 40, 40, true, false);
                 
                 gameObject.addComponent(new Collider(gameObject));
                 gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
@@ -300,11 +305,13 @@ public class GameObjectBuilder {
         alienSprite.spriteStructure = alienStructure;
         alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/enemy.png").toExternalForm()), 40, 40);
 
+        alienSprite.image = new Image(GameObjectBuilder.class.getResource("images/enemy.png").toExternalForm(), 40, 40, true, false);
+        
         gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
         gameObject.addComponent(new Hit(gameObject));
-        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/alien_bullet.png").toExternalForm())))));
+        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/alien_bullet.png").toExternalForm(), 40, 40, true, false)))));
         gameObject.addComponent(new ScoreCounter(gameObject, 30));
         gameObject.addComponent(new AlienController(gameObject));
 
@@ -326,11 +333,13 @@ public class GameObjectBuilder {
         alienSprite.spriteStructure = alienStructure;
         alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/middle_enemy.png").toExternalForm()), 40, 40);
 
+        alienSprite.image = new Image(GameObjectBuilder.class.getResource("images/middle_enemy.png").toExternalForm(), 40, 40, true, false);
+        
         gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
         gameObject.addComponent(new Hit(gameObject));
-        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/middle_alien_bullet.png").toExternalForm())))));
+        gameObject.addComponent(new AlienAttack(gameObject, createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/middle_alien_bullet.png").toExternalForm(), 40, 40, true, false)))));
         gameObject.addComponent(new ScoreCounter(gameObject, 20));
         gameObject.addComponent(new AlienController(gameObject));
 
@@ -352,6 +361,8 @@ public class GameObjectBuilder {
         alienSprite.spriteStructure = alienStructure;
         alienSprite.content = new GameImage(new Image(GameObjectBuilder.class.getResource("images/front_enemy.png").toExternalForm()), 40, 40);
 
+        alienSprite.image = new Image(GameObjectBuilder.class.getResource("images/front_enemy.png").toExternalForm(), 40, 40, true, false);
+        
         gameObject.addComponent(new SpriteRenderer(gameObject, alienSprite));
         gameObject.addComponent(new Physics(gameObject));
         gameObject.addComponent(new Collider(gameObject, 3, 3));
@@ -405,6 +416,8 @@ public class GameObjectBuilder {
         bulletSprite.charRepresentation = '0';
         bulletSprite.spriteStructure = bulletStructure;
         bulletSprite.content = new GameImage(bulletImage, 30, 30);
+        
+        bulletSprite.image = bulletImage;
         
         return bulletSprite;
     }

@@ -14,6 +14,7 @@ import gameengine.GameScene;
 import gameengine.MenuScene;
 import gamemath.Vector2D;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -144,8 +145,7 @@ public class SceneBuilder {
         scene.addEntity(obstacle4);
         scene.addEntity(gameOverManager);
 
-        StackPane gameRoot = new StackPane();
-        gameRoot.setPrefSize(900, 600);
+        Canvas canvas = new Canvas(1200, 1200);
 
         StackPane root = new StackPane();
         root.setPrefSize(900, 600);
@@ -158,12 +158,15 @@ public class SceneBuilder {
         
         MainGameHud hud = new MainGameHud();
         
-        root.getChildren().addAll(bg, gameRoot, hud.generateHUD());
-
-        scene.setRoot(gameRoot);
+        canvas.setTranslateX(200);
+        canvas.setTranslateY(-200);
+        
+        root.getChildren().addAll(/*bg,*/ canvas, hud.generateHUD());
 
         scene.setScene(new Scene(root));
 
+        scene.setCanvasPane(canvas.getGraphicsContext2D());
+        
         scene.getScene().setOnKeyPressed((event)->{
             InputHandler.sendButton(event.getCode());
         });

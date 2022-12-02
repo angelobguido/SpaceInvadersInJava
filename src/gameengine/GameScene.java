@@ -6,6 +6,7 @@ package gameengine;
 
 import java.util.ArrayList;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -16,13 +17,13 @@ public class GameScene {
     private ArrayList<GameObject> sceneEntities = sceneEntities = new ArrayList<>();
     private Scene fxScene;
     private StackPane gameRoot;
+    private GraphicsContext canvasPane;
     
     public Scene getScene(){
         return fxScene;
     }
     
     public StackPane getRoot(){
-        
         return gameRoot;
     }
     
@@ -32,6 +33,14 @@ public class GameScene {
     
     public void setRoot(StackPane gameRoot){
         this.gameRoot = gameRoot;
+    }
+    
+    public void setCanvasPane(GraphicsContext canvasPane){
+        this.canvasPane = canvasPane;
+    }
+    
+    public GraphicsContext canvasPane(){
+        return canvasPane;
     }
     
     public void addEntity(GameObject newEntity){
