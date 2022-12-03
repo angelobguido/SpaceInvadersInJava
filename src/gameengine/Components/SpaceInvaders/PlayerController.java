@@ -7,7 +7,6 @@ package gameengine.Components.SpaceInvaders;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Physics;
-import gameengine.Components.Physics;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameHandlers.InputHandler.Command;
 import gameengine.GameObject;

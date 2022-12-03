@@ -4,18 +4,13 @@
  */
 package spaceinvaders.ScreenAssets;
 
-import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import graphics.GraphicInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -23,8 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import spaceinvaders.GameObjectBuilder;
 
 /**
  *
@@ -50,7 +43,7 @@ public class MainMenuScreen {
         itemExit.setOnActive(() -> {ScoreManager.saveHighScore(); System.exit(0);});
         
         MenuItem itemStart = new MenuItem("START");
-        itemStart.setOnActive(() -> GameInitializer.init(mainGame));
+        itemStart.setOnActive(() -> GameInitializer.init(mainGame, new GraphicInterface()));
         
         menuBox = new VBox(10, itemStart, itemExit);
         menuBox.setAlignment(Pos.CENTER);

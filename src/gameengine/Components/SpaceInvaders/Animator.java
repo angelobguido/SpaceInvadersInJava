@@ -6,14 +6,10 @@ package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
 import gameengine.ComponentId;
-import gameengine.Components.Physics;
 import gameengine.Components.SpriteRenderer;
-import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
 import gameengine.Sprite;
-import gamemath.Vector2D;
 import java.util.ArrayList;
-import javafx.scene.image.Image;
 
 /**
  *

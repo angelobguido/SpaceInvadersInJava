@@ -5,7 +5,6 @@
 package gameengine.GameHandlers.SpaceInvaders;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 import spaceinvaders.GameObjectBuilder;
 

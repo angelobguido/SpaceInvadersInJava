@@ -4,9 +4,7 @@
  */
 package graphics;
 
-import gameengine.Drawable;
 import gameengine.GameHandlers.SceneManager;
-import gamemath.Vector2D;
 import java.util.Stack;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;

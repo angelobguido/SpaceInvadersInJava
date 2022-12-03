@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package graphics;
-
-import gameengine.Drawable;
-import graphics.VisualInterface;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 

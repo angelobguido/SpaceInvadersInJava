@@ -11,7 +11,6 @@ import gameengine.MenuScene;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -34,10 +33,6 @@ public class SceneManager {
         if(stage != null){
                 Platform.runLater(()->{stage.setScene(scene.getScene());});
         }
-    }
-    
-    public static StackPane getCurrentRoot(){
-       return current.getRoot();
     }
     
     public static GraphicsContext getGameScreen(){

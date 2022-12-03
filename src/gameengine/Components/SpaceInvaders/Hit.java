@@ -7,7 +7,6 @@ package gameengine.Components.SpaceInvaders;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Collider;
-import gameengine.Components.Collider;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.EventHandler;
 import gameengine.GameObject;

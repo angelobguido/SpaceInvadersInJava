@@ -3,10 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package graphics;
-
-import gameengine.Drawable;
-import gamemath.Vector2D;
-
 /**
  * Represents the base of all visual interfaces.
  * 

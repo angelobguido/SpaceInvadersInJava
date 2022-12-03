@@ -6,7 +6,6 @@ package gameengine;
 
 import gamemath.Vector2D;
 import java.util.ArrayList;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 /**

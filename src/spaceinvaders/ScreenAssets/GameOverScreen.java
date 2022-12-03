@@ -8,6 +8,7 @@ import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
+import graphics.GraphicInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,7 +18,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import spaceinvaders.SceneBuilder;
 
 /**
@@ -40,7 +40,7 @@ public class GameOverScreen {
         Rectangle bg = new Rectangle(900, 600);
         
         MenuItem itemRetry = new MenuItem("RETRY");
-        itemRetry.setOnActive(() -> GameInitializer.init(mainGame));
+        itemRetry.setOnActive(() -> GameInitializer.init(mainGame, new GraphicInterface()));
         
         MenuItem itemMenu = new MenuItem("MENU");
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));

@@ -6,7 +6,6 @@ package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
 import gameengine.ComponentId;
-import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameObject;
 import gameengine.Observer.Subscriber;

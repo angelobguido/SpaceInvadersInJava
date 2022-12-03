@@ -4,24 +4,17 @@
  */
 package spaceinvaders.ScreenAssets;
 
-import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
-import gameengine.GameInitializer;
-import gameengine.GameScene;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import spaceinvaders.SceneBuilder;
 
 /**
  *

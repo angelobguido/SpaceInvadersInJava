@@ -6,9 +6,7 @@ package gameengine.Components;
 
 import gameengine.Component;
 import gameengine.ComponentId;
-import gameengine.Debug;
 import gameengine.GameHandlers.CollisionHandler;
-import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gameengine.Observer.Publisher;
 import gameengine.Observer.Subscriber;

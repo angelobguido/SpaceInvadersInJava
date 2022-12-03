@@ -5,7 +5,6 @@
 package gameengine;
 
 import gameengine.GameExceptions.SameGameObjectException;
-import gameengine.GameHandlers.EntityHandler;
 import gamemath.Vector2D;
 import java.util.Stack;
 import java.util.ArrayList;

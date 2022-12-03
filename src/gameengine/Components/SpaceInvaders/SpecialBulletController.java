@@ -9,7 +9,6 @@ import gameengine.ComponentId;
 import gameengine.Components.Collider;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
-import gameengine.GameHandlers.InputHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import java.util.ArrayList;

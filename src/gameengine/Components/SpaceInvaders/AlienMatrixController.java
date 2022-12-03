@@ -7,16 +7,11 @@ package gameengine.Components.SpaceInvaders;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Physics;
-import gameengine.GameHandlers.EntityHandler;
-import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
-import gameengine.GameInitializer;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import static java.lang.Math.random;
 import java.util.ArrayList;
-import spaceinvaders.SceneBuilder;
-import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
 /**
  * Represents the movement and attack of an alien matrix.

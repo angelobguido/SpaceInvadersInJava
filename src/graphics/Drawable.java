@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gameengine;
+package graphics;
 
+import gameengine.Sprite;
 import gamemath.Vector2D;
 import javafx.scene.canvas.GraphicsContext;
 /**
@@ -24,7 +25,7 @@ public class Drawable {
         return new Vector2D(position);
     }
     
-     public void drawGameImage(GraphicsContext gameScreen){
+    public void drawGameImage(GraphicsContext gameScreen){
         gameScreen.drawImage(sprite.image, position.x*10+125 - sprite.image.getWidth()/2, -position.y*10 + 800 - sprite.image.getHeight()/2);
     }
     

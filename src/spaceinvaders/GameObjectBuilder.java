@@ -116,22 +116,7 @@ public class GameObjectBuilder {
                 
                 if(obstacle != null) return new GameObject(obstacle);
                 
-                ArrayList<Vector2D> obstacleStructure = new ArrayList<>();
-                
-                obstacleStructure.add(Vector2D.zero);
-                
-                Sprite obstacleSprite = new Sprite();
-                obstacleSprite.charRepresentation = '@';
-                obstacleSprite.spriteStructure = obstacleStructure;
-                obstacleSprite.image = new Image(GameObjectBuilder.class.getResource("images/obstacle.png").toExternalForm(), 20, 20, true, false);
-                
-                gameObject.addComponent(new Collider(gameObject));
-                gameObject.addComponent(new SpriteRenderer(gameObject, obstacleSprite));
-                gameObject.addComponent(new Physics(gameObject));
-                gameObject.addComponent(new Hit(gameObject, 2));
-                
-                gameObject.setTag("Obstacle");
-                
+                gameObject = createObstacle();
                 obstacle = new GameObject(gameObject);
                 
                 break;
@@ -226,6 +211,22 @@ public class GameObjectBuilder {
         return gameObject;
     }
     
+    public static GameObject createObstacle(){
+        
+        Sprite obstacleSprite = new Sprite();
+        
+        ArrayList<Vector2D> obstacleStructure = new ArrayList<>();         
+        obstacleStructure.add(Vector2D.zero);
+        
+        obstacleSprite.charRepresentation = '@';
+        obstacleSprite.spriteStructure = obstacleStructure;
+        obstacleSprite.image = new Image(GameObjectBuilder.class.getResource("images/obstacle.png").toExternalForm(), 20, 20, true, false);
+
+        GameObject obstacle = createDefaultEntity("Obstacle", obstacleSprite, 2, 1, 1);
+        
+        return obstacle;
+    }
+    
     public static GameObject createPowerUp(){
 
         Sprite sprite = new Sprite();
@@ -242,7 +243,23 @@ public class GameObjectBuilder {
         GameObject powerUp = createDefaultEntity("Collectable", sprite, 1, 3, 3);
         
         powerUp.addComponent(new PowerUpController(powerUp));
-
+        powerUp.addComponent(new Animator(powerUp));
+        
+        Sprite sprite2 = new Sprite();
+        sprite2.charRepresentation = '!';
+        sprite2.spriteStructure = structure;
+        sprite2.image = new Image(GameObjectBuilder.class.getResource("images/power_up2.png").toExternalForm(), 40, 40, true, false);
+        
+        Sprite sprite3 = new Sprite();
+        sprite3.charRepresentation = ';';
+        sprite3.spriteStructure = structure;
+        sprite3.image = new Image(GameObjectBuilder.class.getResource("images/power_up3.png").toExternalForm(), 40, 40, true, false);
+        
+        ArrayList<Sprite> animation = ((Animator)powerUp.getComponent(ComponentId.Animator)).animation();
+        animation.add(sprite);
+        animation.add(sprite2);
+        animation.add(sprite3);
+        
         return powerUp;
     }
     

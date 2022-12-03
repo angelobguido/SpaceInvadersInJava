@@ -4,17 +4,9 @@
  */
 package gameengine;
 
-import gameengine.GameHandlers.CollisionHandler;
-import gameengine.GameHandlers.EntityHandler;
-import gameengine.GameHandlers.EventHandler;
-import gameengine.GameHandlers.Graphics;
-import gameengine.GameHandlers.InputHandler;
-import gameengine.GameHandlers.PhysicsHandler;
-import gameengine.GameHandlers.SceneManager;
-import gameengine.GameHandlers.SpaceInvaders.HealthManager;
-import gameengine.GameHandlers.SpaceInvaders.ProgressManager;
-import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
-import graphics.GraphicInterface;
+import gameengine.GameHandlers.*;
+import gameengine.GameHandlers.SpaceInvaders.*;
+import graphics.VisualInterface;
 
 /**
  *
@@ -27,13 +19,13 @@ public class GameInitializer {
     
     public static int frame = 0;
     
-    public static void init(GameScene game){
+    public static void init(GameScene game, VisualInterface visual){
         
         hasStopped = false;
         
         resetAll();
         
-        Graphics.setGraphics(new GraphicInterface());
+        Graphics.setGraphics(visual);
         SceneManager.loadGameScene(game);
         SceneManager.update();
         

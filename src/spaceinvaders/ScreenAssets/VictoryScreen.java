@@ -8,6 +8,7 @@ import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
+import graphics.GraphicInterface;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,7 +40,7 @@ public class VictoryScreen {
         Rectangle bg = new Rectangle(900, 600);
         
         MenuItem itemPlayAgain = new MenuItem("Play Again");
-        itemPlayAgain.setOnActive(() -> GameInitializer.init(mainGame));
+        itemPlayAgain.setOnActive(() -> GameInitializer.init(mainGame, new GraphicInterface()));
         
         MenuItem itemMenu = new MenuItem("Menu");
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));

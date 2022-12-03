@@ -5,7 +5,6 @@
 package gameengine.GameHandlers;
 
 import gameengine.Components.Collider;
-import gameengine.GameInitializer;
 import java.util.Stack;
 
 /**

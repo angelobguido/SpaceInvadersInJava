@@ -6,7 +6,7 @@ package gameengine.Components;
 
 import gameengine.Component;
 import gameengine.ComponentId;
-import gameengine.Drawable;
+import graphics.Drawable;
 import gameengine.GameHandlers.Graphics;
 import gameengine.GameObject;
 import gameengine.Sprite;
