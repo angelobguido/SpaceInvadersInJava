@@ -23,7 +23,7 @@ public class PowerUpController extends Component{
     private final static float minX = 0;
     
     private int timer = 0;
-    private int timeAlive = 60;
+    private int timeAlive = 120;
     private boolean hasBeenTaken = true;
     
     public PowerUpController(GameObject gameObject){

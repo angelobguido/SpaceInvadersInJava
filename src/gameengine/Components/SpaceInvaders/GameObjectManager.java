@@ -25,7 +25,7 @@ import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 public class GameObjectManager extends Component implements Subscriber{
     
     private int timer = 0;
-    private final int time = 50;
+    private final int time = 100;
     
     public GameObjectManager(GameObject gameObject){
         super(gameObject, ComponentId.GameObjectManager);
@@ -45,11 +45,11 @@ public class GameObjectManager extends Component implements Subscriber{
         
         timer = 0;
         
-        if(random() < 0.25){
+        if(random() < 0.12){
             EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.UFO));
         }
         
-        if(random() < 0.9){
+        if(random() < 0.2){
             EntityHandler.addEntity(GameObjectBuilder.create(GameObjectBuilder.Prefab.PowerUp));
         }
         

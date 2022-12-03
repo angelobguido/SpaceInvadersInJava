@@ -30,15 +30,15 @@ public class ProgressManager {
     }
     
     public static Vector2D getAlienInitialVelocity(){
-        return new Vector2D(0.1f+(level-1)*0.02f, 0);
+        return new Vector2D(0.05f+(level-1)*0.01f, 0);
     }
     
     public static float getAlienVelocityMultiplier(){
-        return 1.05f+(level-1)*0.005f;
+        return 1.01f+(level-1)*0.003f;
     }
     
     public static double getAlienAttackRate(){
-        return 0.02+(level-1)*0.009;
+        return 0.01+(level-1)*0.009;
     }
     
     

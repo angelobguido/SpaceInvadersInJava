@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/SpaceInvaders/ScoreManager.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/AlienAttack.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/Attack.java</file>
             <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/GameHandlers/SpaceInvaders/ProgressManager.java</file>
-            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/ScreenAssets/MainGameHud.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/AlienController.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/PlayerController.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/PowerUpController.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/GameObjectManager.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/spaceinvaders/GameObjectBuilder.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/PlayerAttack.java</file>
+            <file>file:/home/angelo/NetBeansProjects/SpaceInvaders/SpaceInvadersInJava/src/gameengine/Components/SpaceInvaders/UfoController.java</file>
         </group>
     </open-files>
 </project-private>

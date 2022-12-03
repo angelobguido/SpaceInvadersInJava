@@ -23,7 +23,7 @@ public class PlayerController extends Component{
     private PlayerAttack playerAttack;
     private boolean canAttack = true;
     private int attackCooldownTimer;
-    private int attackCooldown = /*17*/0;
+    private int attackCooldown = 20;
     
     public PlayerController(GameObject gameObject){
         super(gameObject, ComponentId.PlayerController);    
