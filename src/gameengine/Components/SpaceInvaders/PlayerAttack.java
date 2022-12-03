@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import gameengine.Components.Collider;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.PowerManager;
 import gameengine.GameObject;
 import gamemath.Vector2D;
@@ -51,8 +52,12 @@ public class PlayerAttack extends Attack{
     @Override
     protected void onAttack(){
         if(specialBulletsLeft > 0){
+            GameAudioHandler.playSpecialBullet();
             specialBulletsLeft--;
+        }else{
+            GameAudioHandler.playPlayerBullet();
         }
+        
     }
     
     @Override

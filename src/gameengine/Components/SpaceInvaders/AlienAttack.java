@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import gameengine.Components.Collider;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 import java.util.ArrayList;
@@ -64,5 +65,10 @@ public class AlienAttack extends Attack{
         }
         
         
+    }
+    
+    @Override
+    protected void onAttack(){
+        GameAudioHandler.playAlienBullet();
     }
 }

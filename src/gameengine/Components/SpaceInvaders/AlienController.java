@@ -7,6 +7,7 @@ package gameengine.Components.SpaceInvaders;
 import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameInitializer;
 import gameengine.GameObject;
 import spaceinvaders.SceneBuilder;
@@ -52,6 +53,7 @@ public class AlienController extends Component {
         gameObject.removeComponent(this);
         gameObject = null;
         
+        GameAudioHandler.playAlienKill();
     }
     
 }

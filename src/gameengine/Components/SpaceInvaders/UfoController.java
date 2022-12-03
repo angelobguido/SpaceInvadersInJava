@@ -8,6 +8,7 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Physics;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameObject;
 import gamemath.Vector2D;
 
@@ -50,6 +51,8 @@ public class UfoController extends Component{
         Vector2D position = gameObject.getPositionReference();
         position.x = initialPosition.x;
         position.y = initialPosition.y;
+        
+        GameAudioHandler.playUFOaudio();
     }
     
     
@@ -58,6 +61,8 @@ public class UfoController extends Component{
         gameObject.removeComponent(this);
         gameObject = null;
         ufoPhysics = null;
+        
+        GameAudioHandler.stopPlayingUFOaudio();
     }
     
 }
