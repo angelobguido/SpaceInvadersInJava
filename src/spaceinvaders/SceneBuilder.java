@@ -176,6 +176,10 @@ public class SceneBuilder {
         scene.getScene().setOnKeyPressed((event)->{
             InputHandler.sendButton(event.getCode());
         });
+        
+        scene.getScene().setOnKeyReleased((event)->{
+            InputHandler.sendRelease(event.getCode());
+        });
    
         return scene;
     }

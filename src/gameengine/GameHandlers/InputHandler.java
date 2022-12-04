@@ -12,12 +12,12 @@ import javafx.scene.input.KeyCode;
  * @author angelo
  */
 public class InputHandler {
-   public enum Command{Shoot, Right, Left, Nothing};
+   public enum Command{Shoot, Right, Left, Stop, Nothing};
    
    private static ConcurrentLinkedQueue<Command> commands = new ConcurrentLinkedQueue<>();
    
    private static int frameCount = 0;
-   private static final int maxFrame = 5;
+   private static final int maxFrame = 2;
    
    
    public static void sendButton(KeyCode code){
@@ -29,6 +29,16 @@ public class InputHandler {
            case RIGHT: commands.add(Command.Right); break;
            
            default: commands.add(Command.Nothing); break;
+       }
+   }
+   
+   public static void sendRelease(KeyCode code){
+       switch(code){
+           case A: commands.add(Command.Stop); break;
+           case D: commands.add(Command.Stop); break;
+           case LEFT: commands.add(Command.Stop); break;
+           case RIGHT: commands.add(Command.Stop); break;
+           
        }
    }
    
