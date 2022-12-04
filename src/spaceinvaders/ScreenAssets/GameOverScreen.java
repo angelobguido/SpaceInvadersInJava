@@ -5,6 +5,7 @@
 package spaceinvaders.ScreenAssets;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
@@ -40,7 +41,7 @@ public class GameOverScreen {
         Rectangle bg = new Rectangle(900, 600);
         
         MenuItem itemRetry = new MenuItem("RETRY");
-        itemRetry.setOnActive(() -> GameInitializer.init(mainGame, new GraphicInterface()));
+        itemRetry.setOnActive(() -> {GameAudioHandler.playBackGround(); GameInitializer.init(mainGame, new GraphicInterface());});
         
         MenuItem itemMenu = new MenuItem("MENU");
         itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));

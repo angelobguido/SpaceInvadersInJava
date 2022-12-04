@@ -9,6 +9,7 @@ import gameengine.ComponentId;
 import static gameengine.ComponentId.Collider;
 import gameengine.Components.Collider;
 import gameengine.GameHandlers.EntityHandler;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.PowerManager;
 import gameengine.GameObject;
 import gamemath.Vector2D;
@@ -65,6 +66,7 @@ public class PowerUpController extends Component{
         
         if(hasBeenTaken){
             PowerManager.addPower();
+            GameAudioHandler.playPowerUp();
         }
         
     }

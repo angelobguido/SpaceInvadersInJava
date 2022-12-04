@@ -5,6 +5,7 @@
 package spaceinvaders;
 
 import gameengine.GameHandlers.SceneManager;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import javafx.application.Application;
 
@@ -22,6 +23,7 @@ public class SpaceInvadersFX extends Application {
         SceneManager.setStage(stage);
         ScoreManager.init();
     
+        GameAudioHandler.playMainScreenMusic();
         stage.setScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu).getScene());
         stage.show();
     }

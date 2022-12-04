@@ -108,6 +108,8 @@ public class SceneBuilder {
         
         scene.setScene(mms.generateScene());
         
+        scene.isMain = true;
+        
         return scene;
     }
     

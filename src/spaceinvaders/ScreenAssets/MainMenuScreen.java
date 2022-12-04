@@ -4,6 +4,7 @@
  */
 package spaceinvaders.ScreenAssets;
 
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.ScoreManager;
 import gameengine.GameInitializer;
 import gameengine.GameScene;
@@ -43,7 +44,7 @@ public class MainMenuScreen {
         itemExit.setOnActive(() -> {ScoreManager.saveHighScore(); System.exit(0);});
         
         MenuItem itemStart = new MenuItem("START");
-        itemStart.setOnActive(() -> GameInitializer.init(mainGame, new GraphicInterface()));
+        itemStart.setOnActive(() -> { GameAudioHandler.stopPlayingMainScreenMusic(); GameAudioHandler.playBackGround(); GameInitializer.init(mainGame, new GraphicInterface());});
         
         menuBox = new VBox(10, itemStart, itemExit);
         menuBox.setAlignment(Pos.CENTER);

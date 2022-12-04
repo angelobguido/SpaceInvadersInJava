@@ -5,6 +5,7 @@
 package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameObject;
 
@@ -30,5 +31,6 @@ public class PlayerHit extends Hit {
     @Override
     public void onHit(){
         HealthManager.takeHit();
+        GameAudioHandler.playPlayerHit();
     }
 }

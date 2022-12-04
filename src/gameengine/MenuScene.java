@@ -12,6 +12,7 @@ import javafx.scene.Scene;
  */
 public class MenuScene {
     private Scene fxScene;
+    public boolean isMain = false;
     
     public void setScene(Scene s){
         fxScene = s;

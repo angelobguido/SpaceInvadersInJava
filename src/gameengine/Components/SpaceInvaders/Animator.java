@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Animator extends Component {
     
-    private static final int framesPerSprite = 10;
+    private int framesPerSprite = 10;
     private int frames = 0;
     private int currentSprite = 0;
     private ArrayList<Sprite> animation;
@@ -28,9 +28,21 @@ public class Animator extends Component {
         animation = new ArrayList<>();
     }
     
+    public Animator(GameObject gameObject, int framesPerSprite){
+        super(gameObject, ComponentId.Animator);
+        animation = new ArrayList<>();
+        this.framesPerSprite = framesPerSprite;
+    }
+    
     public Animator(GameObject gameObject, ArrayList<Sprite> animation){
         super(gameObject, ComponentId.Animator);
         this.animation = animation;
+    }
+    
+    public Animator(GameObject gameObject, ArrayList<Sprite> animation, int framesPerSprite){
+        super(gameObject, ComponentId.Animator);
+        this.animation = animation;
+        this.framesPerSprite = framesPerSprite;
     }
     
     public ArrayList<Sprite> animation(){

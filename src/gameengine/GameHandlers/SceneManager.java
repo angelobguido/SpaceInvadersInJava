@@ -4,6 +4,7 @@
  */
 package gameengine.GameHandlers;
 
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameObject;
 import gameengine.GameScene;
@@ -29,7 +30,10 @@ public class SceneManager {
     }
     
     public static void loadMenuScene(MenuScene scene){
-        
+        GameAudioHandler.stopPlayingBackGround();
+        if(scene.isMain) 
+            GameAudioHandler.playMainScreenMusic();
+            
         if(stage != null){
                 Platform.runLater(()->{stage.setScene(scene.getScene());});
         }

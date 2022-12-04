@@ -18,6 +18,7 @@ public class ProgressManager {
     public static void nextLevel(){
         level++;
         levelText.set("LEVEL: "+level);
+        GameAudioHandler.playLevelComplete();
     }
     
     public static void reset(){
@@ -34,7 +35,7 @@ public class ProgressManager {
     }
     
     public static float getAlienVelocityMultiplier(){
-        return 1.01f+(level-1)*0.003f;
+        return 1.05f+(level-1)*0.003f;
     }
     
     public static double getAlienAttackRate(){

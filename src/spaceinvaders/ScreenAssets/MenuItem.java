@@ -4,6 +4,7 @@
  */
 package spaceinvaders.ScreenAssets;
 
+import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -42,6 +43,7 @@ public class MenuItem extends HBox {
         }
         
         public void activate(){
+            GameAudioHandler.playSelect();
             if(script != null){
                 script.run();
             }
