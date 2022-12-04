@@ -6,10 +6,12 @@ package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
 import gameengine.ComponentId;
+import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SceneManager;
 import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameInitializer;
 import gameengine.GameObject;
+import spaceinvaders.GameObjectBuilder;
 import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
@@ -50,10 +52,12 @@ public class AlienController extends Component {
     
     @Override
     public void destroy(){
+        EntityHandler.addEntity(GameObjectBuilder.createEffect(gameObject.position()));
+        GameAudioHandler.playAlienKill();
+        
         gameObject.removeComponent(this);
         gameObject = null;
         
-        GameAudioHandler.playAlienKill();
     }
     
 }

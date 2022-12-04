@@ -15,6 +15,7 @@ import gameengine.Components.*;
 import gameengine.*;
 import gameengine.Components.SpaceInvaders.AlienController;
 import gameengine.Components.SpaceInvaders.Animator;
+import gameengine.Components.SpaceInvaders.EffectController;
 import gameengine.Components.SpaceInvaders.PlayerHit;
 import gameengine.Components.SpaceInvaders.PowerUpController;
 import gameengine.Components.SpaceInvaders.ScoreCounter;
@@ -197,6 +198,51 @@ public class GameObjectBuilder {
         return gameObject;
     }
     
+    public static GameObject createEffect(Vector2D initialPosition){
+        double size = 55;
+        GameObject effect = new GameObject();
+        Sprite sprite = new Sprite();
+        sprite.charRepresentation = '5';
+        ArrayList<Vector2D> structure = new ArrayList<>();
+        structure.add(new Vector2D(0,0));
+        sprite.spriteStructure = structure;
+        sprite.image = new Image(GameObjectBuilder.class.getResource("images/effect1.png").toExternalForm(), size, size, true, false);
+        
+        Sprite sprite2 = new Sprite();
+        sprite2.charRepresentation = '6';
+        sprite2.spriteStructure = structure;
+        sprite2.image = new Image(GameObjectBuilder.class.getResource("images/effect2.png").toExternalForm(), size, size, true, false);
+        
+        Sprite sprite3 = new Sprite();
+        sprite3.charRepresentation = '5';
+        sprite3.spriteStructure = structure;
+        sprite3.image = new Image(GameObjectBuilder.class.getResource("images/effect3.png").toExternalForm(), size, size, true, false);
+        
+        Sprite sprite4 = new Sprite();
+        sprite4.charRepresentation = '6';
+        sprite4.spriteStructure = structure;
+        sprite4.image = new Image(GameObjectBuilder.class.getResource("images/effect4.png").toExternalForm(), size, size, true, false);
+        
+        Sprite sprite5 = new Sprite();
+        sprite5.charRepresentation = '5';
+        sprite5.spriteStructure = structure;
+        sprite5.image = new Image(GameObjectBuilder.class.getResource("images/effect5.png").toExternalForm(), size, size, true, false);
+        
+        
+        effect.addComponent(new SpriteRenderer(effect, sprite));
+        Animator animator = new Animator(effect, 4);
+        animator.animation().add(sprite);
+        animator.animation().add(sprite2);
+        animator.animation().add(sprite3);
+        animator.animation().add(sprite4);
+        animator.animation().add(sprite5);
+        effect.addComponent(animator);
+        effect.addComponent(new EffectController(effect, initialPosition));
+        
+        return effect;
+        
+    }
+    
     private static GameObject createDefaultEntity(String tag, Sprite sprite, int maxHealth, int colliderWidth, int colliderHeight){
         
         GameObject gameObject = new GameObject();
@@ -322,6 +368,13 @@ public class GameObjectBuilder {
         playerSprite.image = playerImage;
 
         
+        Sprite specialPlayerSprite = new Sprite();
+        specialPlayerSprite.charRepresentation = '§';
+        specialPlayerSprite.spriteStructure = playerStructure;    
+        Image specialPlayerImage = new Image(GameObjectBuilder.class.getResource("images/special_player.png").toExternalForm(), 50, 50, true, false);
+        specialPlayerSprite.image = specialPlayerImage;
+
+        
         GameObject playerBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/player_bullet.png").toExternalForm(), 30, 30, true, false)));
         GameObject extraBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/extra_bullet.png").toExternalForm(), 30, 30, true, false)));
         GameObject specialBullet = createBullet(createBulletSprite(new Image(GameObjectBuilder.class.getResource("images/special_bullet.png").toExternalForm(), 30, 30, true, false)));
@@ -329,7 +382,7 @@ public class GameObjectBuilder {
 
         GameObject player = createDefaultEntity("Player", playerSprite, 3,  4, 3);
         
-        player.addComponent(new PlayerAttack(player, playerBullet, specialBullet));
+        player.addComponent(new PlayerAttack(player, playerBullet, specialBullet, playerSprite, specialPlayerSprite));
         player.addComponent(new PlayerController(player));
         player.addComponent(new PlayerHit(player));
         

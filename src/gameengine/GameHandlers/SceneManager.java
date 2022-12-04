@@ -33,7 +33,10 @@ public class SceneManager {
         GameAudioHandler.stopPlayingBackGround();
         if(scene.isMain) 
             GameAudioHandler.playMainScreenMusic();
-            
+        
+        if(scene.isGameOver) 
+            GameAudioHandler.playGameOver();
+        
         if(stage != null){
                 Platform.runLater(()->{stage.setScene(scene.getScene());});
         }

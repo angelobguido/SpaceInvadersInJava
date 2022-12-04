@@ -8,10 +8,12 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.Components.Collider;
 import gameengine.Components.Physics;
+import gameengine.Components.SpriteRenderer;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.PowerManager;
 import gameengine.GameObject;
+import gameengine.Sprite;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 
@@ -28,21 +30,36 @@ public class PlayerAttack extends Attack{
     private static final int maxSpecialBullets = 5;
     private int specialBulletsLeft = 0;
     
-    public PlayerAttack(GameObject gameObject, GameObject normalBulletPrefab, GameObject specialBulletPrefab){
+    private SpriteRenderer spriteRenderer;
+    
+    private Sprite normalPlayer;
+    private Sprite specialPlayer;
+    
+    public PlayerAttack(GameObject gameObject, GameObject normalBulletPrefab, GameObject specialBulletPrefab, Sprite normalPlayer, Sprite specialPlayer){
         super(gameObject, normalBulletPrefab);
         
         normalBullet = normalBulletPrefab;
         specialBullet = specialBulletPrefab;
+        
+        this.normalPlayer = normalPlayer;
+        this.specialPlayer = specialPlayer;
+    }
+    
+    @Override
+    public void start(){
+        spriteRenderer = (SpriteRenderer)gameObject.getComponent(ComponentId.SpriteRenderer);
     }
     
     @Override
     public void update(){
         if(PowerManager.getPower() == true){
             specialBulletsLeft = maxSpecialBullets;
+            spriteRenderer.setSprite(specialPlayer);
         }
         
         if(specialBulletsLeft == 0){
             bulletPrefab = normalBullet;
+            spriteRenderer.setSprite(normalPlayer);
         }
         else{
             bulletPrefab = specialBullet;
@@ -63,7 +80,7 @@ public class PlayerAttack extends Attack{
     @Override
     public Component createCopy(GameObject gameObject){
         
-        PlayerAttack newAttack = new PlayerAttack(gameObject, normalBullet, specialBullet);
+        PlayerAttack newAttack = new PlayerAttack(gameObject, normalBullet, specialBullet, normalPlayer, specialPlayer);
         
         return newAttack;
     }

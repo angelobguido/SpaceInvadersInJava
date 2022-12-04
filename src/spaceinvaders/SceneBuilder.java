@@ -84,6 +84,8 @@ public class SceneBuilder {
         
         scene.setScene(gos.generateScene());
         
+        scene.isGameOver = true;
+        
         return scene;
     }
     

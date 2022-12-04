@@ -23,10 +23,11 @@ public class GameAudioHandler {
     private static AudioClip select = new AudioClip(GameObjectBuilder.class.getResource("sounds/select.wav").toExternalForm());
     private static AudioClip powerUp = new AudioClip(GameObjectBuilder.class.getResource("sounds/power_up.wav").toExternalForm());
     private static AudioClip levelComplete = new AudioClip(GameObjectBuilder.class.getResource("sounds/level_complete.wav").toExternalForm());
-    
+
     private static MediaPlayer UFOaudio = new MediaPlayer(new Media(GameObjectBuilder.class.getResource("sounds/ufo.wav").toExternalForm()));
     private static MediaPlayer mainScreen = new MediaPlayer(new Media(GameObjectBuilder.class.getResource("sounds/main_screen_music.wav").toExternalForm()));
     private static MediaPlayer background = new MediaPlayer(new Media(GameObjectBuilder.class.getResource("sounds/background_music.wav").toExternalForm()));
+    private static MediaPlayer gameOver = new MediaPlayer(new Media(GameObjectBuilder.class.getResource("sounds/game_over.wav").toExternalForm()));
     
     public static void playAlienBullet(){
         alienBullet.play();
@@ -60,6 +61,14 @@ public class GameAudioHandler {
         levelComplete.play();
     }
     
+    public static void playGameOver(){
+        gameOver.play();
+    }
+    
+    public static void stopPlayingGameOver(){
+        gameOver.stop();
+    }
+    
     public static void playUFOaudio(){
         UFOaudio.play();
     }
@@ -70,7 +79,7 @@ public class GameAudioHandler {
     
     public static void playBackGround(){
         background.setCycleCount(MediaPlayer.INDEFINITE);
-        background.setVolume(0.2);
+        background.setVolume(0.4);
         background.play();
     }
     

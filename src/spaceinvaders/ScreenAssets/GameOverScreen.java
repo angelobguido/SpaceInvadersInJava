@@ -41,10 +41,10 @@ public class GameOverScreen {
         Rectangle bg = new Rectangle(900, 600);
         
         MenuItem itemRetry = new MenuItem("RETRY");
-        itemRetry.setOnActive(() -> {GameAudioHandler.playBackGround(); GameInitializer.init(mainGame, new GraphicInterface());});
+        itemRetry.setOnActive(() -> {GameAudioHandler.playBackGround(); GameAudioHandler.stopPlayingGameOver(); GameInitializer.init(mainGame, new GraphicInterface());});
         
         MenuItem itemMenu = new MenuItem("MENU");
-        itemMenu.setOnActive(() -> SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu)));
+        itemMenu.setOnActive(() -> {GameAudioHandler.stopPlayingGameOver(); SceneManager.loadMenuScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu));});
         
         MenuItem itemQuit = new MenuItem("QUIT");
         itemQuit.setOnActive(() -> {ScoreManager.saveHighScore(); System.exit(0);});
