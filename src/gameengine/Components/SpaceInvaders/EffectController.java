@@ -15,17 +15,15 @@ import gamemath.Vector2D;
  */
 public class EffectController extends Component {
     private static final int framesAlive = 20;
-    private Vector2D initialPosition;
     private int frames = 0;
 
-    public EffectController(GameObject gameObject, Vector2D initialPosition){
+    public EffectController(GameObject gameObject){
         super(gameObject, ComponentId.EffectController);
-        this.initialPosition = initialPosition;
     }
     
     @Override
     public Component createCopy(GameObject gameObject){
-        return new EffectController(gameObject, initialPosition);
+        return new EffectController(gameObject);
     }
     
     @Override
@@ -39,7 +37,7 @@ public class EffectController extends Component {
     
     @Override
     public void start(){
-        gameObject.setPosition(initialPosition);
+
     }
     
     

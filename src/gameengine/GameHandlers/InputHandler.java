@@ -14,36 +14,46 @@ import javafx.scene.input.KeyCode;
 public class InputHandler {
    public enum Command{Shoot, Right, Left, Stop, Nothing};
    
-   private static ConcurrentLinkedQueue<Command> commands = new ConcurrentLinkedQueue<>();
+   private static ConcurrentLinkedQueue<Command> moveCommands = new ConcurrentLinkedQueue<>();
+   private static ConcurrentLinkedQueue<Command> actionCommands = new ConcurrentLinkedQueue<>();
    
    private static int frameCount = 0;
-   private static final int maxFrame = 2;
+   private static final int maxFrame = 20;
    
    
    public static void sendButton(KeyCode code){
        switch(code){
-           case SPACE: commands.add(Command.Shoot); break;
-           case A: commands.add(Command.Left); break;
-           case D: commands.add(Command.Right); break;
-           case LEFT: commands.add(Command.Left); break;
-           case RIGHT: commands.add(Command.Right); break;
+           case SPACE: actionCommands.add(Command.Shoot); break;
+           case A: moveCommands.add(Command.Left); break;
+           case D: moveCommands.add(Command.Right); break;
+           case LEFT: moveCommands.add(Command.Left); break;
+           case RIGHT: moveCommands.add(Command.Right); break;
            
-           default: commands.add(Command.Nothing); break;
+           //default: commands.add(Command.Nothing); break;
        }
    }
    
    public static void sendRelease(KeyCode code){
        switch(code){
-           case A: commands.add(Command.Stop); break;
-           case D: commands.add(Command.Stop); break;
-           case LEFT: commands.add(Command.Stop); break;
-           case RIGHT: commands.add(Command.Stop); break;
+           case A: moveCommands.add(Command.Stop); break;
+           case D: moveCommands.add(Command.Stop); break;
+           case LEFT: moveCommands.add(Command.Stop); break;
+           case RIGHT: moveCommands.add(Command.Stop); break;
            
        }
    }
    
-   public static Command getCommand(){
-       Command last = commands.poll();
+   public static Command getMoveCommand(){
+       Command last = moveCommands.poll();
+       if(last==null){
+           last = Command.Nothing;
+       }
+       
+       return last;
+   }
+   
+   public static Command getActionCommand(){
+       Command last = actionCommands.poll();
        if(last==null){
            last = Command.Nothing;
        }
@@ -55,12 +65,12 @@ public class InputHandler {
        frameCount++;
        if(frameCount>maxFrame){
            frameCount=0;
-           commands.clear();
+           //commands.clear();
        }
    }
    
    public static void reset(){
-       commands.clear();
+       moveCommands.clear();
    }
    
 }

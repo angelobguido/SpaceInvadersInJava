@@ -5,9 +5,12 @@
 package gameengine.Components.SpaceInvaders;
 
 import gameengine.Component;
+import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameHandlers.SpaceInvaders.GameAudioHandler;
 import gameengine.GameHandlers.SpaceInvaders.HealthManager;
 import gameengine.GameObject;
+import spaceinvaders.GameObjectBuilder;
+import spaceinvaders.GameObjectBuilder.Prefab;
 
 /**
  *
@@ -16,6 +19,9 @@ import gameengine.GameObject;
 public class PlayerHit extends Hit {
     
     private static final int maxPlayerHealth = 3;
+    private static final int invencibility = 30;
+    private int timer = 0;
+    private boolean canTakeHit = true;
     
     public PlayerHit(GameObject gameObject){
         super(gameObject, maxPlayerHealth);
@@ -29,8 +35,28 @@ public class PlayerHit extends Hit {
     }
     
     @Override
+    public void update(){
+        
+        if(canTakeHit == false){    
+            timer++;
+            if(timer>=invencibility){
+                timer = 0;
+                canTakeHit = true;
+            }
+        }
+        
+    }
+    
+    @Override
     public void onHit(){
-        HealthManager.takeHit();
-        GameAudioHandler.playPlayerHit();
+        if(canTakeHit == true){
+            GameObject effect = GameObjectBuilder.create(Prefab.Effect);
+            effect.setPosition(gameObject.position());
+            EntityHandler.addEntity(effect);
+            
+            HealthManager.takeHit();
+            GameAudioHandler.playPlayerHit();
+        }
+        health++;
     }
 }

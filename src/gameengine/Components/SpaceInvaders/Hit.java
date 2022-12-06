@@ -21,7 +21,7 @@ import gameengine.Observer.Subscriber;
 public class Hit extends Component implements Subscriber{
     
     private Collider col;
-    private int health;
+    protected int health;
     protected int maxHealth = 1;
 
     /**

@@ -4,23 +4,9 @@
  */
 package spaceinvaders;
 
-import gameengine.Components.SpaceInvaders.PlayerAttack;
-import gameengine.Components.SpaceInvaders.PlayerController;
-import gameengine.Components.SpaceInvaders.Hit;
-import gameengine.Components.SpaceInvaders.AlienAttack;
-import gameengine.Components.SpaceInvaders.BulletLife;
-import gameengine.Components.SpaceInvaders.AlienMatrixLife;
-import gameengine.Components.SpaceInvaders.AlienMatrixController;
+import gameengine.Components.SpaceInvaders.*;
 import gameengine.Components.*;
 import gameengine.*;
-import gameengine.Components.SpaceInvaders.AlienController;
-import gameengine.Components.SpaceInvaders.Animator;
-import gameengine.Components.SpaceInvaders.EffectController;
-import gameengine.Components.SpaceInvaders.PlayerHit;
-import gameengine.Components.SpaceInvaders.PowerUpController;
-import gameengine.Components.SpaceInvaders.ScoreCounter;
-import gameengine.Components.SpaceInvaders.SpecialBulletController;
-import gameengine.Components.SpaceInvaders.UfoController;
 import gamemath.Vector2D;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
@@ -32,10 +18,11 @@ import javafx.scene.image.Image;
 
 public class GameObjectBuilder {
    
-    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensMatrix, PowerUp}
+    public enum Prefab{UFO, Alien, MiddleAlien, FrontAlien, Player, Obstacle, BigObstacle, AliensMatrix, PowerUp, Effect}
     
     
     private static GameObject powerUp;
+    private static GameObject effect;
     private static GameObject ufo;
     private static GameObject alien;
     private static GameObject middleAlien;
@@ -56,6 +43,14 @@ public class GameObjectBuilder {
         GameObject gameObject = new GameObject();
         
         switch(prefab){
+            
+            case Effect:
+                if(effect != null) return new GameObject(effect);
+                
+                gameObject = createEffect();
+                effect = new GameObject(gameObject);
+                
+                break;
             
             case PowerUp:
                 if(powerUp != null) return new GameObject(powerUp);
@@ -198,7 +193,24 @@ public class GameObjectBuilder {
         return gameObject;
     }
     
-    public static GameObject createEffect(Vector2D initialPosition){
+    /**
+     * Static function that initialises all the objects that can be created.
+     * It is useful to stop lag.
+     */
+    public static void init(){
+        create(Prefab.Alien);
+        create(Prefab.AliensMatrix);
+        create(Prefab.BigObstacle);
+        create(Prefab.Effect);
+        create(Prefab.FrontAlien);
+        create(Prefab.MiddleAlien);
+        create(Prefab.Obstacle);
+        create(Prefab.Player);
+        create(Prefab.PowerUp);
+        create(Prefab.UFO);
+    }
+    
+    public static GameObject createEffect(){
         double size = 55;
         GameObject effect = new GameObject();
         Sprite sprite = new Sprite();
@@ -230,14 +242,14 @@ public class GameObjectBuilder {
         
         
         effect.addComponent(new SpriteRenderer(effect, sprite));
-        Animator animator = new Animator(effect, 4);
+        Animator animator = new Animator(effect, 5);
         animator.animation().add(sprite);
         animator.animation().add(sprite2);
         animator.animation().add(sprite3);
         animator.animation().add(sprite4);
         animator.animation().add(sprite5);
         effect.addComponent(animator);
-        effect.addComponent(new EffectController(effect, initialPosition));
+        effect.addComponent(new EffectController(effect));
         
         return effect;
         

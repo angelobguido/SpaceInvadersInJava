@@ -52,9 +52,13 @@ public class AlienController extends Component {
     
     @Override
     public void destroy(){
-        EntityHandler.addEntity(GameObjectBuilder.createEffect(gameObject.position()));
-        GameAudioHandler.playAlienKill();
         
+        GameObject effect = GameObjectBuilder.create(GameObjectBuilder.Prefab.Effect);
+        effect.setPosition(gameObject.position());
+        EntityHandler.addEntity(effect);
+        
+        GameAudioHandler.playAlienKill();
+
         gameObject.removeComponent(this);
         gameObject = null;
         

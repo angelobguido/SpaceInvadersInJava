@@ -46,18 +46,24 @@ public class PlayerController extends Component{
             attackCooldownTimer--;        
         }
         
-        for(int i = 0; i < 3; i++){
-            Command c = InputHandler.getCommand();
-
-            switch(c){
-                case Nothing: /*playerPhysics.velocity = Vector2D.zero;*/ break;
-                case Stop: playerPhysics.velocity = Vector2D.zero; break;
-                case Left: playerPhysics.velocity = new Vector2D(-1, 0); break;
-                case Right: playerPhysics.velocity = new Vector2D(1, 0); break;
-                case Shoot: attack(); break;
-            }
-        }
         
+        Command move = InputHandler.getMoveCommand();
+
+        switch(move){
+            case Stop: playerPhysics.velocity = Vector2D.zero; break;
+            case Left: playerPhysics.velocity = new Vector2D(-1, 0); break;
+            case Right: playerPhysics.velocity = new Vector2D(1, 0); break;
+        
+        }
+
+        
+        Command action = InputHandler.getActionCommand();
+
+        switch(action){
+            case Shoot: attack(); break;
+           
+        }
+
         
         
         

@@ -51,7 +51,10 @@ public class Animator extends Component {
     
     @Override
     public Component createCopy(GameObject gameObject){
-        return new Animator(gameObject, animation);
+        Animator a = new Animator(gameObject);
+        a.animation.addAll(animation);
+        
+        return a;
     }
     
     @Override

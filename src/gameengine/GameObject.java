@@ -75,12 +75,6 @@ public class GameObject {
      */
     public void destroy(){
         
-        if(Debug.bullet == this){
-            Debug.bullet = null;
-            Debug.entity = null;
-            Debug.destroyFrame = GameInitializer.frame;
-        }
-        
         if(parent!=null){
             parent.children.remove(this);
         }

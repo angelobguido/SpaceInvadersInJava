@@ -22,6 +22,7 @@ public class SpaceInvadersFX extends Application {
         
         SceneManager.setStage(stage);
         ScoreManager.init();
+        GameObjectBuilder.init();
     
         GameAudioHandler.playMainScreenMusic();
         stage.setScene(SceneBuilder.createMenu(SceneBuilder.MenuSceneId.MainMenu).getScene());
