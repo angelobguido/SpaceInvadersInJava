@@ -124,9 +124,6 @@ public class SceneBuilder {
 
         aliens.setPosition(new Vector2D(0,30));
 
-        PlayerAttack playerAttack = (PlayerAttack)player.getComponent(ComponentId.Attack);
-        Physics playerPhysics = (Physics)player.getComponent(ComponentId.Physics);
-        playerPhysics.velocity = new Vector2D(1,0);
         player.setPosition(new Vector2D(0,2));
 
         GameObject obstacle1 = GameObjectBuilder.create(Prefab.BigObstacle);
