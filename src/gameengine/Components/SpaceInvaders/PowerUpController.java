@@ -16,6 +16,7 @@ import gamemath.Vector2D;
 import static java.lang.Math.random;
 
 /**
+ * Represents the behaviour of the power up. It is used to notify the PowerManager.
  *
  * @author angelo
  */

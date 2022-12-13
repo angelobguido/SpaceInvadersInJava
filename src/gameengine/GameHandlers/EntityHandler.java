@@ -139,6 +139,9 @@ public class EntityHandler {
         entities.forEach(entity -> entity.update());
     } 
     
+    /**
+     * Will reset this handler. Removing all entities.
+     */
     public static void reset(){
         entities.clear();
         newEntities.clear();

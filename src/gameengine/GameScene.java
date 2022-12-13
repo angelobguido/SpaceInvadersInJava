@@ -10,29 +10,21 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 
 /**
- *
+ * Represents the Scene used in the game with entities.
+ * 
  * @author angelo
  */
 public class GameScene {
     private ArrayList<GameObject> sceneEntities = sceneEntities = new ArrayList<>();
     private Scene fxScene;
-    private StackPane gameRoot;
     private GraphicsContext gameScreen;
     
     public Scene getScene(){
         return fxScene;
     }
     
-    public StackPane getRoot(){
-        return gameRoot;
-    }
-    
     public void setScene(Scene fxScene){
         this.fxScene = fxScene;
-    }
-    
-    public void setRoot(StackPane gameRoot){
-        this.gameRoot = gameRoot;
     }
     
     public void setCanvasPane(GraphicsContext canvasPane){

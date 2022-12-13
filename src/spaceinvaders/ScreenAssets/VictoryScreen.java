@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import spaceinvaders.SceneBuilder;
 
 /**
+ * Represents the victory game screen. NOT USED!
  *
  * @author angelo
  */

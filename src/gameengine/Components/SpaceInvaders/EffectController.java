@@ -8,9 +8,11 @@ import gameengine.Component;
 import gameengine.ComponentId;
 import gameengine.GameHandlers.EntityHandler;
 import gameengine.GameObject;
-import gamemath.Vector2D;
+
 /**
- *
+ * Represents the component that destroy the game object after some frames. It is
+ * used to destroy effects.
+ * 
  * @author angelo
  */
 public class EffectController extends Component {

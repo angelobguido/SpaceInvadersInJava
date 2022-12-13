@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 /**
+ * Represents the hud constructed with java fx. 
+ * Showing the health bar, the level, and the score.
  *
  * @author angelo
  */

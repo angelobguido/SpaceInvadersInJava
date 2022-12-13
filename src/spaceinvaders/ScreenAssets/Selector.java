@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 /**
+ * Represents the image that appears when an MenuItem is active.
  *
  * @author angelo
  */

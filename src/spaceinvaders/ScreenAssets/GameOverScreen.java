@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import spaceinvaders.SceneBuilder;
 
 /**
+ * Represents the game over java fx scene.
  *
  * @author angelo
  */

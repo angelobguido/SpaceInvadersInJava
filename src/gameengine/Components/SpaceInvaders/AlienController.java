@@ -16,6 +16,7 @@ import spaceinvaders.SceneBuilder;
 import static spaceinvaders.SceneBuilder.MenuSceneId.GameOver;
 
 /**
+ * Represents the component that takes care of the alien behaviour.
  *
  * @author angelo
  */

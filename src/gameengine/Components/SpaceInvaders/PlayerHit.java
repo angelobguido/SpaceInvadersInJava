@@ -13,13 +13,14 @@ import spaceinvaders.GameObjectBuilder;
 import spaceinvaders.GameObjectBuilder.Prefab;
 
 /**
- *
+ * Represents the life of the player.
+ * 
  * @author angelo
  */
 public class PlayerHit extends Hit {
     
     private static final int maxPlayerHealth = 3;
-    private static final int invencibility = 30;
+    private static final int invencibility = 100;
     private int timer = 0;
     private boolean canTakeHit = true;
     

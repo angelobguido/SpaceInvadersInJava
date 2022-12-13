@@ -4,10 +4,7 @@
  */
 package spaceinvaders;
 
-import gameengine.ComponentId;
 import gameengine.Components.SpaceInvaders.GameObjectManager;
-import gameengine.Components.Physics;
-import gameengine.Components.SpaceInvaders.PlayerAttack;
 import gameengine.GameHandlers.InputHandler;
 import gameengine.GameObject;
 import gameengine.GameScene;

@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 /**
+ * Represents the menu item. It is a box with an action.
  *
  * @author angelo
  */

@@ -8,6 +8,7 @@ import gamemath.Vector2D;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
+ * Represents the manager that increase the game difficulty every level.
  *
  * @author angelo
  */

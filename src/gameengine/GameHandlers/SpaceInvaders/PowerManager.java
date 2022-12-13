@@ -5,6 +5,7 @@
 package gameengine.GameHandlers.SpaceInvaders;
 
 /**
+ * Represents the manager that tells the player if a PowerUp was got.
  *
  * @author angelo
  */

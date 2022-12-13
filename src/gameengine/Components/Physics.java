@@ -12,6 +12,8 @@ import gameengine.PhysicsElement;
 import gamemath.Vector2D;
 
 /**
+ * Represents the component that control the game object change 
+ * in position every frame.
  *
  * @author angelo
  */

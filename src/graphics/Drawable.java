@@ -7,6 +7,7 @@ package graphics;
 import gameengine.Sprite;
 import gamemath.Vector2D;
 import javafx.scene.canvas.GraphicsContext;
+
 /**
  * This represents all the drawable objects.
  * @author angelo

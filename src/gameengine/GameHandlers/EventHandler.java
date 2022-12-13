@@ -42,6 +42,9 @@ public class EventHandler {
         }
     }
     
+    /**
+     * Will reset this handler. Removing all events.
+     */
     public static void reset(){
         events.clear();
     }

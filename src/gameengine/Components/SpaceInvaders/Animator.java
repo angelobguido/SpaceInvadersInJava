@@ -12,7 +12,9 @@ import gameengine.Sprite;
 import java.util.ArrayList;
 
 /**
- *
+ * Represents the component that change the sprites inside
+ * the game object every frame.
+ * 
  * @author angelo
  */
 public class Animator extends Component {

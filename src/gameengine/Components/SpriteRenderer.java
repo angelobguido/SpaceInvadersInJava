@@ -12,6 +12,8 @@ import gameengine.GameObject;
 import gameengine.Sprite;
 
 /**
+ * Represents the component that updates the game object representation on the 
+ * visual interface.
  *
  * @author angelo
  */

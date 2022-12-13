@@ -7,6 +7,7 @@ package gameengine;
 import javafx.scene.Scene;
 
 /**
+ * Represents the scene used in menus.
  *
  * @author angelo
  */

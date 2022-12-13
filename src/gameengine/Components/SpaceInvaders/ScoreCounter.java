@@ -11,6 +11,7 @@ import gameengine.GameObject;
 import gameengine.Observer.Subscriber;
 
 /**
+ * Represents the score counter. It is used to notify the ScoreManager.
  *
  * @author angelo
  */

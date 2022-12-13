@@ -14,6 +14,8 @@ import gamemath.Vector2D;
 import java.util.ArrayList;
 
 /**
+ * Represents the behaviour of special bullets. It is used to spawn new bullets
+ * after destruction.
  *
  * @author angelo
  */

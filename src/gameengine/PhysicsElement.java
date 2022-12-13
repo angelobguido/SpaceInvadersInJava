@@ -7,7 +7,9 @@ package gameengine;
 import gamemath.Vector2D;
 
 /**
- *
+ *  Represents the physics element used inside Physics Manager to change
+ * position of the entities every frame.
+ * 
  * @author angelo
  */
 public class PhysicsElement {

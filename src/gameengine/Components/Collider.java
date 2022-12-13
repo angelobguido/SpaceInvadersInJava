@@ -15,6 +15,8 @@ import java.util.Stack;
 import java.util.ArrayList;
 
 /**
+ * Represents the collider property of GameObjects. This component can notify
+ * collisions.
  *
  * @author angelo
  */

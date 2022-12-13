@@ -11,6 +11,8 @@ import javafx.scene.media.MediaPlayer;
 import spaceinvaders.GameObjectBuilder;
 
 /**
+ * Represents the game audio. It is used to play
+ * sounds and musics pre-loaded inside this object.
  *
  * @author angelo
  */

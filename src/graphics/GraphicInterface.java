@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 
 
 /**
+ * Represents the interface that uses JavaFX.
  *
  * @author angelo
  */

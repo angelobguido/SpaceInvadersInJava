@@ -13,6 +13,7 @@ import gameengine.GameObject;
 import gamemath.Vector2D;
 
 /**
+ * Represents the movement of Ufos.
  *
  * @author angelo
  */

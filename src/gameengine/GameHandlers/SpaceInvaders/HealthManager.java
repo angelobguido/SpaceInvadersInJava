@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import spaceinvaders.GameObjectBuilder;
 
 /**
+ * Represents the health of the player on the screen.
  *
  * @author angelo
  */

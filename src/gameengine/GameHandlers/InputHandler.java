@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javafx.scene.input.KeyCode;
 
 /**
+ * Represents the handler of inputs. It will store all Command's objects 
+ * in queues after calling its functions.
  *
  * @author angelo
  */
@@ -20,7 +22,11 @@ public class InputHandler {
    private static int frameCount = 0;
    private static final int maxFrame = 20;
    
-   
+   /**
+    * Will send the button to the handler and translate to commands.
+    * 
+    * @param code 
+    */
    public static void sendButton(KeyCode code){
        switch(code){
            case SPACE: actionCommands.add(Command.Shoot); break;
@@ -33,6 +39,11 @@ public class InputHandler {
        }
    }
    
+   /**
+    * Will send the button when released to the handler and translate to commands.
+    * 
+    * @param code 
+    */
    public static void sendRelease(KeyCode code){
        switch(code){
            case A: moveCommands.add(Command.Stop); break;
@@ -43,6 +54,11 @@ public class InputHandler {
        }
    }
    
+   /**
+    * Get the next command to move.
+    * 
+    * @return the next command
+    */
    public static Command getMoveCommand(){
        Command last = moveCommands.poll();
        if(last==null){
@@ -52,6 +68,11 @@ public class InputHandler {
        return last;
    }
    
+   /**
+    * Get the next command to do an action.
+    * 
+    * @return the next command
+    */
    public static Command getActionCommand(){
        Command last = actionCommands.poll();
        if(last==null){
@@ -61,6 +82,10 @@ public class InputHandler {
        return last;
    }
    
+   /**
+    * Will update the handler state.
+    * 
+    */
    public static void update(){
        frameCount++;
        if(frameCount>maxFrame){
@@ -69,6 +94,9 @@ public class InputHandler {
        }
    }
    
+   /**
+     * Will reset this handler. Removing all commands.
+     */
    public static void reset(){
        moveCommands.clear();
    }

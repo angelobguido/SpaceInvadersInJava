@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
+ * Represents the manager that shows the score on the 
+ * screen, and save the high score in a file.
  *
  * @author angelo
  */

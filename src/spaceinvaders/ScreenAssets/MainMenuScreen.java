@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
+ * Represents the menu screen created with JavaFX.
  *
  * @author angelo
  */
